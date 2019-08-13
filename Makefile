@@ -1,4 +1,5 @@
 develop: 
+	pip install --editable .
 	pip install -r dev_requirements.txt
 
 install:
