@@ -34,8 +34,12 @@ major:
 clean:
 	find . -type f -name "*.py[co]" -delete
 	find . -type d -name "__pycache__" -delete
+	find . -name '*.egg-info' -exec rm -rf {} +
+	find . -name '*.egg' -exec rm -rf {} +
 	rm -rf build/
-	rm-rf dist/
+	rm -rf dist/
+	rm -rf .eggs/
+
 
 dist: clean
 	python setup.py sdist bdist_wheel
