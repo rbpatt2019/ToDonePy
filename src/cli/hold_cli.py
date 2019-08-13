@@ -3,9 +3,10 @@
 
 import click
 
+
 @click.command()
-@click.option('--count', default=1, help='Number of greetings')
-@click.option('--name', prompt='Your name: ', help='The persion to greet.')
+@click.option("--count", default=1, help="Number of greetings")
+@click.option("--name", prompt="Your name: ", help="The persion to greet.")
 def hello(count, name):
     """Greet the nice person NAME COUNT times
 
@@ -15,4 +16,4 @@ def hello(count, name):
             Please visit their site at https://click.palletprojects.com/en/7.x/
     """
     for _ in range(count):
-        click.echo(f'Hello {name}')
+        click.echo(f"Hello {name}")
