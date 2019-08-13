@@ -24,7 +24,7 @@ setuptools.setup(
         packages=setuptools.find_packages('src'),
         entry_points={
             'console_scripts':[
-                'hello = cli.hello_cli:hello']},
+                'hello = cli.hold_cli:hello']},
         classifiers=[
             'Development Status :: 1 - Planning',
             'Intended Audience :: Developers',
