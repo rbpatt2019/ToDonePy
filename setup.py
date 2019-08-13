@@ -22,9 +22,9 @@ setuptools.setup(
         url='https://github.com/rbpatt2019/studious_happiness',
         package_dir={'': 'src'},
         packages=setuptools.find_packages('src'),
-        # entry_points={
-        #     'console_scripts':[
-        #         'command = cli.file:function']},
+        entry_points={
+            'console_scripts':[
+                'hello = cli.hello_cli:hello']},
         classifiers=[
             'Development Status :: 1 - Planning',
             'Intended Audience :: Developers',
