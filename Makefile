@@ -1,20 +1,19 @@
-build: 
-	pip install --editable .
-
-freeze:
-	pip freeze > requriements.txt
+develop: 
+	pip install -r dev_requirements.txt
 
 install:
 	pip install -r requirements.txt
 
 lint:
+	pyflakes src
+
+format: 
 	isort -rc src
 	black src
-	pyflakes src
 	git add .
-	git commit -m "Linting and formatting files"
+	git commit -m "Formatting files with black and isort"
 
-test: lint
+test: format lint
 	python setup.py test
 
 patch:
@@ -40,4 +39,7 @@ clean:
 dist: clean
 	python setup.py sdist bdist_wheel
 
-.PHONY: lint clean dist
+release: dist
+	twine upload dist/*
+
+.PHONY: develop install lint format test patch minor major clean dist
