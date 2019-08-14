@@ -16,4 +16,4 @@ def hello(count, name):
             Please visit their site at https://click.palletprojects.com/en/7.x/
     """
     for _ in range(count):
-        click.echo(f"Hello {name}")
+        click.echo(f"Hello {name}!")
