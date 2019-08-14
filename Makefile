@@ -1,12 +1,18 @@
-develop: 
+clean:
+	find . -type f -name "*.py[co]" -delete
+	find . -type d -name "__pycache__" -delete
+	find . -name '*.egg-info' -exec rm -rf {} +
+	find . -name '*.egg' -exec rm -rf {} +
+	rm -rf build/
+	rm -rf dist/
+	rm -rf .eggs/
+
+develop: clean
 	pip install --editable .
 	pip install -r dev_requirements.txt
 
 install:
 	pip install -r requirements.txt
-
-lint:
-	pyflakes src
 
 format: 
 	isort -rc src
@@ -14,7 +20,10 @@ format:
 	git add .
 	git commit -m "Formatting files with black and isort"
 
-test: format lint
+lint: format
+	pyflakes src
+
+test: lint
 	python setup.py test
 
 patch:
@@ -31,15 +40,6 @@ major:
 
 # docs
 
-clean:
-	find . -type f -name "*.py[co]" -delete
-	find . -type d -name "__pycache__" -delete
-	find . -name '*.egg-info' -exec rm -rf {} +
-	find . -name '*.egg' -exec rm -rf {} +
-	rm -rf build/
-	rm -rf dist/
-	rm -rf .eggs/
-
 
 dist: clean
 	python setup.py sdist bdist_wheel
@@ -47,4 +47,4 @@ dist: clean
 release: dist
 	twine upload dist/*
 
-.PHONY: develop install lint format test patch minor major clean dist
+.PHONY: clean develop install format lint test patch minor major dist clean 
