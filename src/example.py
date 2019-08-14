@@ -6,7 +6,7 @@ import click
 
 @click.command()
 @click.option("--count", default=1, help="Number of greetings")
-@click.option("--name", prompt="Your name: ", help="The persion to greet.")
+@click.option("--name", prompt="Your name", help="The persion to greet.")
 def hello(count, name):
     """Greet the nice person NAME COUNT times
 
