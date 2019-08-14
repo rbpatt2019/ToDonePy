@@ -17,8 +17,6 @@ install:
 format: 
 	isort -rc src
 	black src
-	git add .
-	git commit -m "Formatting files with black and isort"
 
 lint: format
 	pyflakes src
