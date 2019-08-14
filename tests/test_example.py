@@ -8,4 +8,4 @@ def test_example_hello_prompt():
     runner = CliRunner()
     result = runner.invoke(hello, input='Ryan\n')
     assert result.exit_code == 0
-    assert result.output == 'Hello Ryan!\n'
+    assert result.output == 'Your name:...Hello Ryan!\n'
