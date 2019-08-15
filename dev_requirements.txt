@@ -10,3 +10,4 @@ pytest-instafail=0.4.1
 pytest-mypy==0.3.3
 pytest-runner==5.1
 Sphinx==2.1.2
+sphinx-click==2.2.0

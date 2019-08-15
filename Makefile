@@ -25,8 +25,9 @@ test: lint
 	python setup.py test
 
 docs: clean
+	rm -rf docs/_static docs/_sources
 	cd docs && make html
-	mv docs/html/index.html docs/index.html
+	mv -f html/* docs/ && rm -rf html/
 
 patch:
 	bump2version patch

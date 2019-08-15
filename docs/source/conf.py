@@ -37,6 +37,7 @@ extensions = [
         'sphinx.ext.autosummary',
         'sphinx.ext.doctest',
         'sphinx.ext.githubpages',
+        'sphinx_click.ext'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -53,15 +54,16 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'nature'
+html_theme = 'alabaster'
 html_theme_options = {
-        # 'description': 'Keep calm and manage your tasks!',
-        # 'page_width': '100%',
-        # 'github_button': 'true',
-        # 'github_banner': 'true',
-        # 'github_type': 'star',
-        # 'github_user': 'rbpatt2019',
-        # 'github_repo': 'studious-happiness',
+        'description': 'Keep calm and manage your tasks!',
+        'fixed_sidebar': 'false',
+        'page_width': '100%',
+        'github_button': 'true',
+        'github_banner': 'true',
+        'github_type': 'star',
+        'github_user': 'rbpatt2019',
+        'github_repo': 'studious-happiness',
         }
 
 # Add any paths that contain custom static files (such as style sheets) here,
