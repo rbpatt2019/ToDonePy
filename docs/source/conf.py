@@ -37,7 +37,8 @@ extensions = [
         'sphinx.ext.autosummary',
         'sphinx.ext.doctest',
         'sphinx.ext.githubpages',
-        'sphinx_click.ext'
+        'sphinx_click.ext',
+        'sphinxcontrib.fulltoc'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
