@@ -25,7 +25,8 @@ test: lint
 	python setup.py test
 
 docs: clean
-	cd docs/; and make html
+	cd docs && make html
+	mv docs/html/index.html docs/index.html
 
 patch:
 	bump2version patch
