@@ -24,6 +24,9 @@ lint: format
 test: lint
 	python setup.py test
 
+docs: clean
+	cd docs/; and make html
+
 patch:
 	bump2version patch
 	git push origin master --tags
@@ -36,8 +39,6 @@ major:
 	bump2version major
 	git push origin master --tags
 
-# docs
-
 
 dist: clean
 	python setup.py sdist bdist_wheel
@@ -45,4 +46,4 @@ dist: clean
 release: dist
 	twine upload dist/*
 
-.PHONY: clean develop install format lint test patch minor major dist clean 
+.PHONY: clean develop install format lint test docs patch minor major dist clean 
