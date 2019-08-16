@@ -75,17 +75,8 @@ pygments_style = None
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
-html_theme_options = {
-        'description': 'Keep calm and manage your tasks!',
-        'fixed_sidebar': 'false',
-        'page_width': '100%',
-        'github_button': 'true',
-        'github_banner': 'true',
-        'github_type': 'star',
-        'github_user': 'rbpatt2019',
-        'github_repo': 'studious-happiness',
-        }
+html_theme = 'nature'
+html_theme_options = {}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
