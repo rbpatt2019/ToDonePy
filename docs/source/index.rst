@@ -7,7 +7,7 @@ Welcome to studious-happiness's documentation!
    
    Overview <readme.rst>
    Command-line interface <cli.rst>
-   Test information <tests.rst>
+   Test information <test_info.rst>
 
 
 Indices and tables

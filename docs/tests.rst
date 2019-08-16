@@ -1,5 +1,5 @@
-Tests
-=====
+Tests package
+=============
 
 Submodules
 ----------
