@@ -6,7 +6,8 @@ Welcome to studious-happiness's documentation!
    :caption: Contents:
    
    Overview <readme.rst>
-
+   Command-line interface <cli.rst>
+   Test information <tests.rst>
 
 
 Indices and tables

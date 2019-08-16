@@ -7,7 +7,7 @@ Submodules
 tests.test\_example
 -------------------
 
-.. automodule:: tests.make_temp
+.. automodule:: tests.test_example
    :members:
    :undoc-members:
    :show-inheritance:
