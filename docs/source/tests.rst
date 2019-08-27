@@ -1,5 +1,5 @@
-Test Information
-================
+Test Submodules
+===============
 
 .. toctree::
    :maxdepth: 4
