@@ -7,14 +7,13 @@ clean:
 	rm -rf dist/
 	rm -rf .eggs/
 
-develop: clean
-	pip install --editable .
+develop:
 	pip install -r dev_requirements.txt
 
-install:
+install: 
 	pip install -r requirements.txt
 
-format: 
+format: clean
 	isort -rc src
 	black src
 
@@ -29,15 +28,15 @@ docs: clean
 	cd docs && make html
 	mv -f html/* docs/ && rm -rf html/
 
-patch:
+patch: clean
 	bump2version patch
 	git push origin master --tags
 
-minor:
+minor: clean
 	bump2version minor
 	git push origin master --tags
 
-major:
+major: clean
 	bump2version major
 	git push origin master --tags
 
