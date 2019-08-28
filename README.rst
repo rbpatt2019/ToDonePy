@@ -30,9 +30,9 @@ You can install the project manually by cloning the  `repo <https://github.com/r
 .. code:: sh
 
     git clone https://github.com/rbpatt2019/studious-happiness/
-    make develop
+    make install
     
-For more detailed instructions on manual installation and contributing, please see the section on :ref:`contributing`.
+If you would like to contribute to development, the install instructions are slightly different. Please see the section on  :ref:`contributing`.
 
 Usage
 -----
