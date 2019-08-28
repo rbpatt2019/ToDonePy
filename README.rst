@@ -32,7 +32,7 @@ You can install the project manually by cloning the  `repo <https://github.com/r
     git clone https://github.com/rbpatt2019/studious-happiness/
     make develop
     
-For more detailed instructions on manual installation and contributing, please see :ref:`CONTRIBUTING.md`.
+For more detailed instructions on manual installation and contributing, please see the section on :ref:`contributing`.
 
 Usage
 -----
