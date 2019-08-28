@@ -25,14 +25,14 @@ Installation
 
 This project is not yet released on PyPi.
 
-You can install the project manually by cloning the  `repo <https://github.com/py4ds/nbless>`_, and using the included Makefile.
+You can install the project manually by cloning the  `repo <https://github.com/rbpatt2019/studious-happiness>`_, and using the included Makefile.
 
 .. code:: sh
 
     git clone https://github.com/rbpatt2019/studious-happiness/
     make develop
     
-For more detailed instructions on manual installation and contributing, please see the section on `contributing <CONTRIBUTING.md>`.
+For more detailed instructions on manual installation and contributing, please see :ref:`CONTRIBUTING.md`.
 
 Usage
 -----
