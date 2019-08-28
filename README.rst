@@ -1,21 +1,51 @@
 studious-happiness
 ==================
 
-Keep calm and manage your tasks
+Keep calm and manage your tasks.
 
 Note
 ----
 
-Eventually, this will be a command line interface built using Click and
-python that will let you manage day-to-day tasks (add, remove, list,
-rank, etc.).
+.. Warning:: This project is in early development and is not yet released. Feel free to check back for updates, but do not use yet - unless you want to contribute to development.
 
-At the moment, it is really rough as I’m building this from scratch. No
-template, cookiecutters, etc. The intent is to dive in and build it from
-the ground up, as I tend to learn best that way.
+Introduction
+------------
 
-Setup TODOs:
-~~~~~~~~~~~~
+TODO
 
-1. tox
-2. TOCtree for sphinx
+Docs and Code
+-------------
+
+The documentation lives at https://rbpatt2019.github.io/studious-happiness/ .
+
+The code lives at https://github.com/rbpatt2019/studious-happiness/ .
+
+Installation
+------------
+
+This project is not yet released on PyPi.
+
+You can install the project manually by cloning the  `repo <https://github.com/py4ds/nbless>`_, and using the included Makefile.
+
+.. code:: sh
+
+    git clone https://github.com/rbpatt2019/studious-happiness/
+    make develop
+    
+For more detailed instructions on manual installation and contributing, please see the section on `contributing <CONTRIBUTING.md>`.
+
+Usage
+-----
+
+TODO
+
+Next Steps
+----------
+
+- Develop command line interface structure, likely using a Click group with subcommands.
+- Continue expand README and doumentation.
+
+Thank Yous
+----------
+
+- `Click <https://click.palletsprojects.com/en/7.x/>`_ for making an excellent package with absolutely stellar documentation.
