@@ -32,7 +32,7 @@ Regardless of how you do it, run the following once its created:
 Start developing
 ----------------
 
-Checkout the [Makefile](Makefile) for lots of useful commands for testing, linting, and many others! Before committing any changes, I'd strongly recommend creating a new branch:
+Checkout the `Makefile <https://github.com/rbpatt2019/studious-happiness/blob/master/Makefile>`_ for lots of useful commands for testing, linting, and many others! Before committing any changes, I'd strongly recommend creating a new branch:
 
 .. code:: sh
 
