@@ -18,7 +18,7 @@ setuptools.setup(
         author_email='ryan.patterson.2015@gmail.com',
         description='Keep calm and manage your tasks!',
         long_description=long_description,
-        long_description_content_type='text/markdown',
+        long_description_content_type='text/x-rst',
         url='https://github.com/rbpatt2019/studious_happiness',
         package_dir={'': 'src'},
         packages=setuptools.find_packages('src'),
