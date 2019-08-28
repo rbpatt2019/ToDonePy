@@ -42,8 +42,9 @@ TODO
 Next Steps
 ----------
 
+- Integrate coverate into pytest routine
 - Develop command line interface structure, likely using a Click group with subcommands.
-- Continue expand README and doumentation.
+- Continue expand README (badges?) and doumentation.
 
 Thank Yous
 ----------
