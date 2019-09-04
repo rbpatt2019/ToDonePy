@@ -9,6 +9,10 @@ studious-happiness - a command line task manager
    :alt: GPLv3 License
    :target: https://www.gnu.org/licenses/gpl-3.0
 
+.. image:: https://img.shields.io/badge/code%20style-black-000000.svg
+   :alt: Codestyle: Black
+   :target: https://github.com/ambv/black
+
 Note
 ----
 
@@ -48,7 +52,7 @@ TODO
 Next Steps
 ----------
 
-- Integrate coverate into pytest routine
+- Integrate coverage into pytest routine
 - Develop command line interface structure, likely using a Click group with subcommands.
 - Continue expand README (badges?) and doumentation.
 
