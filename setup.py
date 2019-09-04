@@ -8,7 +8,7 @@ import subprocess
 __version__ = subprocess.check_output(['git', 'describe', '--abbrev=0']).strip()
 __version__ = str(__version__)[2:-1]
 
-with open("README.md") as f:
+with open("README.rst") as f:
     long_description = f.read()
 
 setuptools.setup(
