@@ -39,7 +39,7 @@ TODO
 Docs and Code
 -------------
 
-The documentation lives at https://rbpatt2019.github.io/studious-happiness/ .
+The documentation lives at https://studious-happiness.readthedocs.io/ .
 
 The code lives at https://github.com/rbpatt2019/studious-happiness/ .
 
