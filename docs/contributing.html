@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>For contributors &#8212; studious-happiness 0.0.8 documentation</title>
+    <link rel="stylesheet" href="_static/nature.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Test Submodules" href="tests.html" />
+    <link rel="prev" title="studious-happiness command-line interface (CLI)" href="cli.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tests.html" title="Test Submodules"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cli.html" title="studious-happiness command-line interface (CLI)"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">studious-happiness 0.0.8 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="for-contributors">
+<span id="contributing"></span><h1>For contributors<a class="headerlink" href="#for-contributors" title="Permalink to this headline">¶</a></h1>
+<p>Comments, criticisms, and concerns are always welcome! If you would like to help with development, please follow the steps below.</p>
+<div class="section" id="clone-the-repo">
+<h2>Clone the repo<a class="headerlink" href="#clone-the-repo" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/rbpatt2019/studious-happiness.git
+<span class="nb">cd</span> studiouos-happiness
+</pre></div>
+</div>
+</div>
+<div class="section" id="make-a-new-environment">
+<h2>Make a new environment<a class="headerlink" href="#make-a-new-environment" title="Permalink to this headline">¶</a></h2>
+<p>Follow your own protocol! I use pyenv for all my env/venv control, so I would do:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>pyenv virtualenv studious-happiness
+pyenv <span class="nb">local</span> studious-happiness
+</pre></div>
+</div>
+<p>Regardless of how you do it, run the following once its created:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>make develop
+</pre></div>
+</div>
+</div>
+<div class="section" id="start-developing">
+<h2>Start developing<a class="headerlink" href="#start-developing" title="Permalink to this headline">¶</a></h2>
+<p>Checkout the <a class="reference external" href="https://github.com/rbpatt2019/studious-happiness/blob/master/Makefile">Makefile</a> for lots of useful commands for testing, linting, and many others! Before committing any changes, I’d strongly recommend creating a new branch:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git checkout -b new_feature
+</pre></div>
+</div>
+</div>
+<div class="section" id="and-contribute">
+<h2>And contribute!<a class="headerlink" href="#and-contribute" title="Permalink to this headline">¶</a></h2>
+<p>Once you’re ready to share your changes, fork the repository on github. Then, add it as a remote to the repo and push the changes there.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>git remote add origin https://github.com/YOUR_USER/studious-happiness.git
+git push origin new_feature
+</pre></div>
+</div>
+<p>Finally, open a pull request, and I’ll review it as soon as I can!</p>
+<p>If you’re a command line nut like me, this can all be done from the command line using <cite>hub</cite>, a CLI for interacting with the github api. See their <a class="reference external" href="https://github.com/github/hub">repo</a> for installation instructions. Instead of the above, then run:</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>hub fork --remote-name<span class="o">=</span>origin
+git push origin new_feature
+hub pull-request
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cli.html">Command-line interface</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing to development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#clone-the-repo">Clone the repo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#make-a-new-environment">Make a new environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#start-developing">Start developing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#and-contribute">And contribute!</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tests.html">Test information</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cli.html"
+                        title="previous chapter">studious-happiness command-line interface (CLI)</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tests.html"
+                        title="next chapter">Test Submodules</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/contributing.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="tests.html" title="Test Submodules"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cli.html" title="studious-happiness command-line interface (CLI)"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">studious-happiness 0.0.8 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Ryan B Patterson.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.1.2.
+    </div>
+  </body>
+</html>
