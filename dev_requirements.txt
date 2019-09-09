@@ -1,6 +1,6 @@
 -e .
 black==19.3b0
-bump2version==0.5.10
+bump2version==0.5.11
 Click==7.0
 codecov==2.0.15
 coverage==4.5.4
