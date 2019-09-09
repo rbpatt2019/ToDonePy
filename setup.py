@@ -2,18 +2,13 @@
 # -*- coding: utf-8 -*-
 
 import setuptools
-import subprocess
-
-# Get current version from git
-__version__ = subprocess.check_output(['git', 'describe', '--abbrev=0']).strip()
-__version__ = str(__version__)[2:-1]
 
 with open("README.rst") as f:
     long_description = f.read()
 
 setuptools.setup(
         name='studious_happiness', 
-        version=__version__,
+        version="0.0.8",
         author='Ryan Patterson',
         author_email='ryan.patterson.2015@gmail.com',
         description='Keep calm and manage your tasks!',
