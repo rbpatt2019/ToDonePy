@@ -5,20 +5,26 @@ studious-happiness - a command line task manager
    :alt: Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.
    :target: https://www.repostatus.org/#concept
    
+.. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
+   :target: https://www.gnu.org/licenses/gpl-3.0
+   :alt: GPLv3 License
+   
+.. image:: https://codecov.io/gh/rbpatt2019/studious-happiness/branch/master/graph/badge.svg)
+   :target: https://codecov.io/gh/TechnionYP5777/project-name
+   :alt: Code Coverage
+   
+
+.. image:: https://travis-ci.com/rbpatt2019/studious-happiness.svg?branch=master
+   :target: https://travis-ci.com/rbpatt2019/studious-happiness
+   :alt: Build Status
+   
 .. image:: https://readthedocs.org/projects/studious-happiness/badge/?version=latest
    :target: https://studious-happiness.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
 
-.. image:: https://travis-ci.com/rbpatt2019/studious-happiness.svg?branch=master
-   :target: https://travis-ci.com/rbpatt2019/studious-happiness
-
-.. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
-   :alt: GPLv3 License
-   :target: https://www.gnu.org/licenses/gpl-3.0
-
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
-   :alt: Codestyle: Black
    :target: https://github.com/ambv/black
+   :alt: Codestyle: Black
 
 Note
 ----
