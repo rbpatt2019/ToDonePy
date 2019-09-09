@@ -23,11 +23,6 @@ lint: format
 test: lint
 	python setup.py test
 
-docs: clean
-	rm -rf docs/_static docs/_sources
-	cd docs && make html
-	mv -f html/* docs/ && rm -rf html/
-
 patch: clean
 	bump2version patch
 	git push origin master --tags
@@ -41,10 +36,10 @@ major: clean
 	git push origin master --tags
 
 
-dist: clean docs
+dist: clean 
 	python setup.py sdist bdist_wheel
 
 release: dist
 	twine upload dist/*
 
-.PHONY: clean develop install format lint test docs patch minor major dist clean 
+.PHONY: clean develop install format lint test patch minor major dist clean 
