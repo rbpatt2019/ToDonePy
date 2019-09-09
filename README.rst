@@ -21,7 +21,11 @@ studious-happiness - a command line task manager
 .. image:: https://readthedocs.org/projects/studious-happiness/badge/?version=latest
    :target: https://studious-happiness.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
-
+   
+.. image:: https://pyup.io/repos/github/rbpatt2019/studious-happiness/shield.svg
+   :target: https://pyup.io/repos/github/rbpatt2019/studious-happiness/
+   :alt: Updates
+     
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/ambv/black
    :alt: Codestyle: Black
