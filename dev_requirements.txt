@@ -2,6 +2,7 @@
 black==19.3b0
 bump2version==0.5.10
 Click==7.0
+codecov==2.0.15
 coverage==4.5.4
 isort==4.3.21
 mypy==0.720
