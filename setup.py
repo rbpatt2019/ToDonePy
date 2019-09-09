@@ -8,7 +8,7 @@ with open("README.rst") as f:
 
 setuptools.setup(
         name='studious_happiness', 
-        version="0.0.8",
+        version="0.0.9",
         author='Ryan Patterson',
         author_email='ryan.patterson.2015@gmail.com',
         description='Keep calm and manage your tasks!',
