@@ -69,9 +69,8 @@ TODO
 Next Steps
 ----------
 
-- Integrate coverage into pytest routine
 - Develop command line interface structure, likely using a Click group with subcommands.
-- Continue expand README (badges?) and doumentation.
+- Continue to expand README and doumentation.
 
 Thank Yous
 ----------
