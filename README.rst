@@ -5,6 +5,10 @@ studious-happiness - a command line task manager
    :alt: Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.
    :target: https://www.repostatus.org/#concept
    
+.. image:: https://readthedocs.org/projects/studious-happiness/badge/?version=latest
+   :target: https://studious-happiness.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
 .. image:: https://travis-ci.com/rbpatt2019/studious-happiness.svg?branch=master
    :target: https://travis-ci.com/rbpatt2019/studious-happiness
 
