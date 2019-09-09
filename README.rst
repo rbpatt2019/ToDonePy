@@ -9,8 +9,8 @@ studious-happiness - a command line task manager
    :target: https://www.gnu.org/licenses/gpl-3.0
    :alt: GPLv3 License
    
-.. image:: https://codecov.io/gh/rbpatt2019/studious-happiness/branch/master/graph/badge.svg)
-   :target: https://codecov.io/gh/TechnionYP5777/project-name
+.. image:: https://codecov.io/gh/rbpatt2019/studious-happiness/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/rbpatt2019/studious-happiness
    :alt: Code Coverage
    
 
