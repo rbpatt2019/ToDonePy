@@ -5,6 +5,9 @@ studious-happiness - a command line task manager
    :alt: Project Status: Concept – Minimal or no implementation has been done yet, or the repository is only intended to be a limited example, demo, or proof-of-concept.
    :target: https://www.repostatus.org/#concept
    
+.. image:: https://travis-ci.com/rbpatt2019/studious-happiness.svg?branch=master
+   :target: https://travis-ci.com/rbpatt2019/studious-happiness
+
 .. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
    :alt: GPLv3 License
    :target: https://www.gnu.org/licenses/gpl-3.0
