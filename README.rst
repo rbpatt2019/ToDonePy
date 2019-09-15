@@ -67,6 +67,11 @@ Usage
 
 TODO
 
+Recent Changes
+--------------
+
+Please see the :ref:`CHANGELOG`.
+
 Next Steps
 ----------
 
