@@ -10,8 +10,8 @@ Clone the repo
 
 .. code:: sh
 
-    git clone https://github.com/rbpatt2019/studious-happiness.git
-    cd studiouos-happiness
+    git clone https://github.com/rbpatt2019/ToDonePy.git
+    cd ToDonePy
 
 Make a new environment
 ----------------------
@@ -20,8 +20,8 @@ Follow your own protocol! I use pyenv for all my env/venv control, so I would do
 
 .. code:: sh
 
-    pyenv virtualenv studious-happiness
-    pyenv local studious-happiness
+    pyenv virtualenv ToDonePy
+    pyenv local ToDonePy
 
 Regardless of how you do it, run the following once its created:
 
@@ -32,7 +32,7 @@ Regardless of how you do it, run the following once its created:
 Start developing
 ----------------
 
-Checkout the `Makefile <https://github.com/rbpatt2019/studious-happiness/blob/master/Makefile>`_ for lots of useful commands for testing, linting, and many others! Before committing any changes, I'd strongly recommend creating a new branch:
+Checkout the `Makefile <https://github.com/rbpatt2019/ToDonePy/blob/master/Makefile>`_ for lots of useful commands for testing, linting, and many others! Before committing any changes, I'd strongly recommend creating a new branch:
 
 .. code:: sh
 
@@ -45,15 +45,17 @@ Once you're ready to share your changes, fork the repository on github. Then, ad
 
 .. code:: sh
 
-    git remote add origin https://github.com/YOUR_USER/studious-happiness.git
+    git remote add origin https://github.com/YOUR_USER/ToDonePy.git
     git push origin new_feature
 
 Finally, open a pull request, and I'll review it as soon as I can!
 
-If you're a command line nut like me, this can all be done from the command line using `hub`, a CLI for interacting with the github api. See their `repo <https://github.com/github/hub>`_ for installation instructions. Instead of the above, then run:
+If you're a command line nut like me, this can all be done from the command line using `hub`, a CLI for interacting with the github api. See their `repo <https://github.com/github/hub>`_ for installation instructions. Instead of the above, do:
 
 .. code:: sh
 
     hub fork --remote-name=origin
     git push origin new_feature
     hub pull-request
+
+This will fork the repo, push your changes, and create a pull request, all without leaving the command line!

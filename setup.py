@@ -7,14 +7,14 @@ with open("README.rst") as f:
     long_description = f.read()
 
 setuptools.setup(
-        name='studious_happiness', 
+        name='ToDonePy', 
         version="0.0.9",
         author='Ryan Patterson',
         author_email='ryan.patterson.2015@gmail.com',
         description='Keep calm and manage your tasks!',
         long_description=long_description,
         long_description_content_type='text/x-rst',
-        url='https://github.com/rbpatt2019/studious_happiness',
+        url='https://github.com/rbpatt2019/ToDonePy',
         package_dir = {"": "src"},
         packages = setuptools.find_packages('src'),
         entry_points={

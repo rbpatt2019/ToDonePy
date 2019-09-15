@@ -1,5 +1,5 @@
-studious-happiness - a command line task manager
-================================================
+ToDonePY - A basic command-line tast manager
+============================================
 
 .. image:: https://www.repostatus.org/badges/latest/wip.svg
    :alt: Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.
@@ -12,14 +12,13 @@ studious-happiness - a command line task manager
 .. image:: https://codecov.io/gh/rbpatt2019/studious-happiness/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/rbpatt2019/studious-happiness
    :alt: Code Coverage
-   
 
-.. image:: https://travis-ci.com/rbpatt2019/studious-happiness.svg?branch=master
-   :target: https://travis-ci.com/rbpatt2019/studious-happiness
+.. image:: https://travis-ci.org/rbpatt2019/ToDonePy.svg?branch=master
+   :target: https://travis-ci.org/rbpatt2019/ToDonePy
    :alt: Build Status
    
-.. image:: https://readthedocs.org/projects/studious-happiness/badge/?version=latest
-   :target: https://studious-happiness.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/todonepy/badge/?version=latest
+   :target: https://todonepy.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
    
 .. image:: https://pyup.io/repos/github/rbpatt2019/studious-happiness/shield.svg
@@ -38,25 +37,27 @@ Note
 Introduction
 ------------
 
+Move your ToDo's to ToDone's!
+
 TODO
 
 Docs and Code
 -------------
 
-The documentation lives at https://studious-happiness.readthedocs.io/ .
+The documentation lives at https://ToDonePy.readthedocs.io/ .
 
-The code lives at https://github.com/rbpatt2019/studious-happiness/ .
+The code lives at https://github.com/rbpatt2019/ToDonePy/ .
 
 Installation
 ------------
 
 This project is not yet released on PyPi.
 
-You can install the project manually by cloning the  `repo <https://github.com/rbpatt2019/studious-happiness>`_, and using the included Makefile.
+You can install the project manually by cloning the  `repo <https://github.com/rbpatt2019/ToDonePy>`_, and using the included Makefile.
 
 .. code:: sh
 
-    git clone https://github.com/rbpatt2019/studious-happiness/
+    git clone https://github.com/rbpatt2019/ToDonePy/
     make install
     
 If you would like to contribute to development, the install instructions are slightly different. Please see the section on  :ref:`contributing`.

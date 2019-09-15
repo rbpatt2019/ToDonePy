@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.abspath('../..'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'studious-happiness'
+project = 'ToDonePy'
 copyright = '2019, Ryan B Patterson'
 author = 'Ryan B Patterson'
 
