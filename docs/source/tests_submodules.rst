@@ -1,6 +1,13 @@
 Test Submodules
 ===============
 
+Module contents
+---------------
+.. automodule:: tests
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 tests.test\_example
 -------------------
 
@@ -9,9 +16,3 @@ tests.test\_example
    :undoc-members:
    :show-inheritance:
 
-Module contents
----------------
-.. automodule:: tests
-   :members:
-   :undoc-members:
-   :show-inheritance:
