@@ -1,5 +1,5 @@
-Welcome to studious-happiness's documentation!
-==============================================
+Welcome to ToDonePy's documentation!
+====================================
 
 .. toctree::
    :maxdepth: 2
