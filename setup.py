@@ -22,10 +22,11 @@ setuptools.setup(
                 'hello = command_line.example:hello']
         },
         classifiers=[
-            'Development Status :: 1 - Planning',
+            'Development Status :: 2 - Pre-Alpha',
             'Intended Audience :: Developers',
             'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
             'Natural Language :: English',
+            'Operating System :: Unix',
             'Programming Language :: Python :: 3.7'
             ],
         install_requires=['click'],
