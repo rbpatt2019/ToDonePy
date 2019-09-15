@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from click.testing import CliRunner
-from src.example import hello
+from src.command_line.example import hello
 
 def test_example_hello_prompt():
     """Run hello with default parameters"""
