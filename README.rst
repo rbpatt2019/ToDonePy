@@ -9,8 +9,8 @@ ToDonePY - A basic command-line tast manager
    :target: https://www.gnu.org/licenses/gpl-3.0
    :alt: GPLv3 License
    
-.. image:: https://codecov.io/gh/rbpatt2019/studious-happiness/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/rbpatt2019/studious-happiness
+.. image:: https://codecov.io/gh/rbpatt2019/ToDonePy/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/rbpatt2019/ToDonePy
    :alt: Code Coverage
 
 .. image:: https://travis-ci.org/rbpatt2019/ToDonePy.svg?branch=master
@@ -21,8 +21,8 @@ ToDonePY - A basic command-line tast manager
    :target: https://todonepy.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
    
-.. image:: https://pyup.io/repos/github/rbpatt2019/studious-happiness/shield.svg
-   :target: https://pyup.io/repos/github/rbpatt2019/studious-happiness/
+.. image:: https://pyup.io/repos/github/rbpatt2019/ToDonePy/shield.svg
+   :target: https://pyup.io/repos/github/rbpatt2019/ToDonePy/
    :alt: Updates
      
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
