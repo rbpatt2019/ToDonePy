@@ -15,11 +15,12 @@ setuptools.setup(
         long_description=long_description,
         long_description_content_type='text/x-rst',
         url='https://github.com/rbpatt2019/studious_happiness',
-        package_dir={'': 'src'},
-        packages=setuptools.find_packages('src'),
+        package_dir = {"": "src"},
+        packages = setuptools.find_packages('src'),
         entry_points={
             'console_scripts':[
-                'example = example:hello']},
+                'hello = command_line.example:hello']
+        },
         classifiers=[
             'Development Status :: 1 - Planning',
             'Intended Audience :: Developers',
