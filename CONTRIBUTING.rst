@@ -50,7 +50,7 @@ Once you're ready to share your changes, fork the repository on github. Then, ad
 
 Finally, open a pull request, and I'll review it as soon as I can!
 
-If you're a command line nut like me, this can all be done from the command line using `hub`, a CLI for interacting with the github api. See their `repo <https://github.com/github/hub>`_ for installation instructions. Instead of the above, do:
+If you're a command line nut like me, this can all be done from the command line using `hub <https://github.com/github/hub>`_, a CLI for interacting with the github api. See their `repo <https://github.com/github/hub>`_ for installation instructions. Instead of the above, do:
 
 .. code:: sh
 
