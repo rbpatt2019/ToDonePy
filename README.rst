@@ -70,7 +70,7 @@ TODO
 Recent Changes
 --------------
 
-Please see the :ref:`CHANGELOG`.
+Please see the `CHANGELOG <https://github.com/rbpatt2019/ToDonePy/blob/master/CHANGELOG.rst>`_
 
 Next Steps
 ----------

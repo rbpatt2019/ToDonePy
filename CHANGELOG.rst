@@ -1,4 +1,6 @@
-Changelog for ToDonePy
+.. _CHANGELOG:
+
+CHANGELOG for ToDonePy
 ======================
 
 v0.1.0
