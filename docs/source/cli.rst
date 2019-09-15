@@ -1,4 +1,4 @@
-studious-happiness command-line interface (CLI)
+ToDonePy command-line interface (CLI)
 ===============================================
 
 .. click::  command_line.example:hello
@@ -6,7 +6,7 @@ studious-happiness command-line interface (CLI)
 
 Module contents
 ---------------
-.. automodule:: tests
+.. automodule:: command_line
    :members:
    :undoc-members:
    :show-inheritance:
