@@ -17,33 +17,26 @@ class Filer(object):
     
     """
 
-    def __init__(self, path: str) -> None:
+    def __init__(self, path: str, create: bool = True) -> None:
         """Initialise the Filer
 
         :path: A Unix filepath to the desired file
+        :create: If the file does not already exist, create it.
 
         """
         self.path = path
-
-    def _exists(self) -> None:
-        """Hidden method to check file existence
-
-        If the file does not exist, it is created
-
-        :returns: None
-
-        """
         if not isfile(self.path):
-            Path(self.path).touch()
+            if create:
+                Path(self.path).touch()
+            else:
+                raise OSError("File does not exist")
 
-    def read(self, create: bool = True) -> Iterator[str]:
+    def read(self) -> Iterator[str]:
         """Read the lines of self.path
 
         :returns: A generator containing the individual lines of self.path
 
         """
-        if create:
-            self._exists()
         with open(self.path, "r") as file:
             for line in file:
                 yield line.rstrip("\n")
