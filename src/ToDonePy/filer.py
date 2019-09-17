@@ -65,5 +65,5 @@ class Filer(object):
 
         """
         with open(self.path, "a") as file:
-            file.write("\n")  # Open on new line
+            file.write("\n") # Open on new line
             file.write("\n".join(ins))
