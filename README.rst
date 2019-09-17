@@ -43,7 +43,7 @@ Move your ToDo's to ToDone's!
 
 - :ref:`to do` adds a new task to your list at either 'low', 'med', or 'high' priority.
 - :ref:`to doing` shows you what you should be doing.
-- :ref:`to done` removes a completed tastk from your list.
+- :ref:`to done` removes a completed tast from your list.
 
 Docs and Code
 -------------
@@ -105,7 +105,7 @@ Please see the `CHANGELOG <https://github.com/rbpatt2019/ToDonePy/blob/master/CH
 Next Steps
 ----------
 
-- Develop command line interface structure, likely using a Click group with subcommands.
+- Develop command line interface structure, as described in this document
 - Continue to expand README and doumentation.
 
 Thank Yous
