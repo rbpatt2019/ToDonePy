@@ -1,6 +1,7 @@
-from typing import Iterable, Iterator
 from os.path import isfile
 from pathlib import Path
+from typing import Iterable, Iterator
+
 
 class Filer(object):
 
@@ -15,7 +16,6 @@ class Filer(object):
     :append: Writes to the end of the file, preserving existing contents
     
     """
-
 
     def __init__(self, path: str) -> None:
         """Initialise the Filer
@@ -35,7 +35,7 @@ class Filer(object):
         """
         if not isfile(self.path):
             Path(self.path).touch()
-        
+
     def read(self, create: bool = True) -> Iterator[str]:
         """Read the lines of self.path
 
@@ -60,7 +60,7 @@ class Filer(object):
         """
         with open(self.path, "w") as file:
             file.write("\n".join(ins))
-            
+
     def append(self, ins: Iterable[str]) -> None:
         """Appends contents of ins to self.path.
 
