@@ -39,7 +39,11 @@ Introduction
 
 Move your ToDo's to ToDone's!
 
-TODO
+`ToDonePy <https://github.com/rbpatt2019/ToDonePy/>`_ is a command-line interface for managing your to do list. It provides a root command, :ref:`to`, and three subcommands:
+
+- :ref:`to do` adds a new task to your list at either 'low', 'med', or 'high' priority.
+- :ref:`to doing` shows you what you should be doing.
+- :ref:`to done` removes a completed tastk from your list.
 
 Docs and Code
 -------------
@@ -64,6 +68,32 @@ If you would like to contribute to development, the install instructions are sli
 
 Usage
 -----
+
+.. _to:
+
+The base command ``to``
+~~~~~~~~~~~~~~~~~~~~~~~
+
+TODO
+
+.. _to do:
+
+Adding new tasks with ``to do``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TODO
+
+.. _to doing:
+
+Keeping track of tasks with ``to doing``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+TODO
+
+.. _to done:
+
+Completing your tasks with ``to done``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 TODO
 
