@@ -1,1 +1,1 @@
-'''Tests for ToDonePy version 0.1.1'''
+'''Tests for ToDonePy version 0.2.0'''
