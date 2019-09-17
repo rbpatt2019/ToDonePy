@@ -3,6 +3,11 @@
 CHANGELOG for ToDonePy
 ======================
 
+v0.2.0
+------
+- Add Filer class for context handling in CLI
+- Add tests for Filer
+
 v0.1.1
 ------
 - Corrected some naming and structure inconsistencies in the docs
