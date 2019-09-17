@@ -8,6 +8,8 @@ Module contents
    :undoc-members:
    :show-inheritance:
 
+Commands
+~~~~~~~~
 .. click::  command_line.example:hello
   :prog: hello
 

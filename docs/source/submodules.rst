@@ -1,17 +1,16 @@
-Test Submodules
-===============
+ToDonePy Submodules
+===================
 
 Module contents
 ---------------
-.. automodule:: tests
+.. automodule:: ToDonePy
    :members:
    :undoc-members:
    :show-inheritance:
 
-tests.test\_example
--------------------
-
-.. automodule:: tests.test_example
+Class: Filer
+~~~~~~~~~~~~
+.. automodule:: ToDonePy.filer
    :members:
    :undoc-members:
    :show-inheritance:
