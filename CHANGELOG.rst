@@ -3,6 +3,14 @@
 CHANGELOG for ToDonePy
 ======================
 
+v0.3.0
+------
+- Create group command structure
+  - Add main command ``to``
+  - Add subcommand ``to do``
+- Add tests for new commands
+- Move to using Path type for file inputs
+
 v0.2.1
 ------
 - Update documentation structure
