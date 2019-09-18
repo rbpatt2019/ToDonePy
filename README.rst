@@ -109,7 +109,7 @@ To begin tracking your TODOs, call the command as follows:
 
 .. code:: sh
 
-        to do task rank
+        to do task rank        
 
 ``to`` is the base command. It must be invoked to use any part of the tool. The ``do`` subcommand is how you add tasks to your ``TODO.csv``. After ``to do``, there are two mandatory arguments: the ``task`` and the ``rank``. The first argument is ``task``. Here, specify what it is you need to do. If your task takes more than one word to describe, than you need to include it in quotes. ``rank`` should be a number indicating how important this task is. 1 is very important, 2 less so, etc. Though nothing explicitly bans you from using as many ranks as you want, I'd reccomed using 3 for high, medium, and low priority. So, if you wanted to remind yourself to write an abstract for that paper you've been delaying, call:
 
@@ -126,9 +126,6 @@ If you were to manually open the TODO.csv file, say with vim, you'd see:
         1,Write my abstract
 
 Nothing fancy, just a plain csv with ``rank`` in the first column and ``task`` in the second. In fact, you could edit ``TODO.csv`` manually, and then call ``to doing`` to see your change!
-
-
-
 
 .. _to doing:
 
@@ -152,7 +149,9 @@ Please see the `CHANGELOG <https://github.com/rbpatt2019/ToDonePy/blob/master/CH
 Next Steps
 ----------
 
-- Develop command line interface structure, as described in this document
+- Add a date stamp for ``to do``
+- Add a sort function for ``to doing`` to all user to return by date or priority
+- Add an edit function, likely to base ``to`` command, for editing of ``TODO.csv``
 - Continue to expand README and doumentation.
 
 Thank Yous
