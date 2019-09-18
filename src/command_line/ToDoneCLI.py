@@ -7,7 +7,6 @@ import click
 
 from ToDonePy.filer import Filer as Filer
 
-
 @click.group()
 @click.option(
     "--file",
@@ -15,6 +14,7 @@ from ToDonePy.filer import Filer as Filer
     envvar="TODO_FILE",
     default=(Path.home() / "TODO.csv"),
     type=click.Path(exists=False),
+    help="Location of TODO.csv",
 )
 @click.version_option(version="0.4.1")
 @click.pass_context
