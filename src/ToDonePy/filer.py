@@ -79,9 +79,8 @@ class Filer(object):
 
         """
         with open(self.path, "r") as r_file:
-            with open('tmp', 'a') as w_file:
+            with open("tmp", "a") as w_file:
                 for line in r_file:
                     if contains not in line:
                         w_file.write(line)
-        os.replace('tmp', self.path) 
-
+        os.replace("tmp", self.path)
