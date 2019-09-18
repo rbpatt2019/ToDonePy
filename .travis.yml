@@ -1,4 +1,7 @@
 if: tag IS present
+branches:
+  only:
+  - master
 language: python
 python:
   - 3.6
