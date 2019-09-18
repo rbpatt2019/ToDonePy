@@ -9,8 +9,11 @@ class Filer(object):
 
     Designed particularly for passing context in a Click program. 
 
-    :METHODS:
+    :PARAMS:
+    :path: A Unix filepath to the desired file
+    :create: If the file does not already exist, create it.
 
+    :METHODS:
     :read: Can check to see if the file exists, then returns an iterator of lines
     :write: Writes to the file, overwriting existing contents
     :append: Writes to the end of the file, preserving existing contents
