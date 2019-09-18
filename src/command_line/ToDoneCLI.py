@@ -2,18 +2,27 @@
 # -*- coding: utf-8 -*-
 
 import click
+from pathlib import Path
 
 
-@click.command()
-@click.option("--count", default=1, help="Number of greetings")
-@click.option("--name", prompt="Your name", help="The persion to greet.")
-def hello(count: int, name: str) -> None:
-    """Greet the nice person NAME COUNT times
+@click.group()
+@click.version_option(version="0.2.1")
+@click.option("--file", "-f", default=Path.home() / "TODO.csv")
+def to(file) -> None:
+    """Base command for managing tasks
 
-    :param count: Number of greetings
-    :param name: The person to greet
-    :note: This is taken directly from the homepage of the Click package and is intended as an example
-            Please visit their site at https://click.palletprojects.com/en/7.x/
+    :param file: Location of TODO.csv. Defaults to $HOME/TODO.csv
+    :note: If you use a location other than the default for --file, 
+        I'd recommend an alias so as to avoid typing it every time
     """
-    for _ in range(count):
-        click.echo(f"Hello {name}!")
+    click.echo(f"Hello {name}!")
+
+
+@to.command()
+def do():
+    """Add a task to your list
+
+    :arg1: TODO
+    :returns: TODO
+
+    """

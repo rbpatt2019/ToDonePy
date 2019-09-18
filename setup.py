@@ -19,7 +19,7 @@ setuptools.setup(
         packages = setuptools.find_packages('src'),
         entry_points={
             'console_scripts':[
-                'hello = command_line.example:hello']
+                'to = command_line.ToDoneCLI:to']
         },
         classifiers=[
             'Development Status :: 2 - Pre-Alpha',
