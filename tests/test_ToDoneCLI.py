@@ -9,7 +9,7 @@ from command_line.ToDoneCLI import to
 from tests.make_temp import make_file, make_path
 
 
-def test_example_hello_prompt(tmp_path):
+def test_to_do_custom_file(tmp_path):
     """Run to do with existing custom file"""
     runner = CliRunner()
     with runner.isolated_filesystem():
