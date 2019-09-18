@@ -7,7 +7,7 @@ from typing import List
 
 import pytest
 
-from src.ToDonePy.filer import Filer as Filer
+from ToDonePy.filer import Filer as Filer
 from tests.make_temp import make_file, make_path
 
 
