@@ -7,6 +7,7 @@ import click
 
 from ToDonePy.filer import Filer as Filer
 
+
 @click.group()
 @click.option(
     "--file",
@@ -26,7 +27,7 @@ def to(ctx, file: Path) -> None:
     :note: If you use a location other than the default for --file, 
         I'd recommend setting TODO_FILE as an environemtal variable
     """
-    ctx.obj = Filer(file, create=True)
+    ctx.obj = Filer(Path(file), create=True)
 
 
 @to.command()
