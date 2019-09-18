@@ -1,1 +1,1 @@
-"""Command line interface for ToDonePy version 0.2.1"""
+"""Command line interface for ToDonePy version 0.3.0"""
