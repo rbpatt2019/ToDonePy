@@ -16,7 +16,7 @@ from ToDonePy.filer import Filer as Filer
     default=(Path.home() / "TODO.csv"),
     type=click.Path(exists=False),
 )
-@click.version_option(version="0.4.0")
+@click.version_option(version="0.4.1")
 @click.pass_context
 def to(ctx, file: Path) -> None:
     """Base command for managing tasks
