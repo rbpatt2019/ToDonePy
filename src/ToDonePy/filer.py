@@ -1,6 +1,6 @@
 from os.path import isfile
 from pathlib import Path
-from typing import Iterable, Iterator
+from typing import Iterator, List
 
 
 class Filer(object):
@@ -44,7 +44,7 @@ class Filer(object):
             for line in file:
                 yield line.rstrip("\n")
 
-    def write(self, ins: Iterable[str]) -> None:
+    def write(self, ins: List[str]) -> None:
         """Writes contents of ins to self.path.
 
         If the file exists, it overwrites.
@@ -57,7 +57,7 @@ class Filer(object):
         with open(self.path, "w") as file:
             file.write("\n".join(ins))
 
-    def append(self, ins: Iterable[str]) -> None:
+    def append(self, ins: List[str]) -> None:
         """Appends contents of ins to self.path.
 
         Contents of self.path will not be overwritten, if it exists.

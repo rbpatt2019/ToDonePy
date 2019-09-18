@@ -36,5 +36,5 @@ def do(obj, task: str, rank: int) -> None:
     :param rank: Priority to assign to this task
 
     """
-    obj.write(".".join([str(rank), task]))
+    obj.append([",".join([str(rank), task])])
     click.echo("Task added")
