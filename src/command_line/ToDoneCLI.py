@@ -42,3 +42,16 @@ def do(obj, task: str, rank: int) -> None:
     """
     obj.append([",".join([str(rank), task])])
     click.echo("Task added")
+
+
+@to.command()
+@click.pass_obj
+def doing(obj) -> None:
+    """Add a task to your list
+
+    :param task: Task to be added to your list
+    :param rank: Priority to assign to this task
+
+    """
+    for line in obj.read():
+        click.echo(line)
