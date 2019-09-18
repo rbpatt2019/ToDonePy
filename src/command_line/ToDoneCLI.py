@@ -47,10 +47,7 @@ def do(obj, task: str, rank: int) -> None:
 @to.command()
 @click.pass_obj
 def doing(obj) -> None:
-    """Add a task to your list
-
-    :param task: Task to be added to your list
-    :param rank: Priority to assign to this task
+    """See tasks in your list
 
     """
     for line in obj.read():
