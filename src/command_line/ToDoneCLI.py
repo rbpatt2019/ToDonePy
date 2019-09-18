@@ -52,3 +52,16 @@ def doing(obj) -> None:
     """
     for line in obj.read():
         click.echo(line)
+
+
+@to.command()
+@click.argument("task", required=True)
+@click.pass_obj
+def done(obj, task: str) -> None:
+    """Remove a task to your list
+
+    :param task: Task to be removed from your list
+
+    """
+    obj.delete(task)
+    click.echo("Task removed")

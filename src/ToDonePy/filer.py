@@ -1,4 +1,4 @@
-from os.path import isfile
+import os
 from pathlib import Path
 from typing import Iterator, List
 
@@ -28,7 +28,7 @@ class Filer(object):
 
         """
         self.path = path
-        if not isfile(self.path):
+        if not os.path.isfile(self.path):
             if create:
                 self.path.touch()
             else:
@@ -70,3 +70,17 @@ class Filer(object):
         with open(self.path, "a") as file:
             file.write("\n")  # Open on new line
             file.write("\n".join(ins))
+
+    def delete(self, contains: str) -> None:
+        """Deletes all lines from self where ``contains in line``
+
+        :contains: string to use for line deletion
+        :returns: None
+
+        """
+        with open(self.path, "r") as r_file:
+            with open("tmp", "a") as w_file:
+                for line in r_file:
+                    if contains not in line:
+                        w_file.write(line)
+        os.replace("tmp", self.path)
