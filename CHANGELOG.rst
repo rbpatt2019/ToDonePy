@@ -3,6 +3,11 @@
 CHANGELOG for ToDonePy
 ======================
 
+v0.4.0
+------
+- Add subcommand ``to doing``
+- Add tests for new commands
+
 v0.3.0
 ------
 - Create group command structure
