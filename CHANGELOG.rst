@@ -3,6 +3,11 @@
 CHANGELOG for ToDonePy
 ======================
 
+v0.5.1
+------
+- Changed .travis.yml
+- Changed internal references in README.rst
+
 v0.5.0
 ------
 - Add subcommand ``to done``
