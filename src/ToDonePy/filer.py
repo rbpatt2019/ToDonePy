@@ -20,7 +20,7 @@ class Filer(object):
     
     """
 
-    def __init__(self, path: Path, create: bool = True) -> None:
+    def __init__(self, path: str, create: bool = True) -> None:
         """Initialise the Filer
 
         :path: A Unix filepath to the desired file
@@ -28,9 +28,9 @@ class Filer(object):
 
         """
         self.path = path
-        if not isfile(self.path):
+        if not isfile(Path(self.path)):
             if create:
-                self.path.touch()
+                Path(self.path).touch()
             else:
                 raise OSError("File does not exist")
 
