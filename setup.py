@@ -8,7 +8,7 @@ with open("README.rst") as f:
 
 setuptools.setup(
     name="ToDonePy",
-    version="0.3.0",
+    version="0.4.0",
     author="Ryan Patterson",
     author_email="ryan.patterson.2015@gmail.com",
     description="Keep calm and manage your tasks!",
