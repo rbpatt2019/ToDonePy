@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v0.4.1
+------
+-Correct docstring for ``to doing``
+
 v0.4.0
 ------
 - Add subcommand ``to doing``
