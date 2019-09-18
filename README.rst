@@ -105,7 +105,30 @@ As a final note, it is worth emphasising that the contex object is only created 
 Adding new tasks with ``to do``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+To begin tracking your TODOs, call the command as follows:
+
+.. code:: sh
+
+        to do task rank
+
+``to`` is the base command. It must be invoked to use any part of the tool. The ``do`` subcommand is how you add tasks to your ``TODO.csv``. After ``to do``, there are two mandatory arguments: the ``task`` and the ``rank``. The first argument is ``task``. Here, specify what it is you need to do. If your task takes more than one word to describe, than you need to include it in quotes. ``rank`` should be a number indicating how important this task is. 1 is very important, 2 less so, etc. Though nothing explicitly bans you from using as many ranks as you want, I'd reccomed using 3 for high, medium, and low priority. So, if you wanted to remind yourself to write an abstract for that paper you've been delaying, call:
+
+.. code:: sh
+        
+        to do 'Write my abstract' 1
+
+This will create ``TODO.csv`` if it doesn't already exist, and add 'Write my abstract' with a rank of one to it.
+
+If you were to manually open the TODO.csv file, say with vim, you'd see:
+
+.. code:: sh
+
+        1,Write my abstract
+
+Nothing fancy, just a plain csv with ``rank`` in the first column and ``task`` in the second. In fact, you could edit ``TODO.csv`` manually, and then call ``to doing`` to see your change!
+
+
+
 
 .. _to doing:
 
