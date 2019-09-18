@@ -2,15 +2,19 @@
 # -*- coding: utf-8 -*-
 
 from pathlib import Path
-from ToDonePy.filer import Filer as Filer
+
 import click
+
+from ToDonePy.filer import Filer as Filer
 
 
 @click.group()
-@click.option("--file", "-f", envvar='TODO_FILE', default=Path.home())
+@click.option(
+    "--file", "-f", envvar="TODO_FILE", default=(str(Path.home()) + "/TODO.csv")
+)
 @click.version_option(version="0.2.1")
 @click.pass_context
-def to(ctx, file: Path) -> None:
+def to(ctx, file: str) -> None:
     """Base command for managing tasks
 
     :param file: Location of TODO.csv. Defaults to $HOME/TODO.csv
@@ -18,12 +22,12 @@ def to(ctx, file: Path) -> None:
     :note: If you use a location other than the default for --file, 
         I'd recommend an alias so as to avoid typing it every time
     """
-    ctx.obj = Filer(file / "TODO.csv", create=True)
+    ctx.obj = Filer(file, create=True)
 
 
 @to.command()
-@click.argument('task')
-@click.argument('rank')
+@click.argument("task")
+@click.argument("rank")
 @click.pass_obj
 def do(obj, task: str, rank: int) -> None:
     """Add a task to your list
@@ -32,5 +36,5 @@ def do(obj, task: str, rank: int) -> None:
     :param rank: Priority to assign to this task
 
     """
-    obj.write('.'.join([str(rank), task]))
-    click.echo('successful test')
+    obj.write(".".join([str(rank), task]))
+    click.echo("Task added")
