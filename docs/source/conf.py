@@ -22,7 +22,7 @@ copyright = '2019, Ryan B Patterson'
 author = 'Ryan B Patterson'
 
 # Short version (should work with bump2version)
-version = "0.5.2"
+version = "0.5.3"
 # The full version, including alpha/beta/rc tags
 release = version
 
