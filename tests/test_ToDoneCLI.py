@@ -13,11 +13,11 @@ def test_to_do_custom_file(tmp_path):
     """Run to do with existing custom file"""
     runner = CliRunner()
     with runner.isolated_filesystem():
-        csv = make_file(tmp_path, "1,Old task")
+        csv = make_file(tmp_path, "1,Old task\n")
         result = runner.invoke(to, ["--file", f"{csv}", "do", "New task", "1"])
         assert result.exit_code == 0
         assert result.output == "Task added\n"
-        assert Path(csv).read_text() == "1,Old task\n1,New task"
+        assert Path(csv).read_text() == "1,Old task\n1,New task\n"
 
 def test_to_doing_custom_file(tmp_path):
     """Run to do with existing custom file"""

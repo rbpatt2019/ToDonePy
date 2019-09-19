@@ -69,7 +69,7 @@ def test_Filer_write_existing_file(
 
 def test_Filer_append_existing_file(
     tmp_path: Path,
-    content: str = "1,Make Tests\n2,Run Tests",
+    content: str = "1,Make Tests\n2,Run Tests\n",
     new_contents: List[str] = ["3,More tests", "4,Most tests"],
 ) -> None:
     """Run Filer to append to an existing file
@@ -82,5 +82,6 @@ def test_Filer_append_existing_file(
     """
     file = Filer(make_file(tmp_path, content))
     file.append(new_contents)
-    for line, entry in zip(file.read(), content.rsplit("\n") + new_contents):
+    # Slice in next line drops empty string created by rsplit
+    for line, entry in zip(file.read(), content.rsplit("\n")[:2] + new_contents):
         assert line == entry
