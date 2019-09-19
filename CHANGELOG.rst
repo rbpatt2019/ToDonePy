@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v0.6.0
+------
+- Update test structure
+
 v0.5.5
 ------
 - Update docstrings
