@@ -29,11 +29,14 @@ def to(ctx, file: Path) -> None:
 
 
 @to.command()
-@click.argument("task", required=True, help='Task to be added to your list')
-@click.argument("rank", required=True, help='Priority to assign this task')
+@click.argument("task", required=True)
+@click.argument("rank", required=True)
 @click.pass_obj
 def do(obj, task: str, rank: int) -> None:
     """Add a task to your list
+
+    :task: Task to be added to your list
+    :rank: priority to assign to this task
 
     :note: If your task is more than 1 word long, enclose it in quotes
 
@@ -53,10 +56,12 @@ def doing(obj) -> None:
 
 
 @to.command()
-@click.argument("task", required=True, help='Task to be removed from your list')
+@click.argument("task", required=True)
 @click.pass_obj
 def done(obj, task: str) -> None:
     """Remove a task to your list
+
+    :task: Task to be removed from your list
 
     :note: If multiple tasks match ``task``, they will all be deleted.
 
