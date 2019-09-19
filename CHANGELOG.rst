@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v1.0.0
+------
+- First public release. Project status now alpha.
+
 v0.6.0
 ------
 - Update test structure
