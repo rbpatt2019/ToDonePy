@@ -29,11 +29,6 @@ ToDonePY - A basic command-line tast manager
    :target: https://github.com/ambv/black
    :alt: Codestyle: Black
 
-Note
-----
-
-.. Warning:: This project is in early development and is not yet released. Feel free to check back for updates, but do not use yet - unless you want to contribute to development.
-
 Introduction
 ------------
 
