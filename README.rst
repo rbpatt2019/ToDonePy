@@ -132,14 +132,36 @@ Nothing fancy, just a plain csv with ``rank`` in the first column and ``task`` i
 Keeping track of tasks with ``to doing``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+Once you've added some TODOs to your list, you need to make sure you stay on top of them. To see what needs to be done, call:
+
+.. code:: sh
+
+        to doing
+
+This will echo your tasks to the terminal. In the future, there are plans to add an ``--edit/-e`` flag here, so you can directly edit your ``TODO.csv``.
+
+At the moment, ``to done`` just lists the tasks in the order you added them. In the future, it will also be able to sort by ``rank``.
 
 .. _to done:
 
 Completing your tasks with ``to done``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TODO
+After the end of a productive work session, you've completed a task from your list. Boom! Time well spent. To remove it from your ``TODO.csv``, call:
+
+.. code:: sh
+
+        to done task
+
+As with `to do`_, if your task is more than one word, you need to enclose it in quotes, like so:
+
+.. code:: sh
+        
+        to done 'Write my abstract'
+
+Under the hood, ``to done`` creates a temp file, then performs a string match to each line of your ``TODO.csv``. If task is not in a line, that line is written to the temp file. If task is in a line, that line is skipped. This way, the temp file ends up containing only those tasks that aren't completed. Once every line is checked, the temp file replaces ``TODO.csv`` with its contents. Task deleted!
+
+.. Warning:: If two different tasks contain the same text, they will both be deleted!
 
 Recent Changes
 --------------
