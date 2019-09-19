@@ -8,9 +8,9 @@ Module contents
    :undoc-members:
    :show-inheritance:
 
-tests.test\_example
+tests.test\_ToDoneCLI
 ~~~~~~~~~~~~~~~~~~~
-.. automodule:: tests.test_example
+.. automodule:: tests.test_ToDoneCLI
    :members:
    :undoc-members:
    :show-inheritance:
