@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v0.5.4
+------
+- Correct erroneous new line in Filer.append. Closes issue #10
+
 v0.5.3
 ------
 - Update TOCtree for sphinx
