@@ -11,7 +11,7 @@ setuptools.setup(
     version="0.6.0",
     author="Ryan Patterson",
     author_email="ryan.patterson.2015@gmail.com",
-    description="Keep calm and manage your tasks!",
+    description="A basic command line task manager",
     long_description=long_description,
     long_description_content_type="text/x-rst",
     url="https://github.com/rbpatt2019/ToDonePy",
@@ -19,7 +19,7 @@ setuptools.setup(
     packages=setuptools.find_packages("src"),
     entry_points={"console_scripts": ["to = command_line.ToDoneCLI:to"]},
     classifiers=[
-        "Development Status :: 2 - Pre-Alpha",
+        "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Natural Language :: English",
