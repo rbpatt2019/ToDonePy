@@ -3,7 +3,11 @@
 CHANGELOG for ToDonePy
 ======================
 
-v0.5.1
+v0.5.3
+------
+- Update TOCtree for sphinx
+
+v0.5.2
 ------
 - Update documentation in README.rst
 - Update TOCtree for sphinx
