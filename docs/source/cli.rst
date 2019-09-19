@@ -10,11 +10,6 @@ Module contents
 
 Commands
 ~~~~~~~~
-.. click::  command_line.example:do
+.. click:: command_line.ToDoneCLI:to
   :prog: to
-
-.. click::  command_line.example:doing
-  :prog: to
-
-.. click::  command_line.example:done
-  :prog: to
+  :show-nested:
