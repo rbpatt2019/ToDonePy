@@ -22,8 +22,6 @@ from ToDonePy.filer import Filer as Filer
 def to(ctx, file: Path) -> None:
     """Base command for managing tasks
 
-    :param file: Location of TODO.csv. Defaults to $HOME/TODO.csv
-
     :note: If you use a location other than the default for --file, 
         I'd recommend setting TODO_FILE as an environemtal variable
     """
@@ -31,14 +29,13 @@ def to(ctx, file: Path) -> None:
 
 
 @to.command()
-@click.argument("task", required=True)
-@click.argument("rank", required=True)
+@click.argument("task", required=True, help='Task to be added to your list')
+@click.argument("rank", required=True, help='Priority to assign this task')
 @click.pass_obj
 def do(obj, task: str, rank: int) -> None:
     """Add a task to your list
 
-    :param task: Task to be added to your list
-    :param rank: Priority to assign to this task
+    :note: If your task is more than 1 word long, enclose it in quotes
 
     """
     obj.append([",".join([str(rank), task])])
@@ -56,12 +53,14 @@ def doing(obj) -> None:
 
 
 @to.command()
-@click.argument("task", required=True)
+@click.argument("task", required=True, help='Task to be removed from your list')
 @click.pass_obj
 def done(obj, task: str) -> None:
     """Remove a task to your list
 
-    :param task: Task to be removed from your list
+    :note: If multiple tasks match ``task``, they will all be deleted.
+
+    :note: If your task is more than 1 word long, enclose it in quotes
 
     """
     obj.delete(task)
