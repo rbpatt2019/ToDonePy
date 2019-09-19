@@ -5,6 +5,11 @@ CHANGELOG for ToDonePy
 
 v0.5.1
 ------
+- Update documentation in README.rst
+- Update TOCtree for sphinx
+
+v0.5.1
+------
 - Changed .travis.yml
 - Changed internal references in README.rst
 
