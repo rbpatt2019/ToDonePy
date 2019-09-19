@@ -21,7 +21,7 @@ lint: format
 	pyflakes src
 
 test: lint
-	python setup.py test
+	pytest
 
 patch: clean
 	bump2version patch
