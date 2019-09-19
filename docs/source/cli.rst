@@ -10,6 +10,11 @@ Module contents
 
 Commands
 ~~~~~~~~
-.. click::  command_line.example:hello
-  :prog: hello
+.. click::  command_line.example:do
+  :prog: to
 
+.. click::  command_line.example:doing
+  :prog: to
+
+.. click::  command_line.example:done
+  :prog: to
