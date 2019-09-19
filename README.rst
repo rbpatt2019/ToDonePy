@@ -1,18 +1,14 @@
 ToDonePY - A basic command-line tast manager
 ============================================
 
-.. image:: https://www.repostatus.org/badges/latest/wip.svg
-   :alt: Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.
-   :target: https://www.repostatus.org/#wip
+.. image:: https://www.repostatus.org/badges/latest/active.svg
+   :alt: Project Status: Active - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.
+   :target: https://www.repostatus.org/#active
    
 .. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
    :target: https://www.gnu.org/licenses/gpl-3.0
    :alt: GPLv3 License
    
-.. image:: https://codecov.io/gh/rbpatt2019/ToDonePy/branch/master/graph/badge.svg
-   :target: https://codecov.io/gh/rbpatt2019/ToDonePy
-   :alt: Code Coverage
-
 .. image:: https://travis-ci.org/rbpatt2019/ToDonePy.svg?branch=master
    :target: https://travis-ci.org/rbpatt2019/ToDonePy
    :alt: Build Status
@@ -21,6 +17,10 @@ ToDonePY - A basic command-line tast manager
    :target: https://todonepy.readthedocs.io/en/latest/?badge=latest
    :alt: Documentation Status
    
+.. image:: https://codecov.io/gh/rbpatt2019/ToDonePy/branch/master/graph/badge.svg
+   :target: https://codecov.io/gh/rbpatt2019/ToDonePy
+   :alt: Code Coverage
+
 .. image:: https://pyup.io/repos/github/rbpatt2019/ToDonePy/shield.svg
    :target: https://pyup.io/repos/github/rbpatt2019/ToDonePy/
    :alt: Updates
@@ -39,7 +39,7 @@ Introduction
 
 Move your ToDo's to ToDone's!
 
-.. Note:: This project has only been test on a Unix OS. I welcome collaborations to test it for MacOS and Windows!
+.. Note:: This project has only been tested on a Unix OS. I welcome collaborations to test it for MacOS and Windows!
 
 `ToDonePy <https://github.com/rbpatt2019/ToDonePy/>`_ is a command-line interface for managing your to do list. It provides a root command, `to`_, and three subcommands:
 
@@ -57,9 +57,13 @@ The code lives at https://github.com/rbpatt2019/ToDonePy/ .
 Installation
 ------------
 
-This project is not yet released on PyPi.
+This project has been released on `PyPI <https://pypi.org>`_, so it can be installed with `pip`:
 
-You can install the project manually by cloning the  `repo <https://github.com/rbpatt2019/ToDonePy>`_, and using the included Makefile.
+.. code:: sh
+
+        pip install -U ToDonePy
+
+Alternatively, you can install the project manually by cloning the  `repo <https://github.com/rbpatt2019/ToDonePy>`_, and using the included Makefile.
 
 .. code:: sh
 
