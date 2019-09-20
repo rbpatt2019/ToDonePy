@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v1.0.1
+------
+- Correct dist error caused by ref tag in README
+
 v1.0.0
 ------
 - First public release. Project status now alpha.
