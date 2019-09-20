@@ -65,7 +65,7 @@ Alternatively, you can install the project manually by cloning the  `repo <https
     git clone https://github.com/rbpatt2019/ToDonePy/
     make install
     
-If you would like to contribute to development, the install instructions are slightly different. Please see the section on  :ref:`contributing`.
+If you would like to contribute to development, the install instructions are slightly different. Please see the section on `contributing <https://todonepy.readthedocs.io/en/latest/contributing.html#contributing>`_.
 
 Usage
 -----

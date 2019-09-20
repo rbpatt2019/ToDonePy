@@ -35,11 +35,13 @@ major: clean
 	bump2version major
 	git push origin master --tags
 
-
 dist: clean 
 	python setup.py sdist bdist_wheel
+
+check: dist
+	twine check dist/*
 
 release: dist
 	twine upload dist/*
 
-.PHONY: clean develop install format lint test patch minor major dist clean 
+.PHONY: clean develop install format lint test patch minor major dist check release
