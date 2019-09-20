@@ -2,7 +2,7 @@ ToDonePY - A basic command-line tast manager
 ============================================
 
 .. image:: https://www.repostatus.org/badges/latest/active.svg
-   :alt: Project Status: Active - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.
+   :alt: Project Status: Active - The project has reached a stable, usable state and is being actively developed
    :target: https://www.repostatus.org/#active
    
 .. image:: https://img.shields.io/badge/License-GPLv3-blue.svg
