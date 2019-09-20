@@ -1,9 +1,19 @@
 if: tag IS present
 language: python
 python:
-  - 3.6
-  - 3.7
+- 3.6
+- 3.7
 install: pip install -r dev_requirements.txt
 script: make test
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: rbpatt2019
+  password:
+    secure: UB6af1XfCQHxpVCoBbKR+ESXMGNUDw1qRaDJTFPUdkCAj1XGlv+DypYGvV2JpCYZprsBOu7lkUXsgnExVPXWdZjueI6gQF/dp8O7UsGF4fNLTXxU10crFh12hvhAmlH26u6u9+bhUHjQdQAAerRkHI+x5s19yZvLX2JL4tKWHqYCo4/xYjp1GSn7AiM72ZZnikwQ2PmVN12CpnRhVRfRhDvI6RxtWXJxMLlpxHWfi+bvi75d7ATx3yCJGOOlV9VEadp4ROrycEp1IdME0y09K0cDe/AVl+F6KUo+g4bxaLZfn3cFqXuqyXcVN+K4IB5uJnOE9JNAcl1k+5GS49mCvGyEdj1EvHo7OtrE5nQOdMOjIgkSWSBDqxouqOv0C2fVaEsrE/tHvpTm8UMZMzC3XkMIKoMgxXjH2lxRsj1n70KLr3W6XBCc9XR/kPTf4Rh7ErtgNlGffaolNYL4r6p2B4qJ9nxhebboxYvQK9qHXH9bUU2cWm0dedlhIvHYPKR7lPvnS6aU0HB1ZvbA4KBYbSSNATJhh+8nV5Ekt91smXXzzSmANxLWpjCBLHErLEsj3pO+lNh/u158gBf7d/Y/j/fZ+z9Hf1kbKz8+um9S189VnvOjmPQPTzPelruL4TM7nHdCuHFaP4lmu2AYRG/2Wj12RhnI8Vdhsu6KjsVJSkc=
+  on:
+    tags: true
+    repo: rbpatt2019/ToDonePy
+    python: 3.7
 after_success:
-  - codecov
+- codecov
