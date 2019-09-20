@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v1.0.2
+------
+- Config .travis.yml
+
 v1.0.1
 ------
 - Correct dist error caused by ref tag in README
