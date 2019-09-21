@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v1.2.0
+------
+- Add editor option to ``to doing``
+
 v1.1.0
 ------
 - Add timestamp to ``to do``
