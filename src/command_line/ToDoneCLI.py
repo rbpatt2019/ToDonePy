@@ -57,7 +57,7 @@ def do(obj, task: str, rank: int) -> None:
 def doing(obj, edit: bool) -> None:
     """See tasks in your list
 
-    :Note: --no-edit is deafult, so does not need to be specified for 
+    :Note: --no-edit is default, so does not need to be specified for 
         calls where you do NOT want an editor.
     """
     if edit:
