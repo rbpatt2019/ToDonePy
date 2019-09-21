@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+from datetime import datetime as dt
 from pathlib import Path
 
 import click
@@ -41,7 +42,8 @@ def do(obj, task: str, rank: int) -> None:
     :note: If your task is more than 1 word long, enclose it in quotes
 
     """
-    obj.append([",".join([str(rank), task])])
+    date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
+    obj.append([",".join([str(rank), task, date])])
     click.echo("Task added")
 
 
