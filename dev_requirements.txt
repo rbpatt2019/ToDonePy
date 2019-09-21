@@ -15,6 +15,6 @@ pytest-mypy==0.4.1
 pytest-runner==5.1
 # sphinx-click requires Sphinx<2.2
 Sphinx==2.1.2 
-sphinx-click==2.2.0
+sphinx-click==2.3.0
 sphinxcontrib-fulltoc==1.2.0
 twine==1.15.0
