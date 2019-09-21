@@ -50,14 +50,18 @@ def do(obj, task: str, rank: int) -> None:
 
 
 @to.command()
-@click.option("--edit", "-e", is_flag=True, help="Open TODO.csv in your editor")
+@click.option(
+    "--edit/--no-edit", "-e/-E", default=False, help="Open TODO.csv in your editor"
+)
 @click.pass_obj
 def doing(obj, edit: bool) -> None:
     """See tasks in your list
 
+    :Note: --no-edit is deafult, so does not need to be specified for 
+        calls where you do NOT want an editor.
     """
     if edit:
-        click.edit(extension='.csv', filename=str(obj.path))
+        click.edit(extension=".csv", filename=str(obj.path))
     else:
         for line in obj.read():
             click.echo(line)
