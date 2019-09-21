@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v1.1.0
+------
+- Add timestamp to ``to do``
+
 v1.0.2
 ------
 - Config .travis.yml
