@@ -23,7 +23,7 @@ from ToDonePy.filer import Filer as Filer
 def to(ctx, file: Path) -> None:
     """Base command for managing tasks
 
-    :note: If you use a location other than the default for --file, 
+    :Note: If you use a location other than the default for --file, 
         I'd recommend setting TODO_FILE as an environemtal variable
     """
     ctx.obj = Filer(Path(file), create=True)
@@ -39,7 +39,9 @@ def do(obj, task: str, rank: int) -> None:
     :task: Task to be added to your list
     :rank: priority to assign to this task
 
-    :note: If your task is more than 1 word long, enclose it in quotes
+    :Note: If your task is more than 1 word long, enclose it in quotes
+
+    :Note: A timestamp of the form %y-%m-%d %H:%M:%S is also added
 
     """
     date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -65,9 +67,9 @@ def done(obj, task: str) -> None:
 
     :task: Task to be removed from your list
 
-    :note: If multiple tasks match ``task``, they will all be deleted.
+    :Note: If multiple tasks match ``task``, they will all be deleted.
 
-    :note: If your task is more than 1 word long, enclose it in quotes
+    :Note: If your task is more than 1 word long, enclose it in quotes
 
     """
     obj.delete(task)
