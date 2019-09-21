@@ -122,9 +122,9 @@ If you were to manually open the TODO.csv file, say with vim, you'd see:
 
 .. code:: sh
 
-        1,Write my abstract
+        1,Write my abstract,YYYY-MM-DD HH:MM:SS
 
-Nothing fancy, just a plain csv with ``rank`` in the first column and ``task`` in the second. In fact, you could edit ``TODO.csv`` manually, and then call ``to doing`` to see your change!
+Nothing fancy, just a plain csv with ``rank`` in the first column, ``task`` in the second, and date/time corresponding to when you added the task. In fact, you could edit ``TODO.csv`` manually, and then call ``to doing`` to see your change!
 
 .. _to doing:
 
