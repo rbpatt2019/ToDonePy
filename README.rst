@@ -39,7 +39,7 @@ Move your ToDo's to ToDone's!
 `ToDonePy <https://github.com/rbpatt2019/ToDonePy/>`_ is a command-line interface for managing your to do list. It provides a root command, `to`_, and three subcommands:
 
 - `to do`_ adds a new task to your list at either 'low', 'med', or 'high' priority.
-- `to doing`_ doing` shows you what you should be doing.
+- `to doing`_ shows you what you should be doing.
 - `to done`_ removes a completed tast from your list.
 
 Docs and Code
