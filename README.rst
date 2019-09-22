@@ -38,7 +38,7 @@ Move your ToDo's to ToDone's!
 
 `ToDonePy <https://github.com/rbpatt2019/ToDonePy/>`_ is a command-line interface for managing your to do list. It provides a root command, `to`_, and three subcommands:
 
-- `to do`_ adds a new task to your list at either 'low', 'med', or 'high' priority.
+- `to do`_ adds a new task to your list at different priorities.
 - `to doing`_ shows you what you should be doing.
 - `to done`_ removes a completed tast from your list.
 
@@ -118,13 +118,6 @@ To begin tracking your TODOs, call the command as follows:
 
 This will create ``TODO.csv`` if it doesn't already exist, and add 'Write my abstract' with a rank of one to it.
 
-If you were to manually open the TODO.csv file, say with vim, you'd see:
-
-.. code:: sh
-
-        1,Write my abstract,YYYY-MM-DD HH:MM:SS
-
-Nothing fancy, just a plain csv with ``rank`` in the first column, ``task`` in the second, and date/time corresponding to when you added the task. In fact, you could edit ``TODO.csv`` manually, and then call ``to doing`` to see your change!
 
 .. _to doing:
 
@@ -137,9 +130,23 @@ Once you've added some TODOs to your list, you need to make sure you stay on top
 
         to doing
 
-This will echo your tasks to the terminal. In the future, there are plans to add an ``--edit/-e`` flag here, so you can directly edit your ``TODO.csv``.
+This will echo your tasks to the terminal. Sometimes, however, you might want to correct an error, change a priority, or in some way edit yout ``TODO.csv``. In these cases, you can call ``to doing`` in editor mode:
 
-At the moment, ``to done`` just lists the tasks in the order you added them. In the future, it will also be able to sort by ``rank``.
+.. code:: sh
+
+        to doing --edit
+        
+This will open ``TODO.csv`` in your system editor. Where you would seem something like below, if you've been following along:
+
+.. code:: sh
+
+        1,Write my abstract,YYYY-MM-DD HH:MM:SS
+
+Nothing fancy, just a plain csv with ``rank`` in the first column, ``task`` in the second, and the date/time of addition in the third. Now, you can make all the changes you want, then save and close the file to return to the command line.
+
+This call opens the default editor on your system, usually defined by the environmental variable EDITOR for Linux systems. Currently, there is not support to specify a specific editor beside the default.
+
+At the moment, ``to doing`` just lists the tasks in the order you added them. In the future, it will also be able to sort by ``rank``.
 
 .. _to done:
 
@@ -158,7 +165,7 @@ As with `to do`_, if your task is more than one word, you need to enclose it in 
         
         to done 'Write my abstract'
 
-Under the hood, ``to done`` creates a temp file, then performs a string match to each line of your ``TODO.csv``. If task is not in a line, that line is written to the temp file. If task is in a line, that line is skipped. This way, the temp file ends up containing only those tasks that aren't completed. Once every line is checked, the temp file replaces ``TODO.csv`` with its contents. Task deleted!
+Under the hood, ``to done`` creates a temp file, then performs a string match to each line of your ``TODO.csv``. If ''task'' is not in a line, that line is written to the temp file. If ''task'' is in a line, that line is skipped. This way, the temp file ends up containing only those tasks that aren't completed. Once every line is checked, the temp file replaces ``TODO.csv`` with its contents. Task deleted!
 
 .. Warning:: If two different tasks contain the same text, they will both be deleted!
 
@@ -170,9 +177,8 @@ Please see the `CHANGELOG <https://github.com/rbpatt2019/ToDonePy/blob/master/CH
 Next Steps
 ----------
 
-- Add a date stamp for ``to do``
 - Add a sort function for ``to doing`` to all user to return by date or priority
-- Add an edit function, likely to base ``to`` command, for editing of ``TODO.csv``
+- Graphic notification support for use with cron
 - Continue to expand README and doumentation.
 
 Thank Yous
