@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v1.2.1
+------
+- Update documentation
+
 v1.2.0
 ------
 - Add editor option to ``to doing``
