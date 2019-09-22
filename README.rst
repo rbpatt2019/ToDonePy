@@ -9,6 +9,14 @@ ToDonePY - A basic command-line tast manager
    :target: https://www.gnu.org/licenses/gpl-3.0
    :alt: GPLv3 License
    
+.. image:: https://img.shields.io/pypi/v/todonepy
+   :target: https://pypi.org/project/todonepy
+   :alt: PyPI
+
+.. image:: https://img.shields.io/pypi/pyversions/todonepy
+   :target: https://pypi.org/project/todonepy
+   :alt: PyPI - Python Versions
+
 .. image:: https://travis-ci.org/rbpatt2019/ToDonePy.svg?branch=master
    :target: https://travis-ci.org/rbpatt2019/ToDonePy
    :alt: Build Status
