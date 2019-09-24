@@ -138,7 +138,13 @@ Once you've added some TODOs to your list, you need to make sure you stay on top
 
         to doing
 
-This will echo your tasks to the terminal. Sometimes, however, you might want to correct an error, change a priority, or in some way edit yout ``TODO.csv``. In these cases, you can call ``to doing`` in editor mode:
+This will do 2 things: first, it will sort your tasks, placing those with rank one on top, etc. If multiple tasks have a rank of one, the oldest will placed first. Second, it will echo your tasks to the terminal. 
+
+You can specify how to sort your tasks by passing the ``--sort/-s`` flag with one of ``rank``, ``date``, or ``both`` (the default). ``rank`` sorts by rank alone, ``date`` by date alone, and ``both`` sorts by rank first, then date, as previously described
+
+It's worth noting that, with the current implementation, ``--sort`` changes the order of tasks in your ``TODO.csv``, not just the order they are echoed in. Also, it depends on ``pandas``. I know. It's weird. I'm working to remove the depndency.
+
+Sometimes, however, you might want to correct an error, change a priority, or in some way edit yout ``TODO.csv``. In these cases, you can call ``to doing`` in editor mode:
 
 .. code:: sh
 
@@ -152,9 +158,10 @@ This will open ``TODO.csv`` in your system editor. Where you would seem somethin
 
 Nothing fancy, just a plain csv with ``rank`` in the first column, ``task`` in the second, and the date/time of addition in the third. Now, you can make all the changes you want, then save and close the file to return to the command line.
 
+Calling ``--edit`` will trump any calls to sort made in the same command.      
+
 This call opens the default editor on your system, usually defined by the environmental variable EDITOR for Linux systems. Currently, there is not support to specify a specific editor beside the default.
 
-At the moment, ``to doing`` just lists the tasks in the order you added them. In the future, it will also be able to sort by ``rank``.
 
 .. _to done:
 
@@ -185,7 +192,10 @@ Please see the `CHANGELOG <https://github.com/rbpatt2019/ToDonePy/blob/master/CH
 Next Steps
 ----------
 
-- Add a sort function for ``to doing`` to all user to return by date or priority
+- Integrate sort behaviour so that newly added tasks are automatically sorted
+- Remove dependency on pandas for sorting
+- Support nargs for adding multiple tasks
+- Migrate to tsv format?
 - Graphic notification support for use with cron
 - Continue to expand README and doumentation.
 
