@@ -7,6 +7,7 @@ from pathlib import Path
 import click
 
 from ToDonePy.filer import Filer as Filer
+from ToDonePy.sort_pd_csv import sort_pd_csv as sort_pd_csv
 
 
 @click.group()
@@ -50,19 +51,28 @@ def do(obj, task: str, rank: int) -> None:
 
 
 @to.command()
+@click.option("--sort", "-s", default="rank", help="How to sort returned tasks")
 @click.option(
     "--edit/--no-edit", "-e/-E", default=False, help="Open TODO.csv in your editor"
 )
 @click.pass_obj
-def doing(obj, edit: bool) -> None:
+def doing(obj, sort: str, edit: bool) -> None:
     """See tasks in your list
+
+    :Note: --sort defaults to "rank". It must be either "rank", "date", or "both"
 
     :Note: --no-edit is default, so does not need to be specified for 
         calls where you do NOT want an editor.
+
+    :Note: --edit will over-ride --sort
     """
     if edit:
         click.edit(extension=".csv", filename=str(obj.path))
     else:
+        if sort == "both":
+            sort_pd_csv(obj.path, ["rank", "date"])
+        else:
+            sort_pd_csv(obj.path, [sort])
         for line in obj.read():
             click.echo(line)
 
