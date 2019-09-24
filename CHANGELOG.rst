@@ -3,6 +3,14 @@
 CHANGELOG for ToDonePy
 ======================
 
+v1.3.2
+------
+- Add ``pandas`` to setup.py
+
+v1.3.1
+------
+- Remove broken test
+
 v1.3.0
 ------
 - Add ``--sort`` flag to ``to doing``
