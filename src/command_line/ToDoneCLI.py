@@ -19,7 +19,7 @@ from ToDonePy.sort_csv_pd import sort_csv_pd as sort_csv_pd
     type=click.Path(exists=False),
     help="Location of TODO.csv",
 )
-@click.version_option(version="1.2.1")
+@click.version_option(version="1.3.0")
 @click.pass_context
 def to(ctx, file: Path) -> None:
     """Base command for managing tasks
