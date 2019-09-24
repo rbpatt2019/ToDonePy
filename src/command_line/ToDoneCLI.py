@@ -7,7 +7,7 @@ from pathlib import Path
 import click
 
 from ToDonePy.filer import Filer as Filer
-from ToDonePy.sort_csv_pd import sort_csv_pd as sort_csv_pd
+from ToDonePy.sort_tsv_pd import sort_tsv_pd as sort_tsv_pd
 
 
 @click.group()
@@ -15,9 +15,9 @@ from ToDonePy.sort_csv_pd import sort_csv_pd as sort_csv_pd
     "--file",
     "-f",
     envvar="TODO_FILE",
-    default=(Path.home() / "TODO.csv"),
+    default=(Path.home() / "TODO.tsv"),
     type=click.Path(exists=False),
-    help="Location of TODO.csv",
+    help="Location of TODO.tsv",
 )
 @click.version_option(version="1.3.1")
 @click.pass_context
@@ -46,14 +46,14 @@ def do(obj, task: str, rank: int) -> None:
 
     """
     date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
-    obj.append([",".join([str(rank), task, date])])
+    obj.append(["\t".join([str(rank), task, date])])
     click.echo("Task added")
 
 
 @to.command()
 @click.option("--sort", "-s", default="both", help="How to sort returned tasks")
 @click.option(
-    "--edit/--no-edit", "-e/-E", default=False, help="Open TODO.csv in your editor"
+    "--edit/--no-edit", "-e/-E", default=False, help="Open TODO.tsv in your editor"
 )
 @click.pass_obj
 def doing(obj, sort: str, edit: bool) -> None:
@@ -67,12 +67,12 @@ def doing(obj, sort: str, edit: bool) -> None:
     :Note: --edit will over-ride --sort
     """
     if edit:
-        click.edit(extension=".csv", filename=str(obj.path))
+        click.edit(extension=".tsv", filename=str(obj.path))
     else:
         if sort == "both":
-            sort_csv_pd(obj.path, ["rank", "date"])
+            sort_tsv_pd(obj.path, ["rank", "date"])
         else:
-            sort_csv_pd(obj.path, [sort])
+            sort_tsv_pd(obj.path, [sort])
         for line in obj.read():
             click.echo(line)
 

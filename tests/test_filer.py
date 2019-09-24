@@ -34,7 +34,7 @@ def test_Filer_read_new_file(tmp_path: Path) -> None:
 
 
 def test_Filer_read_existing_file(
-    tmp_path: Path, content: str = "1,Make Tests\n2,Run Tests"
+    tmp_path: Path, content: str = "1\tMake Tests\n2\tRun Tests"
 ) -> None:
     """Run Filer to read an existing file
 
@@ -50,8 +50,8 @@ def test_Filer_read_existing_file(
 
 def test_Filer_write_existing_file(
     tmp_path: Path,
-    content: str = "1,Make Tests\n2,Run Tests",
-    new_contents: List[str] = ["3,More tests", "4,Most tests"],
+    content: str = "1\tMake Tests\n2\tRun Tests",
+    new_contents: List[str] = ["3\tMore tests", "4\tMost tests"],
 ) -> None:
     """Run Filer to write to an existing file
 
@@ -69,8 +69,8 @@ def test_Filer_write_existing_file(
 
 def test_Filer_append_existing_file(
     tmp_path: Path,
-    content: str = "1,Make Tests\n2,Run Tests\n",
-    new_contents: List[str] = ["3,More tests", "4,Most tests"],
+    content: str = "1\tMake Tests\n2\tRun Tests\n",
+    new_contents: List[str] = ["3\tMore tests", "4\tMost tests"],
 ) -> None:
     """Run Filer to append to an existing file
 

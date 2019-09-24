@@ -7,7 +7,7 @@ def make_path(tmp_path: Path) -> Path:
     :returns: Temporary file path for pytest
     
     """
-    return (tmp_path / "TODO.csv")
+    return (tmp_path / "TODO.tsv")
 
 def make_file(tmp_path: Path, content: str = "") -> Path:
     """Helper function to create a temporary file
@@ -17,6 +17,6 @@ def make_file(tmp_path: Path, content: str = "") -> Path:
     :returns: Temporary file for pytest
 
     """
-    csv = tmp_path / "TODO.csv"
-    csv.write_text(content)
-    return csv
+    tsv = tmp_path / "TODO.tsv"
+    tsv.write_text(content)
+    return tsv
