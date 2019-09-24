@@ -70,9 +70,9 @@ def doing(obj, sort: str, edit: bool) -> None:
         click.edit(extension=".csv", filename=str(obj.path))
     else:
         if sort == "both":
-            sort_pd_csv(obj.path, ["rank", "date"])
+            sort_csv_pd(obj.path, ["rank", "date"])
         else:
-            sort_pd_csv(obj.path, [sort])
+            sort_csv_pd(obj.path, [sort])
         for line in obj.read():
             click.echo(line)
 
