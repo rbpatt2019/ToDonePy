@@ -184,6 +184,10 @@ Under the hood, ``to done`` creates a temp file, then performs a string match to
 
 .. Warning:: If two different tasks contain the same text, they will both be deleted!
 
+Known Bugs
+----------
+- Test fails when called with ``--edit`` as ``result.output == 1``, likely teh result of a hung editor.
+
 Recent Changes
 --------------
 
