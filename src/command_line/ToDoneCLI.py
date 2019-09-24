@@ -51,7 +51,7 @@ def do(obj, task: str, rank: int) -> None:
 
 
 @to.command()
-@click.option("--sort", "-s", default="rank", help="How to sort returned tasks")
+@click.option("--sort", "-s", default="both", help="How to sort returned tasks")
 @click.option(
     "--edit/--no-edit", "-e/-E", default=False, help="Open TODO.csv in your editor"
 )
@@ -59,7 +59,7 @@ def do(obj, task: str, rank: int) -> None:
 def doing(obj, sort: str, edit: bool) -> None:
     """See tasks in your list
 
-    :Note: --sort defaults to "rank". It must be either "rank", "date", or "both"
+    :Note: --sort defaults to "both". It must be either "rank", "date", or "both"
 
     :Note: --no-edit is default, so does not need to be specified for 
         calls where you do NOT want an editor.
