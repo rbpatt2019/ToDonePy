@@ -11,7 +11,7 @@ setuptools.setup(
     version="1.2.1",
     author="Ryan Patterson",
     author_email="ryan.patterson.2015@gmail.com",
-    description="A basic command line task manager",
+    description="A developed command line task manager",
     long_description=long_description,
     long_description_content_type="text/x-rst",
     url="https://github.com/rbpatt2019/ToDonePy",
