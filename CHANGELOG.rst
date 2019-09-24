@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v1.3.0
+------
+- Add ``--sort`` flag to ``to doing``
+
 v1.2.1
 ------
 - Update documentation
