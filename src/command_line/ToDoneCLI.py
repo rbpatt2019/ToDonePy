@@ -7,7 +7,7 @@ from pathlib import Path
 import click
 
 from ToDonePy.filer import Filer as Filer
-from ToDonePy.sort_pd_csv import sort_pd_csv as sort_pd_csv
+from ToDonePy.sort_csv_pd import sort_csv_pd as sort_csv_pd
 
 
 @click.group()
