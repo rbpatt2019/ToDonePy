@@ -192,7 +192,10 @@ Please see the `CHANGELOG <https://github.com/rbpatt2019/ToDonePy/blob/master/CH
 Next Steps
 ----------
 
-- Add a sort function for ``to doing`` to all user to return by date or priority
+- Integrate sort behaviour so that newly added tasks are automatically sorted
+- Remove dependency on pandas for sorting
+- Support nargs for adding multiple tasks
+- Migrate to tsv format?
 - Graphic notification support for use with cron
 - Continue to expand README and doumentation.
 
