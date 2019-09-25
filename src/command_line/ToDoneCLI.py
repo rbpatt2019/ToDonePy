@@ -31,14 +31,14 @@ def to(ctx, file: Path) -> None:
 
 
 @to.command()
-@click.argument("task", required=True)
 @click.argument("rank", required=True)
+@click.argument("task", required=True)
 @click.pass_obj
-def do(obj, task: str, rank: int) -> None:
+def do(obj, rank: int, task: str) -> None:
     """Add a task to your list
 
-    :task: Task to be added to your list
     :rank: priority to assign to this task
+    :task: Task to be added to your list
 
     :Note: If your task is more than 1 word long, enclose it in quotes
 
@@ -46,7 +46,7 @@ def do(obj, task: str, rank: int) -> None:
 
     """
     date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
-    obj.append(["\t".join([str(rank), task, date])])
+    obj.append(["\t".join([str(rank), date, task])])
     click.echo("Task added")
 
 
