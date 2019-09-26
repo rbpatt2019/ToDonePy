@@ -17,7 +17,7 @@ def sort_tsv_pd(file: Path, cols: List[str]) -> bool:
     hold = pd.read_csv(
         file,
         header=None,
-        names=["rank", "task", "date"],
+        names=["rank", "date", "task"],
         parse_dates=["date"],
         delimiter="\t",
     )
