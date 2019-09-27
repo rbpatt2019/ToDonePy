@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from typing import Iterator, List
+from typing import Generator, List
 
 
 class Filer(object):
@@ -28,7 +28,7 @@ class Filer(object):
             else:
                 raise OSError("File does not exist")
 
-    def read(self) -> Iterator[str]:
+    def read(self) -> Generator[str, None, None]:
         """Read the lines of self.path
 
         :returns: A generator containing the individual lines of self.path
