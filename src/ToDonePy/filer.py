@@ -1,6 +1,6 @@
-from operator import itemgetter
 import csv
 import os
+from operator import itemgetter
 from pathlib import Path
 from typing import Generator, List
 
@@ -30,8 +30,10 @@ class Filer(object):
             else:
                 raise OSError("File does not exist")
 
-    def read(self) -> List[List[str], None, None]:
+    def read(self) -> List[List[str]]:
         """Read the lines of self.path
+
+        :Note: Reads in all lines, so will suffer on large files
 
         :returns: A list of lines where each line is a list 
         of column values
@@ -41,7 +43,7 @@ class Filer(object):
             reader = csv.reader(file, delimiter="\t")
             lines = []
             for line in reader:
-                lines.append(line) 
+                lines.append(line)
         return lines
 
     def write(self, rows: List[List[str]]) -> None:
