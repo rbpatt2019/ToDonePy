@@ -203,12 +203,12 @@ Please see the `CHANGELOG <https://github.com/rbpatt2019/ToDonePy/blob/master/CH
 Next Steps
 ----------
 
-- Integrate sort behaviour so that newly added tasks are automatically sorted
-- Remove dependency on pandas for sorting
+- YES Integrate sort behaviour so that newly added tasks are automatically sorted
+- YES Remove dependency on pandas for sorting
 - Support nargs for adding multiple tasks
 - YES Add ``number flag`` to csv
 - YES Migrate to tsv format?
-- Migrate to csv reader module
+- YES Migrate to csv reader module
 - Graphic notification support for use with cron
 - Continue to expand README and doumentation.
 
