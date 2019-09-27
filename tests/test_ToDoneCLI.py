@@ -37,11 +37,11 @@ def test_to_doing_custom_file(tmp_path):
         assert result.exit_code == 0
         assert (
             result.output
-            == "1\t2019-09-23 12:57:00\tNew task\n1\t2019-09-24 12:57:00\tNew task\n2\t2019-09-20 20:56:00\tOld task\nYou don't have 5 tasks!\n"
+            == "2\t2019-09-20 20:56:00\tOld task\n1\t2019-09-24 12:57:00\tNew task\n1\t2019-09-23 12:57:00\tNew task\nYou don't have 5 tasks!\n"
         )
         assert (
             Path(tsv).read_text()
-            == "1\t2019-09-23 12:57:00\tNew task\n1\t2019-09-24 12:57:00\tNew task\n2\t2019-09-20 20:56:00\tOld task\n"
+            == "2\t2019-09-20 20:56:00\tOld task\n1\t2019-09-24 12:57:00\tNew task\n1\t2019-09-23 12:57:00\tNew task\n"
         )
 
 
@@ -91,9 +91,9 @@ def test_to_done_custom_file(tmp_path):
     with runner.isolated_filesystem():
         tsv = make_file(
             tmp_path,
-            "1\t2019-09-24 14:50:00\tOld task\n2\t2019-09-24 14:50:00\tNew task\n",
+            "2\t2019-09-20 20:56:00\tOld task\n1\t2019-09-24 12:57:00\tNew task\n",
         )
-        result = runner.invoke(to, ["--file", f"{tsv}", "done", "New"])
+        result = runner.invoke(to, ["--file", f"{tsv}", "done", "New task"])
         assert result.exit_code == 0
         assert result.output == "Task removed\n"
-        assert Path(tsv).read_text() == "1\t2019-09-24 14:50:00\tOld task\n"
+        assert Path(tsv).read_text() == "2\t2019-09-20 20:56:00\tOld task\n"
