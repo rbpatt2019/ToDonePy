@@ -1,22 +1,23 @@
-from typing import Generator
+from typing import List
 
 import click
 
 
-def counted_echo(lines: Generator[str, None, None], number: int) -> None:
-    """Safely iterate over generators of unknown length
+def counted_echo(lines: List[List[str]], number: int, connector: str) -> None:
+    """Safely iterate over lists of unknown length
 
     For use in click applications
 
-    :lines: Generator containing strings to be echoed
+    :lines: List containing items to be echoed
     :number: Number of strings to be echoed
+    :connector: For pretty printing. What to join entries with
 
     :returns: None
 
     """
-    for _ in range(number):
+    for i in range(number):
         try:
-            click.echo(next(lines))
-        except StopIteration:
+            click.echo(connector.join(lines[i]))
+        except IndexError:
             click.echo(f"You don't have {number} tasks!")
             break
