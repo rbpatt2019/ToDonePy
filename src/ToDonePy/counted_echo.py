@@ -2,8 +2,6 @@ from typing import Generator
 
 import click
 
-from ToDonePy.filer import Filer as Filer
-
 
 def counted_echo(lines: Generator[str, None, None], number: int) -> None:
     """Safely iterate over generators of unknown length
@@ -16,9 +14,9 @@ def counted_echo(lines: Generator[str, None, None], number: int) -> None:
     :returns: None
 
     """
-    for _ in lines:
+    for _ in range(number):
         try:
             click.echo(next(lines))
-        except StopIteration as stop:
+        except StopIteration:
             click.echo(f"You don't have {number} tasks!")
             break
