@@ -208,6 +208,7 @@ Next Steps
 - Support nargs for adding multiple tasks
 - YES Add ``number flag`` to csv
 - YES Migrate to tsv format?
+- Migrate to csv reader module
 - Graphic notification support for use with cron
 - Continue to expand README and doumentation.
 
