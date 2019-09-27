@@ -37,7 +37,7 @@ def test_to_doing_custom_file(tmp_path):
         assert result.exit_code == 0
         assert (
             result.output
-            == "1\t2019-09-23 12:57:00\tNew task\n1\t2019-09-24 12:57:00\tNew task\n2\t2019-09-20 20:56:00\tOld task\n"
+            == "1\t2019-09-23 12:57:00\tNew task\n1\t2019-09-24 12:57:00\tNew task\n2\t2019-09-20 20:56:00\tOld task\nYou don't have 5 tasks!\n"
         )
         assert (
             Path(tsv).read_text()
@@ -77,7 +77,7 @@ def test_to_doing_custom_file_sort_flag(tmp_path):
         assert result.exit_code == 0
         assert (
             result.output
-            == "1\t2019-09-24 12:57:00\tNew task\n1\t2019-09-23 12:57:00\tNew task\n2\t2019-09-20 20:56:00\tOld task\n"
+            == "1\t2019-09-24 12:57:00\tNew task\n1\t2019-09-23 12:57:00\tNew task\n2\t2019-09-20 20:56:00\tOld task\nYou don't have 5 tasks!\n"
         )
         assert (
             Path(tsv).read_text()
