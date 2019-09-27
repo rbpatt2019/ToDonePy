@@ -84,7 +84,7 @@ def doing(obj, sort: str, number: int, edit: bool) -> None:
         if sort != "none":
             keys = {"rank": [0], "date": [1], "both": [0, 1]}
             obj.sort(keys[sort])
-        counted_echo(obj.read(), number, '\t')
+        counted_echo(obj.read(), number, "\t")
 
 
 @to.command()
