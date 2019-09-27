@@ -1,8 +1,9 @@
 import csv
 import os
+import shutil
 from operator import itemgetter
 from pathlib import Path
-from typing import Generator, List
+from typing import List
 
 
 class Filer(object):
@@ -95,7 +96,7 @@ class Filer(object):
                 for line in reader:
                     if contains not in line:
                         writer.writerow(line)
-        os.replace("tmp", self.path)
+        shutil.move("tmp", self.path)
 
     def sort(self, cols: List[int]) -> None:
         """Sort the contents of self by columns
