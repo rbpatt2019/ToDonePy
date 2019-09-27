@@ -102,3 +102,19 @@ def test_Filer_sort_existing_file(
     # Slice in next line drops empty string created by rsplit
     for line, entry in zip(file.read(), [['1', 'Run Tests'], ['2', 'Make Tests'], ['3', 'More Tests']]):
         assert line == entry
+
+def test_Filer_delete_existing_file(
+    tmp_path: Path,
+    content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
+) -> None:
+    """Run Filer to sort an existing file
+
+    :tmp_path: Where to create temporary file
+    :content: Contents of temporary file
+    :returns: None
+
+    """
+    file = Filer(make_file(tmp_path, content))
+    file.delete('Make Tests')
+    for line, entry in zip(file.read(), [['3', 'More Tests'], ['1', 'Run Tests']]):
+        assert line == entry
