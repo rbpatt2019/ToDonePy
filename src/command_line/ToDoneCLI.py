@@ -8,6 +8,7 @@ import click
 
 from ToDonePy.filer import Filer as Filer
 from ToDonePy.sort_tsv_pd import sort_tsv_pd as sort_tsv_pd
+from ToDonePy.counted_echo import counted_echo as counted_echo
 
 
 @click.group()
@@ -52,11 +53,12 @@ def do(obj, rank: int, task: str) -> None:
 
 @to.command()
 @click.option("--sort", "-s", default="both", help="How to sort returned tasks")
+@click.option("--number", "-n", default=5, help="How many tasks to return")
 @click.option(
     "--edit/--no-edit", "-e/-E", default=False, help="Open TODO.tsv in your editor"
 )
 @click.pass_obj
-def doing(obj, sort: str, edit: bool) -> None:
+def doing(obj, sort: str, number: int, edit: bool) -> None:
     """See tasks in your list
 
     :Note: --sort defaults to "both". It must be either "rank", "date", or "both"
@@ -73,9 +75,7 @@ def doing(obj, sort: str, edit: bool) -> None:
             sort_tsv_pd(obj.path, ["rank", "date"])
         else:
             sort_tsv_pd(obj.path, [sort])
-        for line in obj.read():
-            click.echo(line)
-
+        counted_echo(obj.read(), number)
 
 @to.command()
 @click.argument("task", required=True)
