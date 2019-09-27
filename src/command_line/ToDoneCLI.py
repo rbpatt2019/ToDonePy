@@ -6,9 +6,9 @@ from pathlib import Path
 
 import click
 
+from ToDonePy.counted_echo import counted_echo as counted_echo
 from ToDonePy.filer import Filer as Filer
 from ToDonePy.sort_tsv_pd import sort_tsv_pd as sort_tsv_pd
-from ToDonePy.counted_echo import counted_echo as counted_echo
 
 
 @click.group()
@@ -76,6 +76,7 @@ def doing(obj, sort: str, number: int, edit: bool) -> None:
         else:
             sort_tsv_pd(obj.path, [sort])
         counted_echo(obj.read(), number)
+
 
 @to.command()
 @click.argument("task", required=True)
