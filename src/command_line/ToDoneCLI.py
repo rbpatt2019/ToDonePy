@@ -19,7 +19,7 @@ from ToDonePy.filer import Filer as Filer
     type=click.Path(exists=False),
     help="Location of TODO.tsv",
 )
-@click.version_option(version="1.3.2")
+@click.version_option(version="2.0.0")
 @click.pass_context
 def to(ctx, file: Path) -> None:
     """Base command for managing tasks
