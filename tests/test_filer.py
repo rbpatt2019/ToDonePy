@@ -15,6 +15,7 @@ def test_Filer_no_create(tmp_path: Path) -> None:
     """Run Filer to read a file that does not exist
 
     :tmp_path: Where to create temporary file
+
     :returns: None
 
     """
@@ -26,6 +27,7 @@ def test_Filer_read_new_file(tmp_path: Path) -> None:
     """Run Filer to read and create a new file
 
     :tmp_path: Where to create temporary file
+
     :returns: None
 
     """
@@ -40,6 +42,7 @@ def test_Filer_read_existing_file(
 
     :tmp_path: Where to create temporary file
     :content: Contents of temporary file
+
     :returns: None
 
     """
@@ -58,6 +61,7 @@ def test_Filer_write_existing_file(
     :tmp_path: Where to create temporary file
     :content: Contents of temporary file
     :new_contents: Contents to be written to file
+
     :returns: None
 
     """
@@ -77,12 +81,12 @@ def test_Filer_append_existing_file(
     :tmp_path: Where to create temporary file
     :content: Contents of temporary file
     :new_contents: Contents to be added to file
+
     :returns: None
 
     """
     file = Filer(make_file(tmp_path, content))
     file.append(new_contents)
-    # Slice in next line drops empty string created by rsplit
     for line, entry in zip(file.read(), [['1', 'Make Tests'], ['2', 'Run Tests']] + new_contents):
         assert line == entry
 
@@ -94,12 +98,12 @@ def test_Filer_sort_existing_file(
 
     :tmp_path: Where to create temporary file
     :content: Contents of temporary file
+
     :returns: None
 
     """
     file = Filer(make_file(tmp_path, content))
     file.sort([0])
-    # Slice in next line drops empty string created by rsplit
     for line, entry in zip(file.read(), [['1', 'Run Tests'], ['2', 'Make Tests'], ['3', 'More Tests']]):
         assert line == entry
 
@@ -111,6 +115,7 @@ def test_Filer_delete_existing_file(
 
     :tmp_path: Where to create temporary file
     :content: Contents of temporary file
+
     :returns: None
 
     """
