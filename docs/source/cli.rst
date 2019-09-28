@@ -9,7 +9,7 @@ Module contents
    :show-inheritance:
 
 Commands
-~~~~~~~~
+--------
 .. click:: command_line.ToDoneCLI:to
   :prog: to
   :show-nested:
