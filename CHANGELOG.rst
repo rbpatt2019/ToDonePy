@@ -3,6 +3,15 @@
 CHANGELOG for ToDonePy
 ======================
 
+v2.0.0
+------
+- BREAKING: Migrate to ``TODO.tsv``
+- BREAKING: ``to do`` now sorts new tasks, unless specified not to
+- BREAKING: Arguments for ``to do``  have been switched. Now specify ``to do {rank} {task}``
+- Remove dependency on pandas for sorting
+- Add ``number flag`` to csv
+- Migrate to csv reader module
+
 v1.3.0
 ------
 - Add ``--sort`` flag to ``to doing``
