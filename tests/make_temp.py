@@ -4,6 +4,7 @@ def make_path(tmp_path: Path) -> Path:
     """Helper function to create a pathlib Path object.
     
     :temp_path: Temporary path for pytest
+
     :returns: Temporary file path for pytest
     
     """
@@ -14,6 +15,7 @@ def make_file(tmp_path: Path, content: str = "") -> Path:
 
     :temp_path: Temporary path for pytest
     :contets: Contents to be written to temporary file
+
     :returns: Temporary file for pytest
 
     """
