@@ -95,17 +95,17 @@ As with any good command-line tool, you can get some basic help by calling:
 
         to --help
 
-Under the hood, ``to`` creates the context object that holds the information on the file you use for tracking you're TODOs. If you don't specify a file to use, it will default to ``$HOME/TODO.csv``. If you would like to specify a different file to use, than call the command with the ``--file/-f`` flag like so:
+Under the hood, ``to`` creates the context object that holds the information on the file you use for tracking you're TODOs. If you don't specify a file to use, it will default to ``$HOME/TODO.tsv``. If you would like to specify a different file to use, than call the command with the ``--file/-f`` flag like so:
 
 .. code:: sh
         
-        to --file /path/to/your/TODO.csv subcommand
+        to --file /path/to/your/TODO.tsv subcommand
 
 .. note:: If you plan to use a file other than the default, I recommend setting it by creating the environmental variable, ``TODO_LIST``. 
 
 Regardless of whether you use the default or not, calling ``to`` with any of the subcommands - ``do``, ``doing``, or ``done`` - will check to see if the file exists. If it does exist, ``to`` then pass the path on to the subcommand. If it doesn't exist, then ``to`` creates an empty file which it then passes on to the subcommand.
 
-As a final note, it is worth emphasising that the contex object is only created when ``to`` is invoked with a subcommand. So, after a clean install, calling ``to --help`` or ``to --version`` will NOT create your ``TODO.csv`` file, even if you pass the ``--file/-f`` flag. However, call ``to do``, and it will pop into existence.
+As a final note, it is worth emphasising that the contex object is only created when ``to`` is invoked with a subcommand. So, after a clean install, calling ``to --help`` or ``to --version`` will NOT create your ``TODO.tsv`` file, even if you pass the ``--file/-f`` flag. However, call ``to do``, and it will pop into existence.
 
 .. _to do:
 
@@ -118,13 +118,19 @@ To begin tracking your TODOs, call the command as follows:
 
         to do task rank        
 
-``to`` is the base command. It must be invoked to use any part of the tool. The ``do`` subcommand is how you add tasks to your ``TODO.csv``. After ``to do``, there are two mandatory arguments: the ``task`` and the ``rank``. The first argument is ``task``. Here, specify what it is you need to do. If your task takes more than one word to describe, than you need to include it in quotes. ``rank`` should be a number indicating how important this task is. 1 is very important, 2 less so, etc. Though nothing explicitly bans you from using as many ranks as you want, I'd reccomed using 3 for high, medium, and low priority. So, if you wanted to remind yourself to write an abstract for that paper you've been delaying, call:
+``to`` is the base command. It must be invoked to use any part of the tool. The ``do`` subcommand is how you add tasks to your ``TODO.tsv``. After ``to do``, there are two mandatory arguments: the ``rank`` and the ``task``. The first argument is ``rank``. ``rank`` should be a number indicating how important this task is. 1 is very important, 2 less so, etc. Though nothing explicitly bans you from using as many ranks as you want, I'd reccomed using 3 for high, medium, and low priority. The second argument is ``task``. Here, specify what it is you need to do. If your task takes more than one word to describe, then you need to include it in quotes.  So, if you wanted to remind yourself to write an abstract for that paper you've been delaying, call:
 
 .. code:: sh
         
-        to do 'Write my abstract' 1
+        to do 1 'Write my abstract' 
 
-This will create ``TODO.csv`` if it doesn't already exist, and add 'Write my abstract' with a rank of one to it.
+This will create ``TODO.tsv`` if it doesn't already exist, and add 'Write my abstract' with a rank of one to it. ``to do`` also logs the date and time the task was added, so that you always know how old a task is.
+
+``to do`` also has one option: ``--sort/-s``. This specifies how to sort your list after a new task is added. It must be one of: ``[rank, date, both, none]``. ``both`` sorts by name and then date, and ``none`` does not sort, simply appending tasks to the end of your list. It defaults to ``both``, so that your highest priority tasks are first, and, among those, the oldest are first. If you just wanted to sort by date after adding a new task, then you could call:
+
+..code:: sh
+
+        to do --sort date 1 'Important work'
 
 
 .. _to doing:
@@ -138,27 +144,34 @@ Once you've added some TODOs to your list, you need to make sure you stay on top
 
         to doing
 
-This will do 2 things: first, it will sort your tasks, placing those with rank one on top, etc. If multiple tasks have a rank of one, the oldest will placed first. Second, it will echo your tasks to the terminal. 
+This should echo the 5 tasks at the top of your ``TODO.tsv`` to the terminal.
 
-You can specify how to sort your tasks by passing the ``--sort/-s`` flag with one of ``rank``, ``date``, or ``both`` (the default). ``rank`` sorts by rank alone, ``date`` by date alone, and ``both`` sorts by rank first, then date, as previously described
+You can specify how to sort your tasks by passing the ``--sort/-s`` flag with one of: ``[rank, date, both, none]``. It defaults to ``none``, thus preserving the order in your ``TODO.tsv``. Any call to sort will also change the order currently in your ``TODO.tsv``, not just the order they are echoed.
 
-It's worth noting that, with the current implementation, ``--sort`` changes the order of tasks in your ``TODO.csv``, not just the order they are echoed in. Also, it depends on ``pandas``. I know. It's weird. I'm working to remove the depndency.
+Also, specifying the ``--number/-n`` flag will let you change how many tasks are returned, and it defaults to 5. So, if you want to return 3 tasks sorted by rank, call:
 
-Sometimes, however, you might want to correct an error, change a priority, or in some way edit yout ``TODO.csv``. In these cases, you can call ``to doing`` in editor mode:
+.. code:: sh
+        
+        to doing -s rank -n 3
+
+If you have fewer tasks than ``number``, the command prints a friendly reminder of that fact!
+
+Sometimes, you might want to correct an error, change a priority, or in some way edit yout ``TODO.tsv``. In these cases, you can call ``to doing`` in editor mode:
 
 .. code:: sh
 
         to doing --edit
         
-This will open ``TODO.csv`` in your system editor. Where you would seem something like below, if you've been following along:
+This will open ``TODO.tsv`` in your system editor. Where you would see something like below, if you've been following along:
 
 .. code:: sh
 
-        1,Write my abstract,YYYY-MM-DD HH:MM:SS
+        1       YYYY-MM-DD HH:MM:SS     Write my abstract,
+        1       YYYY-MM-DD HH:MM:SS     Important work
 
-Nothing fancy, just a plain csv with ``rank`` in the first column, ``task`` in the second, and the date/time of addition in the third. Now, you can make all the changes you want, then save and close the file to return to the command line.
+Nothing fancy, just a plain tsv with ``rank`` in the first column, `the date/time of addition in the second, and `task`` in the third. Now, you can make all the changes you want, then save and close the file to return to the command line.
 
-Calling ``--edit`` will trump any calls to sort made in the same command.      
+Calling ``--edit`` will trump any calls to ``sort`` or ``number`` made in the same command.      
 
 This call opens the default editor on your system, usually defined by the environmental variable EDITOR for Linux systems. Currently, there is not support to specify a specific editor beside the default.
 
@@ -168,7 +181,7 @@ This call opens the default editor on your system, usually defined by the enviro
 Completing your tasks with ``to done``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After the end of a productive work session, you've completed a task from your list. Boom! Time well spent. To remove it from your ``TODO.csv``, call:
+After the end of a productive work session, you've completed a task from your list. Boom! Time well spent. To remove it from your ``TODO.tsv``, call:
 
 .. code:: sh
 
@@ -180,7 +193,7 @@ As with `to do`_, if your task is more than one word, you need to enclose it in 
         
         to done 'Write my abstract'
 
-Under the hood, ``to done`` creates a temp file, then performs a string match to each line of your ``TODO.csv``. If ''task'' is not in a line, that line is written to the temp file. If ''task'' is in a line, that line is skipped. This way, the temp file ends up containing only those tasks that aren't completed. Once every line is checked, the temp file replaces ``TODO.csv`` with its contents. Task deleted!
+Under the hood, ``to done`` creates a temp file, then performs a string match to each line of your ``TODO.tsv``. If ''task'' is not in a line, that line is written to the temp file. If ''task'' is in a line, that line is skipped. This way, the temp file ends up containing only those tasks that aren't completed. Once every line is checked, the temp file replaces ``TODO.tsv`` with its contents. Task deleted!
 
 .. Warning:: If two different tasks contain the same text, they will both be deleted!
 
@@ -196,10 +209,8 @@ Please see the `CHANGELOG <https://github.com/rbpatt2019/ToDonePy/blob/master/CH
 Next Steps
 ----------
 
-- Integrate sort behaviour so that newly added tasks are automatically sorted
-- Remove dependency on pandas for sorting
 - Support nargs for adding multiple tasks
-- Migrate to tsv format?
+- Addition of TODOs from file parsing
 - Graphic notification support for use with cron
 - Continue to expand README and doumentation.
 
