@@ -23,6 +23,8 @@ class Filer(object):
         :path: A Unix filepath to the desired file
         :create: If the file does not already exist, create it.
 
+        :returns: None
+
         """
         self.path = path
         if not os.path.isfile(self.path):
