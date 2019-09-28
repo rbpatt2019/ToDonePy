@@ -118,13 +118,19 @@ To begin tracking your TODOs, call the command as follows:
 
         to do task rank        
 
-``to`` is the base command. It must be invoked to use any part of the tool. The ``do`` subcommand is how you add tasks to your ``TODO.tsv``. After ``to do``, there are two mandatory arguments: the ``task`` and the ``rank``. The first argument is ``task``. Here, specify what it is you need to do. If your task takes more than one word to describe, than you need to include it in quotes. ``rank`` should be a number indicating how important this task is. 1 is very important, 2 less so, etc. Though nothing explicitly bans you from using as many ranks as you want, I'd reccomed using 3 for high, medium, and low priority. So, if you wanted to remind yourself to write an abstract for that paper you've been delaying, call:
+``to`` is the base command. It must be invoked to use any part of the tool. The ``do`` subcommand is how you add tasks to your ``TODO.tsv``. After ``to do``, there are two mandatory arguments: the ``rank`` and the ``task``. The first argument is ``rank``. ``rank`` should be a number indicating how important this task is. 1 is very important, 2 less so, etc. Though nothing explicitly bans you from using as many ranks as you want, I'd reccomed using 3 for high, medium, and low priority. The second argument is ``task``. Here, specify what it is you need to do. If your task takes more than one word to describe, then you need to include it in quotes.  So, if you wanted to remind yourself to write an abstract for that paper you've been delaying, call:
 
 .. code:: sh
         
-        to do 'Write my abstract' 1
+        to do 1 'Write my abstract' 
 
-This will create ``TODO.tsv`` if it doesn't already exist, and add 'Write my abstract' with a rank of one to it.
+This will create ``TODO.tsv`` if it doesn't already exist, and add 'Write my abstract' with a rank of one to it. ``to do`` also logs the date and time the task was added, so that you always know how old a task is.
+
+``to do`` also has one option: ``--sort/-s``. This specifies how to sort your list after a new task is added. It must be one of: ``[rank, date, both, none]``. ``both`` sorts by name and then date, and ``none`` does not sort, simply appending tasks to the end of your list. It defaults to ``both``, so that your highest priority tasks are first, and, among those, the oldest are first. If you just wanted to sort by date after adding a new task, then you could call:
+
+..code:: sh
+
+        to do --sort date 1 'Important work'
 
 
 .. _to doing:
@@ -138,11 +144,9 @@ Once you've added some TODOs to your list, you need to make sure you stay on top
 
         to doing
 
-This will do 2 things: first, it will sort your tasks, placing those with rank one on top, etc. If multiple tasks have a rank of one, the oldest will placed first. Second, it will echo your tasks to the terminal. 
+This should echo the 5 tasks at the top of your ``TODO.tsv`` to the terminal.
 
-You can specify how to sort your tasks by passing the ``--sort/-s`` flag with one of ``rank``, ``date``, or ``both`` (the default). ``rank`` sorts by rank alone, ``date`` by date alone, and ``both`` sorts by rank first, then date, as previously described
-
-It's worth noting that, with the current implementation, ``--sort`` changes the order of tasks in your ``TODO.tsv``, not just the order they are echoed in. Also, it depends on ``pandas``. I know. It's weird. I'm working to remove the depndency.
+You can specify how to sort your tasks by passing the ``--sort/-s`` flag with one of: ``[rank, date, both, none]``. It defaults to ``none``, thus preserving the order in your ``TODO.tsv``. Any call to sort will also change the order currently in your ``TODO.tsv``, not just the order they are echoed.
 
 Also, specifying the ``--number/-n`` flag will let you change how many tasks are returned, and it defaults to 5. So, if you want to return 3 tasks sorted by rank, call:
 
@@ -150,7 +154,9 @@ Also, specifying the ``--number/-n`` flag will let you change how many tasks are
         
         to doing -s rank -n 3
 
-Sometimes, however, you might want to correct an error, change a priority, or in some way edit yout ``TODO.tsv``. In these cases, you can call ``to doing`` in editor mode:
+If you have fewer tasks than ``number``, the command prints a friendly reminder of that fact!
+
+Sometimes, you might want to correct an error, change a priority, or in some way edit yout ``TODO.tsv``. In these cases, you can call ``to doing`` in editor mode:
 
 .. code:: sh
 
@@ -161,6 +167,7 @@ This will open ``TODO.tsv`` in your system editor. Where you would see something
 .. code:: sh
 
         1       YYYY-MM-DD HH:MM:SS     Write my abstract,
+        1       YYYY-MM-DD HH:MM:SS     Important work
 
 Nothing fancy, just a plain tsv with ``rank`` in the first column, `the date/time of addition in the second, and `task`` in the third. Now, you can make all the changes you want, then save and close the file to return to the command line.
 
@@ -193,7 +200,6 @@ Under the hood, ``to done`` creates a temp file, then performs a string match to
 Known Bugs
 ----------
 - Test fails when called with ``--edit`` as ``result.output == 1``, likely teh result of a hung editor.
-- There is a noticeable lag when calling ``to doing``. Likely the result of reading from a file, to ``pd.DataFrame``, and then back to a file.
 
 Recent Changes
 --------------
@@ -203,12 +209,8 @@ Please see the `CHANGELOG <https://github.com/rbpatt2019/ToDonePy/blob/master/CH
 Next Steps
 ----------
 
-- YES Integrate sort behaviour so that newly added tasks are automatically sorted
-- YES Remove dependency on pandas for sorting
 - Support nargs for adding multiple tasks
-- YES Add ``number flag`` to csv
-- YES Migrate to tsv format?
-- YES Migrate to csv reader module
+- Addition of TODOs from file parsing
 - Graphic notification support for use with cron
 - Continue to expand README and doumentation.
 
