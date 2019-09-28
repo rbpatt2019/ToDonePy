@@ -3,6 +3,15 @@
 CHANGELOG for ToDonePy
 ======================
 
+v2.0.0
+------
+- BREAKING: Move to ``TODO.tsv`` for prettier printing.
+- BREAKING: Args are now passed for to in reversed order. Call as ``to do {rank} {task}``
+- BREAKING: ``to do`` now sorts new tasks automatically, unless told not to
+- Commands now type check inputs
+- Pandas dependency now longer required for sorting
+- Filer class now uses ``csv`` module for handling files
+
 v1.3.2
 ------
 - Add ``pandas`` to setup.py
