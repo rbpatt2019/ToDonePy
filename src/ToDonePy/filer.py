@@ -1,10 +1,11 @@
-from ToDonePy.file_len import file_len as file_len
 import csv
 import os
 import shutil
 from operator import itemgetter
 from pathlib import Path
 from typing import List
+
+from ToDonePy.file_len import file_len as file_len
 
 
 class Filer(object):
