@@ -107,11 +107,11 @@ def test_Filer_sort_existing_file(
     for line, entry in zip(file.read(), [['1', 'Run Tests'], ['2', 'Make Tests'], ['3', 'More Tests']]):
         assert line == entry
 
-def test_Filer_delete_existing_file(
+def test_Filer_delete_existing_file_successful(
     tmp_path: Path,
     content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
 ) -> None:
-    """Run Filer to sort an existing file
+    """Run Filer to delete a line from  an existing file
 
     :tmp_path: Where to create temporary file
     :content: Contents of temporary file
@@ -120,6 +120,26 @@ def test_Filer_delete_existing_file(
 
     """
     file = Filer(make_file(tmp_path, content))
-    file.delete('Make Tests')
+    result = file.delete('Make Tests')
+    assert result
     for line, entry in zip(file.read(), [['3', 'More Tests'], ['1', 'Run Tests']]):
+        assert line == entry
+
+
+def test_Filer_delete_existing_file_unsuccessful(
+    tmp_path: Path,
+    content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
+) -> None:
+    """Run Filer to delete a non-existent line
+
+    :tmp_path: Where to create temporary file
+    :content: Contents of temporary file
+
+    :returns: None
+
+    """
+    file = Filer(make_file(tmp_path, content))
+    result = file.delete('nothing')
+    assert not result
+    for line, entry in zip(file.read(), [['3', 'More Tests'], ['2', 'Make Tests'], ['1', 'Run Tests']]):
         assert line == entry
