@@ -98,11 +98,11 @@ def done(obj, tasks: Tuple[str]) -> None:
 
     :tasks: Task(s) to be added to your list. Supports any number of arguments
 
-    :Note: All tasks will be added at the same rank
-
     :Note: If multiple lines match an of the ``tasks``, they will all be deleted.
 
     :Note: If your task is more than 1 word long, enclose it in quotes
+
+    :Note: If a task is not found, then the CLI will say so
 
     """
     for item in tasks:

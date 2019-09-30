@@ -206,6 +206,8 @@ As with `to do`_, `to done` suports an indefinite number of tasks, as long as al
         
         to done 'Write my abstract' 'Email boss'
 
+If ``to done`` finds these tasks in your ``TODO.tsv``, it'll remove them! If it can't find the tasks, it will print a message saying which ones couldn't be removed.
+
 Under the hood, ``to done`` creates a temp file, then performs a string match to each line of your ``TODO.tsv``. If a perfect match to ''task'' is not in a line, that line is written to the temp file. If ''task'' is in a line, that line is skipped. This way, the temp file ends up containing only those tasks that aren't completed. Once every line is checked, the temp file replaces ``TODO.tsv`` with its contents. Task deleted!
 
 .. Warning:: If two different tasks contain the same text, they will both be deleted!

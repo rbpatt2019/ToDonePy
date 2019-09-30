@@ -86,7 +86,7 @@ def test_to_doing_custom_file_sort_flag(tmp_path):
 
 
 def test_to_done_custom_file(tmp_path):
-    """Run to do with existing custom file"""
+    """Run to done with existing custom file"""
     runner = CliRunner()
     with runner.isolated_filesystem():
         tsv = make_file(
