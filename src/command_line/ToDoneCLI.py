@@ -105,7 +105,8 @@ def done(obj, tasks: Tuple[str]) -> None:
     :Note: If your task is more than 1 word long, enclose it in quotes
 
     """
-    Filer.delete
     for item in tasks:
-        obj.delete(item)
-    click.echo(f"{len(tasks)} task(s) removed!")
+        if obj.delete(item):
+            click.echo(f'Task \"{item}\" successfully deleted!')
+        else:
+            click.echo(f'Task \"{item}\" not in TODO.tsv...')
