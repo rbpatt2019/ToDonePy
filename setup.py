@@ -8,7 +8,7 @@ with open("README.rst") as f:
 
 setuptools.setup(
     name="ToDonePy",
-    version="2.0.0",
+    version="2.1.0",
     author="Ryan Patterson",
     author_email="ryan.patterson.2015@gmail.com",
     description="A developed command line task manager",
