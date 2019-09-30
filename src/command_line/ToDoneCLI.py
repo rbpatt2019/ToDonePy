@@ -56,7 +56,7 @@ def do(obj, sort: str, rank: int, tasks: Tuple[str]) -> None:
     if sort != "none":
         keys = {"rank": [0], "date": [1], "both": [0, 1]}
         obj.sort(keys[sort])
-    click.echo(f"{len(tasks)} tasks added!")
+    click.echo(f"{len(tasks)} task(s) added!")
 
 
 @to.command()

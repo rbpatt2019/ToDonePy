@@ -18,7 +18,7 @@ def test_to_do_custom_file(tmp_path):
         result = runner.invoke(to, ["--file", f"{tsv}", "do", "1", "New task"])
         date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
         assert result.exit_code == 0
-        assert result.output == "Task added\n"
+        assert result.output == "1 task(s) added!\n"
         assert (
             Path(tsv).read_text()
             == f"1\t2019-09-20 20:56:00\tOld task\n1\t{date}\tNew task\n"
@@ -95,5 +95,5 @@ def test_to_done_custom_file(tmp_path):
         )
         result = runner.invoke(to, ["--file", f"{tsv}", "done", "New task"])
         assert result.exit_code == 0
-        assert result.output == "Task removed\n"
+        assert result.output == "1 task(s) removed!\n"
         assert Path(tsv).read_text() == "2\t2019-09-20 20:56:00\tOld task\n"
