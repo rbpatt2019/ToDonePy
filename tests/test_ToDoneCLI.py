@@ -93,7 +93,7 @@ def test_to_done_custom_file(tmp_path):
             tmp_path,
             "2\t2019-09-20 20:56:00\tOld task\n1\t2019-09-24 12:57:00\tNew task\n",
         )
-        result = runner.invoke(to, ["--file", f"{tsv}", "done", "New task"])
+        result = runner.invoke(to, ["--file", f"{tsv}", "done", "New task", "Nothing"])
         assert result.exit_code == 0
-        assert result.output == "1 task(s) removed!\n"
+        assert result.output == "Task \"New task\" successfully deleted!\nTask \"Nothing\" not in TODO.tsv...\n"
         assert Path(tsv).read_text() == "2\t2019-09-20 20:56:00\tOld task\n"
