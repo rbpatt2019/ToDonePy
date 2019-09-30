@@ -40,7 +40,7 @@ def do(obj, sort: str, rank: int, tasks: Tuple[str]) -> None:
     """Add some tasks to your list
 
     :rank: priority to assign to this task
-    :task: Task(s) to be added to your list
+    :tasks: Task(s) to be added to your list
 
     :Note: --sort defaults to "both". If must be one of :
     ["rank", "date", "both", "none"]. If none, tasks are not resorted 
