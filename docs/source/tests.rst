@@ -22,6 +22,13 @@ tests.test\_filer
    :undoc-members:
    :show-inheritance:
 
+tests.test\_file\_len
+---------------------
+.. automodule:: tests.test_file_len
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 tests.make\_temp
 ----------------
 .. automodule:: tests.make_temp
