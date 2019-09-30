@@ -1,5 +1,6 @@
-from pathlib import Path
 import subprocess
+from pathlib import Path
+
 
 def file_len(file: Path) -> int:
     """Find the number of lines in a file
@@ -8,7 +9,9 @@ def file_len(file: Path) -> int:
 
     :returns: Number of lines in a file
     """
-    wc = subprocess.Popen(['wc', '-l', file], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    wc = subprocess.Popen(
+        ["wc", "-l", file], stdout=subprocess.PIPE, stderr=subprocess.PIPE
+    )
     result, err = wc.communicate()
     if wc.returncode != 0:
         raise IOError(err)
