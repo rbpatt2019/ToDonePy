@@ -95,6 +95,12 @@ As with any good command-line tool, you can get some basic help by calling:
 
         to --help
 
+You can get help on any subcommand by calling ``--help`` after that subcommand. For example, to get help with ``to doing``, call:
+
+.. code:: sh
+
+        to doing --help
+
 Under the hood, ``to`` creates the context object that holds the information on the file you use for tracking you're TODOs. If you don't specify a file to use, it will default to ``$HOME/TODO.tsv``. If you would like to specify a different file to use, than call the command with the ``--file/-f`` flag like so:
 
 .. code:: sh
@@ -116,15 +122,21 @@ To begin tracking your TODOs, call the command as follows:
 
 .. code:: sh
 
-        to do task rank        
+        to do rank tasks
 
-``to`` is the base command. It must be invoked to use any part of the tool. The ``do`` subcommand is how you add tasks to your ``TODO.tsv``. After ``to do``, there are two mandatory arguments: the ``rank`` and the ``task``. The first argument is ``rank``. ``rank`` should be a number indicating how important this task is. 1 is very important, 2 less so, etc. Though nothing explicitly bans you from using as many ranks as you want, I'd reccomed using 3 for high, medium, and low priority. The second argument is ``task``. Here, specify what it is you need to do. If your task takes more than one word to describe, then you need to include it in quotes.  So, if you wanted to remind yourself to write an abstract for that paper you've been delaying, call:
+``to`` is the base command. It must be invoked to use any part of the tool. The ``do`` subcommand is how you add tasks to your ``TODO.tsv``. After ``to do``, there are two mandatory arguments: ``rank`` and ``tasks``. The first argument is ``rank``. ``rank`` should be a number indicating how important this task is. 1 is very important, 2 less so, etc. Though nothing explicitly bans you from using as many ranks as you want, I'd reccomed using 3 for high, medium, and low priority. 
+
+The second argument is ``tasks``. Here, specify what it is you need to do. If your task takes more than one word to describe, then you need to include it in quotes. ``tasks`` supports an indefinite number of arguments, from 1 to as many as you want. 
+
+.. note:: All tasks specified will be added at the same rank, so only combine tasks you want to give the same priority.
+
+So, if you wanted to remind yourself to write an abstract for that paper you've been delaying and to email your boss, call:
 
 .. code:: sh
         
-        to do 1 'Write my abstract' 
+        to do 1 'Write my abstract' 'Email boss'
 
-This will create ``TODO.tsv`` if it doesn't already exist, and add 'Write my abstract' with a rank of one to it. ``to do`` also logs the date and time the task was added, so that you always know how old a task is.
+This will create ``TODO.tsv`` if it doesn't already exist, and add 'Write my abstract' and 'Email boss', both with a rank of one, to ``TODO.tsv``. ``to do`` also logs the date and time the task was added, so that you always know how old a task is.
 
 ``to do`` also has one option: ``--sort/-s``. This specifies how to sort your list after a new task is added. It must be one of: ``[rank, date, both, none]``. ``both`` sorts by name and then date, and ``none`` does not sort, simply appending tasks to the end of your list. It defaults to ``both``, so that your highest priority tasks are first, and, among those, the oldest are first. If you just wanted to sort by date after adding a new task, then you could call:
 
@@ -166,10 +178,11 @@ This will open ``TODO.tsv`` in your system editor. Where you would see something
 
 .. code:: sh
 
-        1       YYYY-MM-DD HH:MM:SS     Write my abstract,
+        1       YYYY-MM-DD HH:MM:SS     Write my abstract
+        1       YYYY-MM-DD HH:MM:SS     Email boss
         1       YYYY-MM-DD HH:MM:SS     Important work
 
-Nothing fancy, just a plain tsv with ``rank`` in the first column, `the date/time of addition in the second, and `task`` in the third. Now, you can make all the changes you want, then save and close the file to return to the command line.
+Nothing fancy, just a plain tsv with ``rank`` in the first column, the date/time of addition in the second, and ```task`` in the third. Now, you can make all the changes you want, then save and close the file to return to the command line.
 
 Calling ``--edit`` will trump any calls to ``sort`` or ``number`` made in the same command.      
 
@@ -185,21 +198,21 @@ After the end of a productive work session, you've completed a task from your li
 
 .. code:: sh
 
-        to done task
+        to done tasks
 
-As with `to do`_, if your task is more than one word, you need to enclose it in quotes, like so:
+As with `to do`_, `to done` suports an indefinite number of tasks, as long as all multi-word tasks are enclosed in quotes. For example, if you emailed your boss that finished abstract, then you can remove those tasks like so:
 
 .. code:: sh
         
-        to done 'Write my abstract'
+        to done 'Write my abstract' 'Email boss'
 
-Under the hood, ``to done`` creates a temp file, then performs a string match to each line of your ``TODO.tsv``. If ''task'' is not in a line, that line is written to the temp file. If ''task'' is in a line, that line is skipped. This way, the temp file ends up containing only those tasks that aren't completed. Once every line is checked, the temp file replaces ``TODO.tsv`` with its contents. Task deleted!
+Under the hood, ``to done`` creates a temp file, then performs a string match to each line of your ``TODO.tsv``. If a perfect match to ''task'' is not in a line, that line is written to the temp file. If ''task'' is in a line, that line is skipped. This way, the temp file ends up containing only those tasks that aren't completed. Once every line is checked, the temp file replaces ``TODO.tsv`` with its contents. Task deleted!
 
 .. Warning:: If two different tasks contain the same text, they will both be deleted!
 
 Known Bugs
 ----------
-- Test fails when called with ``--edit`` as ``result.output == 1``, likely teh result of a hung editor.
+- Test fails when called with ``--edit`` as ``result.output == 1``, likely the result of a hung editor.
 
 Recent Changes
 --------------
@@ -209,9 +222,9 @@ Please see the `CHANGELOG <https://github.com/rbpatt2019/ToDonePy/blob/master/CH
 Next Steps
 ----------
 
-- Support nargs for adding multiple tasks
 - Addition of TODOs from file parsing
 - Graphic notification support for use with cron
+- Support removal of tasks by task ID number
 - Continue to expand README and doumentation.
 
 Thank Yous
