@@ -21,3 +21,10 @@ Function: counted_echo
    :members:
    :undoc-members:
    :show-inheritance:
+        
+Function: file_len
+------------------
+.. automodule:: ToDonePy.file_len
+   :members:
+   :undoc-members:
+   :show-inheritance:
