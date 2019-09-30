@@ -27,6 +27,6 @@ setuptools.setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
     ],
-    install_requires=["click", "pandas"],
+    install_requires=["click"],
     python_requires=">=3.6",
 )
