@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v2.1.1
+------
+- Remove ``pandas`` requirement in setup.py
+
 v2.1.0
 ------
 - Suport nargs for the ``tasks`` parameter of ``to do`` and ``to done``
