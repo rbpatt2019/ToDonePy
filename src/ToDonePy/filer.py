@@ -1,3 +1,4 @@
+from ToDonePy.file_len import file_len as file_len
 import csv
 import os
 import shutil
@@ -83,12 +84,12 @@ class Filer(object):
             writer = csv.writer(file, delimiter="\t")
             writer.writerows(rows)
 
-    def delete(self, contains: str) -> None:
+    def delete(self, contains: str) -> bool:
         """Deletes all lines from self where ``contains in line``
 
         :contains: string to use for line deletion
 
-        :returns: None
+        :returns: True, if successful, false otherwise
 
         """
         with open(self.path, "r") as r_file:
@@ -98,7 +99,12 @@ class Filer(object):
                 for line in reader:
                     if contains not in line:
                         writer.writerow(line)
-        shutil.move("tmp", self.path)
+        if file_len(self.path) == file_len(Path("tmp")):
+            os.remove(Path("tmp"))
+            return False
+        else:
+            shutil.move("tmp", self.path)
+            return True
 
     def sort(self, cols: List[int]) -> None:
         """Sort the contents of self by columns
