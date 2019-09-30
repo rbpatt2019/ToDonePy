@@ -40,7 +40,9 @@ def do(obj, sort: str, rank: int, tasks: Tuple[str]) -> None:
     """Add some tasks to your list
 
     :rank: priority to assign to this task
-    :tasks: Task(s) to be added to your list
+    :tasks: Task(s) to be added to your list. Supports any number of arguments
+
+    :Note: All tasks will be added at the same rank
 
     :Note: --sort defaults to "both". If must be one of :
     ["rank", "date", "both", "none"]. If none, tasks are not resorted 
@@ -94,9 +96,11 @@ def doing(obj, sort: str, number: int, edit: bool) -> None:
 def done(obj, tasks: Tuple[str]) -> None:
     """Remove a task to your list
 
-    :tasks: Task(s) to be removed from your list
+    :tasks: Task(s) to be added to your list. Supports any number of arguments
 
-    :Note: If multiple tasks match ``task``, they will all be deleted.
+    :Note: All tasks will be added at the same rank
+
+    :Note: If multiple lines match an of the ``tasks``, they will all be deleted.
 
     :Note: If your task is more than 1 word long, enclose it in quotes
 
