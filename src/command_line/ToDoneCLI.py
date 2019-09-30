@@ -107,6 +107,6 @@ def done(obj, tasks: Tuple[str]) -> None:
     """
     for item in tasks:
         if obj.delete(item):
-            click.echo(f'Task \"{item}\" successfully deleted!')
+            click.echo(f'Task "{item}" successfully deleted!')
         else:
-            click.echo(f'Task \"{item}\" not in TODO.tsv...')
+            click.echo(f'Task "{item}" not in TODO.tsv...')
