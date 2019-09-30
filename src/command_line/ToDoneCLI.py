@@ -3,6 +3,7 @@
 
 from datetime import datetime as dt
 from pathlib import Path
+from typing import Tuple
 
 import click
 
@@ -32,14 +33,14 @@ def to(ctx, file: Path) -> None:
 
 @to.command()
 @click.option("--sort", "-s", default="both", help="How to sort added tasks", type=str)
-@click.argument("rank", required=True, type=int)
-@click.argument("task", required=True, type=str)
+@click.argument("rank", nargs=1, required=True, type=int)
+@click.argument("tasks", nargs=-1, required=True, type=str)
 @click.pass_obj
-def do(obj, sort: str, rank: int, task: str) -> None:
-    """Add a task to your list
+def do(obj, sort: str, rank: int, tasks: Tuple[str]) -> None:
+    """Add some tasks to your list
 
     :rank: priority to assign to this task
-    :task: Task to be added to your list
+    :task: Task(s) to be added to your list
 
     :Note: --sort defaults to "both". If must be one of :
     ["rank", "date", "both", "none"]. If none, tasks are not resorted 
@@ -51,11 +52,11 @@ def do(obj, sort: str, rank: int, task: str) -> None:
 
     """
     date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
-    obj.append([[str(rank), date, task]])
+    obj.append([[str(rank), date, item] for item in tasks])
     if sort != "none":
         keys = {"rank": [0], "date": [1], "both": [0, 1]}
         obj.sort(keys[sort])
-    click.echo("Task added")
+    click.echo(f"{len(tasks)} tasks added!")
 
 
 @to.command()
@@ -88,17 +89,19 @@ def doing(obj, sort: str, number: int, edit: bool) -> None:
 
 
 @to.command()
-@click.argument("task", required=True)
+@click.argument("tasks", nargs=-1, required=True, type=str)
 @click.pass_obj
-def done(obj, task: str) -> None:
+def done(obj, tasks: Tuple[str]) -> None:
     """Remove a task to your list
 
-    :task: Task to be removed from your list
+    :tasks: Task(s) to be removed from your list
 
     :Note: If multiple tasks match ``task``, they will all be deleted.
 
     :Note: If your task is more than 1 word long, enclose it in quotes
 
     """
-    obj.delete(task)
-    click.echo("Task removed")
+    Filer.delete
+    for item in tasks:
+        obj.delete(item)
+    click.echo(f"{len(tasks)} task(s) removed!")
