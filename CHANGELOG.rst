@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v2.2.0
+------
+- ``to done`` notifies you when it can't delete a task
+
 v2.1.1
 ------
 - Remove ``pandas`` requirement in setup.py
