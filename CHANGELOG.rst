@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v2.1.0
+------
+- Suport nargs for the ``tasks`` parameter of ``to do`` and ``to done``
+
 v2.0.0
 ------
 - BREAKING: Move to ``TODO.tsv`` for prettier printing.
