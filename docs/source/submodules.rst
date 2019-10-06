@@ -28,3 +28,10 @@ Function: file_len
    :members:
    :undoc-members:
    :show-inheritance:
+
+Function: notify_send
+---------------------
+.. automodule:: ToDonePy.notify_send
+   :members:
+   :undoc-members:
+   :show-inheritance:
