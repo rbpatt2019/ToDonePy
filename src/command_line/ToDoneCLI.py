@@ -9,6 +9,7 @@ import click
 
 from ToDonePy.counted_echo import counted_echo as counted_echo
 from ToDonePy.filer import Filer as Filer
+from ToDonePy.notify import notify_send as notify_send
 
 
 @click.group()
@@ -67,14 +68,22 @@ def do(obj, sort: str, rank: int, tasks: Tuple[str]) -> None:
 )
 @click.option("--number", "-n", default=5, help="How many tasks to return", type=int)
 @click.option(
+    "--graphic/--no-graphic",
+    "-g/-G",
+    default=False,
+    help="Send a graphic remider instead of echoing to the terminal",
+)
+@click.option(
     "--edit/--no-edit", "-e/-E", default=False, help="Open TODO.tsv in your editor"
 )
 @click.pass_obj
-def doing(obj, sort: str, number: int, edit: bool) -> None:
+def doing(obj, sort: str, number: int, graphic: bool, edit: bool) -> None:
     """See tasks in your list
 
     :Note: --sort defaults to "none" to preserve order in file.
     It must be one of ["rank", "date", "both", "none"].
+
+    :Note: --graphic has a dependency on notify-send and is Linux/Mac Specific
 
     :Note: --no-edit is default, so does not need to be specified for 
         calls where you do NOT want an editor.
@@ -87,7 +96,12 @@ def doing(obj, sort: str, number: int, edit: bool) -> None:
         if sort != "none":
             keys = {"rank": [0], "date": [1], "both": [0, 1]}
             obj.sort(keys[sort])
-        counted_echo(obj.read(), number, "\t")
+        elif graphic:
+            notify_send(
+                "My TODOs", "\n".join(["\t".join(x) for x in obj.read()]), "low", 5000
+            )
+        else:
+            counted_echo(obj.read(), number, "\t")
 
 
 @to.command()
