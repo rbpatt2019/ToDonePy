@@ -15,9 +15,9 @@ Class: Filer
    :undoc-members:
    :show-inheritance:
 
-Function: counted_echo
+Function: counted_list
 ----------------------
-.. automodule:: ToDonePy.counted_echo
+.. automodule:: ToDonePy.counted_list
    :members:
    :undoc-members:
    :show-inheritance:
