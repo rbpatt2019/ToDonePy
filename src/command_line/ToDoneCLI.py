@@ -7,7 +7,7 @@ from typing import Tuple
 
 import click
 
-from ToDonePy.counted_echo import counted_echo as counted_echo
+from ToDonePy.counted_list import counted_list as counted_list
 from ToDonePy.filer import Filer as Filer
 from ToDonePy.notify import notify_send as notify_send
 
@@ -98,10 +98,10 @@ def doing(obj, sort: str, number: int, graphic: bool, edit: bool) -> None:
             obj.sort(keys[sort])
         elif graphic:
             notify_send(
-                "My TODOs", "\n".join(["\t".join(x) for x in obj.read()]), "low", 5000
+                "My TODOs", counted_list(obj.read(), number, '\t'), "low", 5000
             )
         else:
-            counted_echo(obj.read(), number, "\t")
+            counted_list(obj.read(), number, "\t")
 
 
 @to.command()
