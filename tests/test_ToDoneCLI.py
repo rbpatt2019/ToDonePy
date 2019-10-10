@@ -84,6 +84,18 @@ def test_to_doing_custom_file_sort_flag(tmp_path):
             == "1\t2019-09-24 12:57:00\tNew task\n1\t2019-09-23 12:57:00\tNew task\n2\t2019-09-20 20:56:00\tOld task\n"
         )
 
+def test_to_doing_custom_file_graphic_flag(tmp_path):
+    """Run to doing with the --graphic flag"""
+    runner = CliRunner()
+    with runner.isolated_filesystem():
+        tsv = make_file(
+            tmp_path,
+            "2\t2019-09-20 20:56:00\tOld task\n1\t2019-09-24 12:57:00\tNew task\n1\t2019-09-23 12:57:00\tNew task\n",
+        )
+        result = runner.invoke(to, ["--file", f"{tsv}", "doing", "--graphic"])
+        assert result.exit_code == 0
+        assert result.output == ""
+
 
 def test_to_done_custom_file(tmp_path):
     """Run to done with existing custom file"""
