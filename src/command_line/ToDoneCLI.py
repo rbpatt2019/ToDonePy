@@ -83,29 +83,26 @@ def doing(obj, sort: str, number: int, graphic: bool, edit: bool) -> None:
     :Note: --sort defaults to "none" to preserve order in file.
     It must be one of ["rank", "date", "both", "none"].
 
+    :Note: --sort calls before --graphic or --editor
+
     :Note: --graphic has a dependency on notify-send and is Linux/Mac Specific
 
     :Note: --no-edit is default, so does not need to be specified for 
         calls where you do NOT want an editor.
 
-    :Note: --edit will over-ride --sort
     """
+    keys = {"rank": [0], "date": [1], "both": [0, 1]}
+    if sort != "none":
+        obj.sort(keys[sort])
     if edit:
         click.edit(extension=".tsv", filename=str(obj.path))
+    elif graphic:
+        notify_send(
+            "My TODOs", "\n".join(counted_list(obj.read(), number, "\t")), "low", 5000
+        )
     else:
-        if sort != "none":
-            keys = {"rank": [0], "date": [1], "both": [0, 1]}
-            obj.sort(keys[sort])
-        elif graphic:
-            notify_send(
-                "My TODOs",
-                "\n".join(counted_list(obj.read(), number, "\t")),
-                "low",
-                5000,
-            )
-        else:
-            for task in counted_list(obj.read(), number, "\t"):
-                click.echo(task)
+        for task in counted_list(obj.read(), number, "\t"):
+            click.echo(task)
 
 
 @to.command()
