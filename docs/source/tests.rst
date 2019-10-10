@@ -36,6 +36,13 @@ tests.test\_notify
    :undoc-members:
    :show-inheritance:
 
+tests.test\_counted\_list
+-------------------------
+.. automodule:: tests.test_counted_list
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 tests.make\_temp
 ----------------
 .. automodule:: tests.make_temp

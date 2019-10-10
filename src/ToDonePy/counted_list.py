@@ -13,9 +13,9 @@ def counted_list(lines: List[List[str]], number: int, connector: str) -> List[st
     """
     hold = [connector.join(line) for line in lines]
     if len(hold) > number:
-        return hold[:number] 
+        return hold[:number]
     elif len(hold) < number:
-        hold.append(f'You do not have {number} tasks!')
+        hold.append(f"You do not have {number} tasks!")
         return hold
     else:
         return hold

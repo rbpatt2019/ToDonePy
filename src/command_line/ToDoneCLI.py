@@ -98,7 +98,10 @@ def doing(obj, sort: str, number: int, graphic: bool, edit: bool) -> None:
             obj.sort(keys[sort])
         elif graphic:
             notify_send(
-                "My TODOs", '\n'.join(counted_list(obj.read(), number, '\t')), "low", 5000
+                "My TODOs",
+                "\n".join(counted_list(obj.read(), number, "\t")),
+                "low",
+                5000,
             )
         else:
             for task in counted_list(obj.read(), number, "\t"):
