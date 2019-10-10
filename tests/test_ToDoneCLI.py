@@ -55,14 +55,7 @@ def test_to_doing_custom_file(tmp_path):
 #         )
 #         result = runner.invoke(to, ["--file", f"{tsv}", "doing", "--edit"])
 #         assert result.exit_code == 0
-#         assert (
-#             result.output
-#             == "2,Old task,2019-09-20 20:56:00\n1,New task,2019-09-24 12:57:00\n1,New task,2019-09-23 12:57:00\n"
-#         )
-#         assert (
-#             Path(tsv).read_text()
-#             == "2,Old task,2019-09-20 20:56:00\n1,New task,2019-09-24 12:57:00\n1,New task,2019-09-23 12:57:00\n"
-#         )
+#         assert result.output == ''
 
 
 def test_to_doing_custom_file_sort_flag(tmp_path):
