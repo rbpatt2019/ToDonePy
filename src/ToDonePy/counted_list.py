@@ -1,7 +1,7 @@
 from typing import List
 
 
-def counted_echo(lines: List[List[str]], number: int, connector: str) -> List[str]:
+def counted_list(lines: List[List[str]], number: int, connector: str) -> List[str]:
     """Safely iterate over lists of unknown length
 
     :lines: List containing items to be echoed
