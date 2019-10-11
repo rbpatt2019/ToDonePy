@@ -235,7 +235,6 @@ Next Steps
 ----------
 
 - Addition of TODOs from file parsing
-- Graphic notification support for use with cron
 - Support removal of tasks by task ID number
 - Continue to expand README and doumentation.
 
