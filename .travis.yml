@@ -5,7 +5,7 @@ python:
 - 3.7
 install: 
   - pip install -r dev_requirements.txt
-  - sudo apt-get install notify-osd
+  - sudo apt-get install libnotify-bin
 script: make test
 deploy:
   provider: pypi
