@@ -21,7 +21,7 @@ from ToDonePy.notify import notify_send as notify_send
     type=click.Path(exists=False),
     help="Location of TODO.tsv",
 )
-@click.version_option(version="2.2.1")
+@click.version_option(version="2.3.0")
 @click.pass_context
 def to(ctx, file: Path) -> None:
     """Base command for managing tasks
