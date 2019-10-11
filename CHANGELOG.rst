@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v2.3.1
+------
+- Update requirements
+
 v2.3.0
 ------
 - Adds ``--graphic`` flag for ``to doing`` allowing the user to spawn notification windows
