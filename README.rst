@@ -140,7 +140,7 @@ This will create ``TODO.tsv`` if it doesn't already exist, and add 'Write my abs
 
 ``to do`` also has one option: ``--sort/-s``. This specifies how to sort your list after a new task is added. It must be one of: ``[rank, date, both, none]``. ``both`` sorts by name and then date, and ``none`` does not sort, simply appending tasks to the end of your list. It defaults to ``both``, so that your highest priority tasks are first, and, among those, the oldest are first. If you just wanted to sort by date after adding a new task, then you could call:
 
-..code:: sh
+.. code:: sh
 
         to do --sort date 1 'Important work'
 
@@ -167,6 +167,16 @@ Also, specifying the ``--number/-n`` flag will let you change how many tasks are
         to doing -s rank -n 3
 
 If you have fewer tasks than ``number``, the command prints a friendly reminder of that fact!
+
+Maybe you prefer a graphic notifier instead of echoing in the terminal. ``ToDonePy`` has that covered, too! Just call:
+
+.. code:: sh
+        
+        to doing --graphic
+
+to trigger a notification window. By default, it stays up for 5 seconds. Currently, you can't set the time, though that's in the works!
+
+.. Note:: The graphic flag makes a system call to ``notify-send``. If you don't have that installed, the command will fail. It should be installed on most Linux systems, though.
 
 Sometimes, you might want to correct an error, change a priority, or in some way edit yout ``TODO.tsv``. In these cases, you can call ``to doing`` in editor mode:
 

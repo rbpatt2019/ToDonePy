@@ -29,6 +29,20 @@ tests.test\_file\_len
    :undoc-members:
    :show-inheritance:
 
+tests.test\_notify
+---------------------
+.. automodule:: tests.test_notify
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+tests.test\_counted\_list
+-------------------------
+.. automodule:: tests.test_counted_list
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 tests.make\_temp
 ----------------
 .. automodule:: tests.make_temp
