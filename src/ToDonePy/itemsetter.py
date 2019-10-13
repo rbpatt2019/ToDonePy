@@ -14,7 +14,7 @@ def itemsetter(*items: int) -> Callable[[List, Any], None]:
     
         >>> f(x, 'z')
         >>> print(x)
-        ['a', 'z', 'c']
+        ['a', 'b', 'z']
 
     :items: Indices to be set
 
