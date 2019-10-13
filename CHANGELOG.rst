@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v3.0.0
+------
+- BREAKING: Add delimiter parameter to Filer class
+
 v2.3.1
 ------
 - Update requirements

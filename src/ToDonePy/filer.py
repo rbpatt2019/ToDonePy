@@ -20,7 +20,7 @@ class Filer(object):
 
     """
 
-    def __init__(self, path: Path, create: bool = True, delimiter: str = '\t') -> None:
+    def __init__(self, path: Path, create: bool = True, delimiter: str = "\t") -> None:
         """Initialise the Filer
 
         :path: A Unix filepath to the desired file
@@ -36,7 +36,7 @@ class Filer(object):
             if create:
                 self.path.touch()
                 # Specifically for initiating todos
-                self.append([['ID', 'Rank', 'Date', 'Task']])
+                self.append([["ID", "Rank", "Date", "Task"]])
             else:
                 raise OSError("File does not exist")
 
