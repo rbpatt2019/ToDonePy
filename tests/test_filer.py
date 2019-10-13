@@ -33,7 +33,7 @@ def test_Filer_read_new_file(tmp_path: Path) -> None:
     """
     file = Filer(make_path(tmp_path), create=True)
     assert isfile(make_path(tmp_path))
-
+    assert file.read() == [['ID', 'Rank', 'Date', 'Task']]
 
 def test_Filer_read_existing_file(
     tmp_path: Path, content: str = "1\tMake Tests\n2\tRun Tests"
