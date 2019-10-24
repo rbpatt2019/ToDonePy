@@ -4,12 +4,49 @@ version = "2.3.1"
 description = "A developed command-line task manager"
 authors = ["rbpatt2019 <ryan.patterson.2015@gmail.com>"]
 license = "GPL-3.0+"
+readme = "README.rst"
+homepage = "https://pypi.org/project/ToDonePy/"
+repository = "https://github.com/rbpatt2019/ToDonePy"
+documentation = "https://todonepy.readthedocs.io/en/latest/"
+classifiers=[
+        "Development Status :: 3 - Alpha",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Natural Language :: English",
+        "Operating System :: Unix",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+]
+packages = [
+        { include = "command_line", from = "src" },
+        { include = "ToDonePy", from = "src" },
+]
 
 [tool.poetry.dependencies]
 python = "3.6, 3.7"
 click = "^7.0"
 
 [tool.poetry.dev-dependencies]
+black
+bump2version
+codecov
+coverage
+isort
+mypy
+mypy-extensions
+pyflakes
+pytest
+pytest-cov
+pytest-instafail
+pytest-mypy
+pytest-runner
+Sphinx
+sphinx-click
+sphinxcontrib-fulltoc
+twine
+
+[tool.poetry.scripts]
+to = "command_line.ToDoneCLI:to"
 
 [build-system]
 requires = ["poetry>=0.12"]
