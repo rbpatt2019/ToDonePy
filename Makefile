@@ -8,10 +8,10 @@ clean:
 	rm -rf .eggs/
 
 develop:
-	pip install -r dev_requirements.txt
+	poetry install
 
 install: 
-	pip install -r requirements.txt
+	poetry install --no-dev
 
 format: clean
 	isort -rc src
@@ -19,6 +19,7 @@ format: clean
 
 lint: format
 	pyflakes src
+	poetry check
 
 test: lint
 	pytest
@@ -36,12 +37,9 @@ major: clean
 	git push origin master --tags
 
 dist: clean 
-	python setup.py sdist bdist_wheel
-
-check: dist
-	twine check dist/*
+	poetry build
 
 release: dist
-	twine upload dist/*
+	poetry publish
 
-.PHONY: clean develop install format lint test patch minor major dist check release
+.PHONY: clean develop install format lint test patch minor major dist release
