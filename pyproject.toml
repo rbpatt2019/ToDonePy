@@ -27,23 +27,23 @@ python = "3.6, 3.7"
 click = "^7.0"
 
 [tool.poetry.dev-dependencies]
-black
-bump2version
-codecov
-coverage
-isort
-mypy
-mypy-extensions
-pyflakes
-pytest
-pytest-cov
-pytest-instafail
-pytest-mypy
-pytest-runner
-Sphinx
-sphinx-click
-sphinxcontrib-fulltoc
-twine
+black = 19.3b0
+bump2version = 0.5.11
+codecov = 2.0.15
+coverage = 4.5.4
+isort = 4.3.21
+mypy = 0.730
+mypy-extensions = 0.4.2
+pyflakes = 2.1.1
+pytest = 5.2.1
+pytest-cov = 2.8.1
+pytest-instafail = 0.4.1
+pytest-mypy = 0.4.1
+pytest-runner = 5.1
+Sphinx = 2.1.2 
+sphinx-click = 2.3.0
+sphinxcontrib-fulltoc = 1.2.0
+twine = 2.0.0
 
 [tool.poetry.scripts]
 to = "command_line.ToDoneCLI:to"
