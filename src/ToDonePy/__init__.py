@@ -1,1 +1,1 @@
-"""Function definitions for ToDonePy version 2.3.1"""
+"""Function definitions for ToDonePy"""
