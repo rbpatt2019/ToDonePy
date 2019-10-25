@@ -54,7 +54,6 @@ force_grid_wrap = 0
 use_parentheses = "True"
 line_length = 88
 
-[pytest]
 addopts = "--ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=src/ --cov-report term"
 
 [build-system]
