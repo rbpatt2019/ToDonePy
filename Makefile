@@ -22,17 +22,17 @@ lint: format
 	poetry check
 
 test: lint
-	pytest
+	poetry run pytest
 
-patch: clean
+patch: test
 	bump2version patch
 	git push origin master --tags
 
-minor: clean
+minor: test
 	bump2version minor
 	git push origin master --tags
 
-major: clean
+major: test
 	bump2version major
 	git push origin master --tags
 
