@@ -14,7 +14,7 @@ install:
 	poetry install --no-dev
 
 format: clean
-	poetry run isort -rc src
+	poetry rub isort -rc src
 	poetry run black src
 
 lint: format
