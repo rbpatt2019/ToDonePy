@@ -6,7 +6,6 @@ from pathlib import Path
 from typing import Tuple
 
 import click
-
 from ToDonePy.counted_list import counted_list as counted_list
 from ToDonePy.filer import Filer as Filer
 from ToDonePy.notify import notify_send as notify_send
