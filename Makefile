@@ -14,11 +14,11 @@ install:
 	poetry install --no-dev
 
 format: clean
-	isort -rc src
-	black src
+	poetry rub isort -rc src
+	poetry run black src
 
 lint: format
-	pyflakes src
+	poetry run pyflakes src
 	poetry check
 
 test: lint
