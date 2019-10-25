@@ -25,15 +25,15 @@ test: lint
 	poetry run pytest --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=src/ --cov-report term
 
 patch: test
-	bump2version patch
+	poetry version patch
 	git push origin master --tags
 
 minor: test
-	bump2version minor
+	poetry version minor
 	git push origin master --tags
 
 major: test
-	bump2version major
+	poetry version major
 	git push origin master --tags
 
 dist: clean 
