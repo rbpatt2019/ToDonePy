@@ -10,28 +10,33 @@ from ToDonePy.file_len import file_len as file_len
 
 class Filer(object):
 
-    """A class for gracefully handling file interactions
+    """A class for gracefully handling file interactions with delimited data
 
     Designed particularly for passing context in a Click program. 
 
     :path: A Unix filepath to the desired file
     :create: If the file does not already exist, create it.
+    :delimiter: The delimiter to be used for the file
 
     """
 
-    def __init__(self, path: Path, create: bool = True) -> None:
+    def __init__(self, path: Path, create: bool = True, delimiter: str = "\t") -> None:
         """Initialise the Filer
 
         :path: A Unix filepath to the desired file
         :create: If the file does not already exist, create it.
+        :delimiter: The delimiter to be used for the file
 
         :returns: None
 
         """
         self.path = path
+        self.delimiter = delimiter
         if not os.path.isfile(self.path):
             if create:
                 self.path.touch()
+                # Specifically for initiating todos
+                self.append([["ID", "Rank", "Date", "Task"]])
             else:
                 raise OSError("File does not exist")
 
@@ -45,7 +50,7 @@ class Filer(object):
 
         """
         with open(self.path, "r", newline="") as file:
-            reader = csv.reader(file, delimiter="\t")
+            reader = csv.reader(file, delimiter=self.delimiter)
             lines = []
             for line in reader:
                 lines.append(line)
@@ -65,7 +70,7 @@ class Filer(object):
 
         """
         with open(self.path, "w", newline="") as file:
-            writer = csv.writer(file, delimiter="\t")
+            writer = csv.writer(file, delimiter=self.delimiter)
             writer.writerows(rows)
 
     def append(self, rows: List[List[str]]) -> None:
@@ -82,7 +87,7 @@ class Filer(object):
 
         """
         with open(self.path, "a", newline="") as file:
-            writer = csv.writer(file, delimiter="\t")
+            writer = csv.writer(file, delimiter=self.delimiter)
             writer.writerows(rows)
 
     def delete(self, contains: str) -> bool:
@@ -94,9 +99,9 @@ class Filer(object):
 
         """
         with open(self.path, "r") as r_file:
-            reader = csv.reader(r_file, delimiter="\t")
+            reader = csv.reader(r_file, delimiter=self.delimiter)
             with open("tmp", "a") as w_file:
-                writer = csv.writer(w_file, delimiter="\t")
+                writer = csv.writer(w_file, delimiter=self.delimiter)
                 for line in reader:
                     if contains not in line:
                         writer.writerow(line)
