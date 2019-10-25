@@ -3,6 +3,8 @@ clean:
 	find . -type d -name "__pycache__" -delete
 	find . -name '*.egg-info' -exec rm -rf {} +
 	find . -name '*.egg' -exec rm -rf {} +
+	rm -rf .mypy_cache/
+	rm -rf .pytest_cache/
 	rm -rf build/
 	rm -rf dist/
 	rm -rf .eggs/
