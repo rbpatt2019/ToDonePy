@@ -4,6 +4,7 @@ For contributors
 ================
 
 Comments, criticisms, and concerns are always welcome! If you would like to help with development, please follow the steps below.
+This project depends on `Poetry <https://poetry.eustace.io` for all things dependency and development related. Make sure it's installed, or else all this will fail. It's an awesome tool, I highly recommend you check it out!
 
 Clone the repo 
 --------------
