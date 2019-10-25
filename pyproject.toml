@@ -27,22 +27,22 @@ python = ">=3.6, <3.8"
 Click = "^7.0"
 
 [tool.poetry.dev-dependencies]
-black = {version = "19.3b0", allows-prereleases = true}
-bump2version = "0.5.11"
-codecov = "2.0.15"
-coverage = "4.5.4"
-isort = "4.3.21"
-mypy = "0.740"
-mypy-extensions = "0.4.3"
-pyflakes = "2.1.1"
-pytest = "5.2.1"
-pytest-cov = "2.8.1"
-pytest-instafail = "0.4.1"
-pytest-mypy = "0.4.1"
-pytest-runner = "5.1"
-Sphinx = "2.1.2"
-sphinx-click = "2.3.0"
-twine = "2.0.0"
+black = {version = "^19.3b0", allows-prereleases = true}
+bump2version = "^0.5.11"
+codecov = "^2.0.15"
+coverage = "^4.5.4"
+isort = "^4.3.21"
+mypy = "^0.740"
+mypy-extensions = "^0.4.3"
+pyflakes = "^2.1.1"
+pytest = "^5.2.1"
+pytest-cov = "^2.8.1"
+pytest-instafail = "^0.4.1"
+pytest-mypy = "^0.4.1"
+pytest-runner = "^5.1"
+Sphinx = "^2.1.2"
+sphinx-click = "^2.3.0"
+twine = "^2.0.0"
 
 [tool.poetry.scripts]
 to = "command_line.ToDoneCLI:to"
@@ -53,8 +53,6 @@ include_trailing_comma = "True"
 force_grid_wrap = 0
 use_parentheses = "True"
 line_length = 88
-
-addopts = "--ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=src/ --cov-report term"
 
 [build-system]
 requires = ["poetry>=0.12"]
