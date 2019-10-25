@@ -3,20 +3,33 @@ language: python
 python:
 - 3.6
 - 3.7
-install: 
-  - make develop
-  - sudo apt-get install libnotify-bin
+
+env:
+  global:
+  - secure: qcgKpHMdch2JuEMooieW0jZbqRs9vhhGzUWWmwJVO5J0oiEtoksvOFcwAApsSdmrJYJcFQ1zdrolaue0am8gmlphZ3Qmq+Y9DjQy8ZRoeWrjuBHCUOixOuRLKvCe0LW7PPhWmJb0g0/RlrqsrQqrG+i4bwBFSdEMkc/XRiq8ACOSYaIors9pO7+ZxFHjlmKCbu74rpfQHZ/t9OBnCNrLBsOagD4TwzzVqldkE1cwd6tqeJ1/38WKca0N8IQJu0H6OkHknSZS8xK7TkhJKBSR6bYfrJuPXHP2VZUqOU5SyJm7yperKhy2p6YsLmAb8icnnNo3nuyhEjHNNeu1C3ZjwRlDXYYdse78QP64LfgOaA6Z1JA0j2Mz1co+Hyus3sATaEwvz95Z/ZZqZgAyV2RgZgTUizOe4DqVxVvOE3d8CDsSIx1E7U17uRwMZJoX3+yYsqMSUgaX6QteTuDi+LyB1EggrhGRTKnnID+mNtdIfg9G+x0iw3K7wNqktlbPXvUbUzlk963ceI10InYrf/LJQFUaLNkBt4jF6cMn4+3aH/a6l2PqhzC/6Uub7cMLU+fjoANZa3VWZiYWKEbcZY4saUFvpQvL2kJ8v1/vxlH6IEYxAld63UzrZevfGGWL9XQdyNN9PM2WUuk9Jxg/NN34ZPNe7AxR5nESy4m7pPWoFxQ=
+  - secure: dedzH8QfGtI3FBK0d7CXegKZIBH+l/4NpHz3eWWu0vYnMligppLZ04OXczTvXJY4dz81U1VH0tdEBq7ryaI78xNTj4OuW3rnNI+yC+7qOJ5BMI1bN80ZaudfaISr5gTn7W8l0qE8ToANc84cSe1XgmCs+l36fuhCwTv5B+9g13eM0/LIVm23p4d174nCu1MB3gK7yGQl2y2dNCX7c4PSdfI32vigT2AMZMn1+jazIbOijrLrmfTDppjPdUmU3MCNn88L+hpXI+Q4+3o89h0Fl+oJ7VtoKFqR3t83boME6Gq4NhX5bHuU5/bLNEMhLNhPl91Qvj5HoKN1jjQLHTSN1/UCSj8lnGLn3JPEAJm6bKRnIBhl36som7Vh5kr/TxQkiAZvohhgvPS+ID8kcmwWjYJQcvonpyZVCARgS+Vgvc/oJMSIdMgzC7J0pZR8MwGTwIef9je/AvThqwWzRvAVeGtOk8P3sloqRYzqF7KvKt2lpvFwSLFyJHlNdGSjfAy42VGDOLhRIZoSVW1GngqNjhwT9BfOMU10fwcuyguX6aCIwNQ3M9ZUIDyIAdiS62RzeA7jgCoDZBTKvkUIE1Yg4jHT/Xu/lO1eDPRt3iRncPaf/EW9GaCtxgMXwZcR3aI8xngQ8I1GguTqJDd+4KsN/9MAMKIsBZfYKiqmYQMUzi4=
+
+before_install:
+- pip install --upgrade pip
+- pip install poetry
+
+install:
+- poetry install
+- sudo apt-get install libnotify-bin
+
 script: make test
+
+before_deploy:
+- poetry config http-basic.pypi $PYPI_USER $PYPI_PASS
+
 deploy:
-  provider: pypi
-  distributions: sdist bdist_wheel
-  user: rbpatt2019
-  password:
-    secure: UB6af1XfCQHxpVCoBbKR+ESXMGNUDw1qRaDJTFPUdkCAj1XGlv+DypYGvV2JpCYZprsBOu7lkUXsgnExVPXWdZjueI6gQF/dp8O7UsGF4fNLTXxU10crFh12hvhAmlH26u6u9+bhUHjQdQAAerRkHI+x5s19yZvLX2JL4tKWHqYCo4/xYjp1GSn7AiM72ZZnikwQ2PmVN12CpnRhVRfRhDvI6RxtWXJxMLlpxHWfi+bvi75d7ATx3yCJGOOlV9VEadp4ROrycEp1IdME0y09K0cDe/AVl+F6KUo+g4bxaLZfn3cFqXuqyXcVN+K4IB5uJnOE9JNAcl1k+5GS49mCvGyEdj1EvHo7OtrE5nQOdMOjIgkSWSBDqxouqOv0C2fVaEsrE/tHvpTm8UMZMzC3XkMIKoMgxXjH2lxRsj1n70KLr3W6XBCc9XR/kPTf4Rh7ErtgNlGffaolNYL4r6p2B4qJ9nxhebboxYvQK9qHXH9bUU2cWm0dedlhIvHYPKR7lPvnS6aU0HB1ZvbA4KBYbSSNATJhh+8nV5Ekt91smXXzzSmANxLWpjCBLHErLEsj3pO+lNh/u158gBf7d/Y/j/fZ+z9Hf1kbKz8+um9S189VnvOjmPQPTzPelruL4TM7nHdCuHFaP4lmu2AYRG/2Wj12RhnI8Vdhsu6KjsVJSkc=
+  provider: script
+  script: poetry publish
+  skip_cleanup: true
   on:
     tags: true
     repo: rbpatt2019/ToDonePy
     python: 3.7
-  skip_cleanup: true
+
 after_success:
 - codecov
