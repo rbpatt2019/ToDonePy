@@ -1,7 +1,7 @@
 default_language_version:
   python: python3.7
 
-faile_fast: true
+fail_fast: true
 
 repos:
 - repo: https://github.com/ambv/black
