@@ -5,6 +5,7 @@ CHANGELOG for ToDonePy
 
 v3.0.0
 ------
+- BREAKING: Migrate to poetry for development
 - BREAKING: Add delimiter parameter to Filer class
 - BREAKING: Add headings to ``TODO.tsv``
 - Add itemsetter function
