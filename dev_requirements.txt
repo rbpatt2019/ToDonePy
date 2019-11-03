@@ -11,7 +11,7 @@ pyflakes==2.1.1
 pytest==5.2.1
 pytest-cov==2.8.1
 pytest-instafail==0.4.1
-pytest-mypy==0.4.1
+pytest-mypy==0.4.2
 pytest-runner==5.1
 # sphinx-click requires Sphinx<2.2
 Sphinx==2.1.2 
