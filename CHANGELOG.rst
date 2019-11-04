@@ -9,6 +9,7 @@ v3.0.0
 - BREAKING: Add delimiter parameter to Filer class
 - BREAKING: Add headings to ``TODO.tsv``
 - Add itemsetter function
+- Filer.sort can now ignore headers
 
 v2.3.1
 ------
