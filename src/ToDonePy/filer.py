@@ -112,14 +112,25 @@ class Filer(object):
             shutil.move("tmp", self.path)
             return True
 
-    def sort(self, cols: List[int]) -> None:
+    def sort(self, cols: List[int], header: bool = False) -> None:
         """Sort the contents of self by columns
 
         :cols: List of columns, 0-indexed, to sort by
+        :header: Whether or not row 0 is a header. If True, row 0 is skipped for sorting.
 
         :returns: None
 
         """
         lines = self.read()
-        lines.sort(key=itemgetter(*cols))
-        self.write(lines)
+        if header:
+            # Slice off header
+            head = lines[0]
+            entries = lines[1:]
+            # Sort and re-add
+            entries.sort(key=itemgetter(*cols))
+            entries.insert(0, head)
+            # Write
+            self.write(entries)
+        else:
+            lines.sort(key=itemgetter(*cols))
+            self.write(lines)
