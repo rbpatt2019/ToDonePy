@@ -6,6 +6,7 @@ from pathlib import Path
 from typing import List
 
 from ToDonePy.file_len import file_len as file_len
+from ToDonePy.itemsetter import itemgetter as itemsetter
 
 
 class Filer(object):
@@ -72,6 +73,21 @@ class Filer(object):
         with open(self.path, "w", newline="") as file:
             writer = csv.writer(file, delimiter=self.delimiter)
             writer.writerows(rows)
+
+    def write_col(self, col: List[str], index: int = 0) -> None:
+        """Writes contents of col to column given by index
+
+        :col: A list of strings to write to self.path
+        :index: To which column to write. Defaults to first (index = 0)
+
+        :returns: None
+
+        """
+        lines = self.read()
+        write_col = itemsetter(index)
+        for line, val in zip(lines, col):
+            write_col(line, val)
+        self.write(lines)
 
     def append(self, rows: List[List[str]]) -> None:
         """Appends contents of rows to self.path.
