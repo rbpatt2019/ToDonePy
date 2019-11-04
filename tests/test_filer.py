@@ -33,7 +33,8 @@ def test_Filer_read_new_file(tmp_path: Path) -> None:
     """
     file = Filer(make_path(tmp_path), create=True)
     assert isfile(make_path(tmp_path))
-    assert file.read() == [['ID', 'Rank', 'Date', 'Task']]
+    assert file.read() == [["ID", "Rank", "Date", "Task"]]
+
 
 def test_Filer_read_existing_file(
     tmp_path: Path, content: str = "1\tMake Tests\n2\tRun Tests"
@@ -47,7 +48,7 @@ def test_Filer_read_existing_file(
 
     """
     file = Filer(make_file(tmp_path, content))
-    for line, entry in zip(file.read(), [['1', 'Make Tests'], ['2', 'Run Tests']]):
+    for line, entry in zip(file.read(), [["1", "Make Tests"], ["2", "Run Tests"]]):
         assert line == entry
 
 
@@ -87,14 +88,16 @@ def test_Filer_append_existing_file(
     """
     file = Filer(make_file(tmp_path, content))
     file.append(new_contents)
-    for line, entry in zip(file.read(), [['1', 'Make Tests'], ['2', 'Run Tests']] + new_contents):
+    for line, entry in zip(
+        file.read(), [["1", "Make Tests"], ["2", "Run Tests"]] + new_contents
+    ):
         assert line == entry
 
-def test_Filer_sort_existing_file(
-    tmp_path: Path,
-    content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
+
+def test_Filer_sort_existing_file_without_header(
+    tmp_path: Path, content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
 ) -> None:
-    """Run Filer to sort an existing file
+    """Run Filer to sort an existing file that does not have a header
 
     :tmp_path: Where to create temporary file
     :content: Contents of temporary file
@@ -103,13 +106,36 @@ def test_Filer_sort_existing_file(
 
     """
     file = Filer(make_file(tmp_path, content))
-    file.sort([0])
-    for line, entry in zip(file.read(), [['1', 'Run Tests'], ['2', 'Make Tests'], ['3', 'More Tests']]):
+    file.sort([0], header=False)
+    for line, entry in zip(
+        file.read(), [["1", "Run Tests"], ["2", "Make Tests"], ["3", "More Tests"]]
+    ):
         assert line == entry
 
-def test_Filer_delete_existing_file_successful(
+
+def test_Filer_sort_existing_file_with_header(
     tmp_path: Path,
-    content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
+    content: str = "No.\tTask\n3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
+) -> None:
+    """Run Filer to sort an existing file that does have a header
+
+    :tmp_path: Where to create temporary file
+    :content: Contents of temporary file
+
+    :returns: None
+
+    """
+    file = Filer(make_file(tmp_path, content))
+    file.sort([0], header=True)
+    for line, entry in zip(
+        file.read(),
+        [["No.", "Task"], ["1", "Run Tests"], ["2", "Make Tests"], ["3", "More Tests"]],
+    ):
+        assert line == entry
+
+
+def test_Filer_delete_existing_file_successful(
+    tmp_path: Path, content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
 ) -> None:
     """Run Filer to delete a line from  an existing file
 
@@ -120,15 +146,14 @@ def test_Filer_delete_existing_file_successful(
 
     """
     file = Filer(make_file(tmp_path, content))
-    result = file.delete('Make Tests')
+    result = file.delete("Make Tests")
     assert result
-    for line, entry in zip(file.read(), [['3', 'More Tests'], ['1', 'Run Tests']]):
+    for line, entry in zip(file.read(), [["3", "More Tests"], ["1", "Run Tests"]]):
         assert line == entry
 
 
 def test_Filer_delete_existing_file_unsuccessful(
-    tmp_path: Path,
-    content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
+    tmp_path: Path, content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
 ) -> None:
     """Run Filer to delete a non-existent line
 
@@ -139,7 +164,9 @@ def test_Filer_delete_existing_file_unsuccessful(
 
     """
     file = Filer(make_file(tmp_path, content))
-    result = file.delete('nothing')
+    result = file.delete("nothing")
     assert not result
-    for line, entry in zip(file.read(), [['3', 'More Tests'], ['2', 'Make Tests'], ['1', 'Run Tests']]):
+    for line, entry in zip(
+        file.read(), [["3", "More Tests"], ["2", "Make Tests"], ["1", "Run Tests"]]
+    ):
         assert line == entry
