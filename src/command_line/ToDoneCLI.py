@@ -58,7 +58,7 @@ def do(obj, sort: str, rank: int, tasks: Tuple[str]) -> None:
     obj.append([[str(rank), date, item] for item in tasks])
     if sort != "none":
         keys = {"rank": [0], "date": [1], "both": [0, 1]}
-        obj.sort(keys[sort])
+        obj.sort(keys[sort], header=True)
     click.echo(f"{len(tasks)} task(s) added!")
 
 
@@ -93,7 +93,7 @@ def doing(obj, sort: str, number: int, graphic: bool, edit: bool) -> None:
     """
     keys = {"rank": [0], "date": [1], "both": [0, 1]}
     if sort != "none":
-        obj.sort(keys[sort])
+        obj.sort(keys[sort], header=True)
     if edit:
         click.edit(extension=".tsv", filename=str(obj.path))
     elif graphic:
