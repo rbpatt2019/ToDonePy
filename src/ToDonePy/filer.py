@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import List
 
 from ToDonePy.file_len import file_len as file_len
-from ToDonePy.itemsetter import itemgetter as itemsetter
+from ToDonePy.itemsetter import itemsetter as itemsetter
 
 
 class Filer(object):
