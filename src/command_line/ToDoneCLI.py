@@ -10,7 +10,6 @@ import click
 from ToDonePy.counted_list import counted_list as counted_list
 from ToDonePy.file_len import file_len as file_len
 from ToDonePy.filer import Filer as Filer
-from ToDonePy.itemsetter import itemsetter as itemsetter
 from ToDonePy.notify import notify_send as notify_send
 
 
@@ -61,7 +60,6 @@ def do(obj, sort: str, rank: int, tasks: Tuple[str]) -> None:
     if sort != "none":
         keys = {"rank": [1], "date": [2], "both": [1, 2]}
         obj.sort(keys[sort], header=True)
-    # Lines 65 to 71 will likely get refactored into either a function or a filer write_col method
     ids = [str(x) for x in range(1, file_len(obj.path))]
     ids.insert(0, "ID")
     obj.write_col(ids, 0)
