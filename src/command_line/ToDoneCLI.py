@@ -8,7 +8,9 @@ from typing import Tuple
 import click
 
 from ToDonePy.counted_list import counted_list as counted_list
+from ToDonePy.file_len import file_len as file_len
 from ToDonePy.filer import Filer as Filer
+from ToDonePy.itemsetter import itemsetter as itemsetter
 from ToDonePy.notify import notify_send as notify_send
 
 
@@ -55,10 +57,14 @@ def do(obj, sort: str, rank: int, tasks: Tuple[str]) -> None:
 
     """
     date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
-    obj.append([[str(rank), date, item] for item in tasks])
+    obj.append([["", str(rank), date, item] for item in tasks])
     if sort != "none":
-        keys = {"rank": [0], "date": [1], "both": [0, 1]}
+        keys = {"rank": [1], "date": [2], "both": [1, 2]}
         obj.sort(keys[sort], header=True)
+    # Lines 65 to 71 will likely get refactored into either a function or a filer write_col method
+    ids = [str(x) for x in range(1, file_len(obj.path))]
+    ids.insert(0, "ID")
+    obj.write_col(ids, 0)
     click.echo(f"{len(tasks)} task(s) added!")
 
 
@@ -91,17 +97,23 @@ def doing(obj, sort: str, number: int, graphic: bool, edit: bool) -> None:
         calls where you do NOT want an editor.
 
     """
-    keys = {"rank": [0], "date": [1], "both": [0, 1]}
+    keys = {"rank": [1], "date": [2], "both": [1, 2]}
     if sort != "none":
         obj.sort(keys[sort], header=True)
+        ids = [str(x) for x in range(1, file_len(obj.path))]
+        ids.insert(0, "ID")
+        obj.write_col(ids, 0)
     if edit:
         click.edit(extension=".tsv", filename=str(obj.path))
-    elif graphic:
+    elif graphic:  # number + 1 accounts for header
         notify_send(
-            "My TODOs", "\n".join(counted_list(obj.read(), number, "\t")), "low", 5000
+            "My TODOs",
+            "\n".join(counted_list(obj.read(), number + 1, "\t")),
+            "low",
+            5000,
         )
     else:
-        for task in counted_list(obj.read(), number, "\t"):
+        for task in counted_list(obj.read(), number + 1, "\t"):
             click.echo(task)
 
 
@@ -122,6 +134,9 @@ def done(obj, tasks: Tuple[str]) -> None:
     """
     for item in tasks:
         if obj.delete(item):
+            ids = [str(x) for x in range(1, file_len(obj.path))]
+            ids.insert(0, "ID")
+            obj.write_col(ids, 0)
             click.echo(f'Task "{item}" successfully deleted!')
         else:
             click.echo(f'Task "{item}" not in TODO.tsv...')
