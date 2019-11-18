@@ -81,7 +81,7 @@ def do(obj, sort: str, rank: int, tasks: Tuple[str]) -> None:
     "--edit/--no-edit", "-e/-E", default=False, help="Open TODO.tsv in your editor"
 )
 @click.pass_obj
-def doing(obj, sort: str, number: int, graphic: bool, edit: bool) -> None:
+def doing(obj, number: int, graphic: bool, edit: bool, sort: str = "none") -> None:
     """See tasks in your list
 
     :Note: --sort defaults to "none" to preserve order in file.

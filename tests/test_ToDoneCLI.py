@@ -14,14 +14,16 @@ def test_to_do_custom_file(tmp_path):
     """Run to do with existing custom file"""
     runner = CliRunner()
     with runner.isolated_filesystem():
-        tsv = make_file(tmp_path, "1\t1\t2019-09-20 20:56:00\tOld task\n")
+        tsv = make_file(
+            tmp_path, "ID\tRank\tDate\tTask\n1\t1\t2019-09-20 20:56:00\tOld task\n"
+        )
         result = runner.invoke(to, ["--file", f"{tsv}", "do", "1", "New task"])
         date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
         assert result.exit_code == 0
         assert result.output == "1 task(s) added!\n"
         assert (
             Path(tsv).read_text()
-            == f"1\t1\t2019-09-20 20:56:00\tOld task\n2\t1\t{date}\tNew task\n"
+            == f"ID\tRank\tDate\tTask\n1\t1\t2019-09-20 20:56:00\tOld task\n2\t1\t{date}\tNew task\n"
         )
 
 
@@ -31,17 +33,17 @@ def test_to_doing_custom_file(tmp_path):
     with runner.isolated_filesystem():
         tsv = make_file(
             tmp_path,
-            "2\t2019-09-20 20:56:00\tOld task\n1\t2019-09-24 12:57:00\tNew task\n1\t2019-09-23 12:57:00\tNew task\n",
+            "ID\tRank\tDate\tTask\n1\t2\t2019-09-20 20:56:00\tOld task\n2\t1\t2019-09-24 12:57:00\tNew task\n3\t1\t2019-09-23 12:57:00\tNew task\n",
         )
         result = runner.invoke(to, ["--file", f"{tsv}", "doing"])
         assert result.exit_code == 0
         assert (
             result.output
-            == "2\t2019-09-20 20:56:00\tOld task\n1\t2019-09-24 12:57:00\tNew task\n1\t2019-09-23 12:57:00\tNew task\nYou do not have 5 tasks!\n"
+            == "ID\tRank\tDate\tTask\n1\t2\t2019-09-20 20:56:00\tOld task\n2\t1\t2019-09-24 12:57:00\tNew task\n3\t1\t2019-09-23 12:57:00\tNew task\nYou do not have 5 tasks!\n"
         )
         assert (
             Path(tsv).read_text()
-            == "2\t2019-09-20 20:56:00\tOld task\n1\t2019-09-24 12:57:00\tNew task\n1\t2019-09-23 12:57:00\tNew task\n"
+            == "ID\tRank\tDate\tTask\n1\t2\t2019-09-20 20:56:00\tOld task\n2\t1\t2019-09-24 12:57:00\tNew task\n3\t1\t2019-09-23 12:57:00\tNew task\n"
         )
 
 
