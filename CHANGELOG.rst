@@ -8,6 +8,8 @@ v3.0.0
 - BREAKING: Migrate to poetry for development
 - BREAKING: Add delimiter parameter to Filer class
 - BREAKING: Add headings to ``TODO.tsv``
+- BREAKING: Add ID column to ``TODO.tsv``
+- Add Filer.write_col method
 - Add itemsetter function
 - Filer.sort can now ignore headers
 
