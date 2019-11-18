@@ -115,8 +115,8 @@ def doing(obj, sort: str, number: int, graphic: bool, edit: bool) -> None:
         )
     else:
         lines = obj.read()
-        click.echo(lines[0])
-        for task in counted_list([lines[1:]], number, "\t"):
+        click.echo("\t".join(lines[0]))
+        for task in counted_list(lines[1:], number, "\t"):
             click.echo(task)
 
 

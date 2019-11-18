@@ -31,7 +31,7 @@ class Filer(object):
         :returns: None
 
         """
-        self.path = path
+        self.path = Path(path)
         self.delimiter = delimiter
         if not os.path.isfile(self.path):
             if create:
