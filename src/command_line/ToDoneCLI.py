@@ -104,14 +104,19 @@ def doing(obj, sort: str, number: int, graphic: bool, edit: bool) -> None:
     if edit:
         click.edit(extension=".tsv", filename=str(obj.path))
     elif graphic:  # number + 1 accounts for header
+        lines = obj.read()
         notify_send(
             "My TODOs",
-            "\n".join(counted_list(obj.read(), number + 1, "\t")),
+            "\n".join(
+                counted_list(lines[0], 1, "\t") + counted_list(lines[1:], number, "\t")
+            ),
             "low",
             5000,
         )
     else:
-        for task in counted_list(obj.read(), number + 1, "\t"):
+        lines = obj.read()
+        click.echo(lines[0])
+        for task in counted_list([lines[1:]], number, "\t"):
             click.echo(task)
 
 
