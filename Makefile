@@ -28,14 +28,17 @@ test: lint
 
 patch: test
 	poetry version patch
+	git tag (rg version pyproject.toml | sed -n 1p | awk '/version/{print $NF}' | tr -d '"' | awk '{print "v"$0}')
 	git push origin master --tags
 
 minor: test
 	poetry version minor
+	git tag (rg version pyproject.toml | sed -n 1p | awk '/version/{print $NF}' | tr -d '"' | awk '{print "v"$0}')
 	git push origin master --tags
 
 major: test
 	poetry version major
+	git tag (rg version pyproject.toml | sed -n 1p | awk '/version/{print $NF}' | tr -d '"' | awk '{print "v"$0}')
 	git push origin master --tags
 
 dist: clean 
