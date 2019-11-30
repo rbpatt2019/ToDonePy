@@ -12,6 +12,7 @@
 
 import os
 import sys
+import poetry_version
 sys.path.insert(0, os.path.abspath('../..'))
 
 
@@ -20,9 +21,10 @@ sys.path.insert(0, os.path.abspath('../..'))
 project = 'ToDonePy'
 copyright = '2019, Ryan B Patterson'
 author = 'Ryan B Patterson'
+__version__ = poetry_version.extract(source_file=__file__)
 
 # Short version (should work with bump2version)
-version = "2.3.1"
+version = __version__
 # The full version, including alpha/beta/rc tags
 release = version
 

@@ -29,10 +29,6 @@ ToDonePY - A basic command-line tast manager
    :target: https://codecov.io/gh/rbpatt2019/ToDonePy
    :alt: Code Coverage
 
-.. image:: https://pyup.io/repos/github/rbpatt2019/ToDonePy/shield.svg
-   :target: https://pyup.io/repos/github/rbpatt2019/ToDonePy/
-   :alt: Updates
-     
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/ambv/black
    :alt: Codestyle: Black
@@ -124,19 +120,19 @@ To begin tracking your TODOs, call the command as follows:
 
         to do rank tasks
 
-``to`` is the base command. It must be invoked to use any part of the tool. The ``do`` subcommand is how you add tasks to your ``TODO.tsv``. After ``to do``, there are two mandatory arguments: ``rank`` and ``tasks``. The first argument is ``rank``. ``rank`` should be a number indicating how important this task is. 1 is very important, 2 less so, etc. Though nothing explicitly bans you from using as many ranks as you want, I'd reccomed using 3 for high, medium, and low priority. 
+``to`` is the base command. It must be invoked to use any part of the tool. The ``do`` subcommand is how you add tasks to your ``TODO.tsv``. After ``to do``, there are two mandatory arguments: ``rank`` and ``tasks``. The first argument is ``rank``. ``rank`` should be a number indicating how important this task is. 1 is very important, 2 less so, etc. Though nothing explicitly bans you from using as many ranks as you want, I would reccomed using 3 for high, medium, and low priority. 
 
 The second argument is ``tasks``. Here, specify what it is you need to do. If your task takes more than one word to describe, then you need to include it in quotes. ``tasks`` supports an indefinite number of arguments, from 1 to as many as you want. 
 
 .. note:: All tasks specified will be added at the same rank, so only combine tasks you want to give the same priority.
 
-So, if you wanted to remind yourself to write an abstract for that paper you've been delaying and to email your boss, call:
+So, if you wanted to remind yourself to write an abstract for that paper you have been delaying and to email your boss, call:
 
 .. code:: sh
         
         to do 1 'Write my abstract' 'Email boss'
 
-This will create ``TODO.tsv`` if it doesn't already exist, and add 'Write my abstract' and 'Email boss', both with a rank of one, to ``TODO.tsv``. ``to do`` also logs the date and time the task was added, so that you always know how old a task is.
+This will create ``TODO.tsv`` if it does not already exist, and add 'Write my abstract' and 'Email boss', both with a rank of one, to ``TODO.tsv``. ``to do`` also logs the date and time the task was added, so that you always know how old a task is.
 
 ``to do`` also has one option: ``--sort/-s``. This specifies how to sort your list after a new task is added. It must be one of: ``[rank, date, both, none]``. ``both`` sorts by name and then date, and ``none`` does not sort, simply appending tasks to the end of your list. It defaults to ``both``, so that your highest priority tasks are first, and, among those, the oldest are first. If you just wanted to sort by date after adding a new task, then you could call:
 
@@ -150,7 +146,7 @@ This will create ``TODO.tsv`` if it doesn't already exist, and add 'Write my abs
 Keeping track of tasks with ``to doing``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Once you've added some TODOs to your list, you need to make sure you stay on top of them. To see what needs to be done, call:
+Once you have added some TODOs to your list, you need to make sure you stay on top of them. To see what needs to be done, call:
 
 .. code:: sh
 
@@ -168,13 +164,13 @@ Also, specifying the ``--number/-n`` flag will let you change how many tasks are
 
 If you have fewer tasks than ``number``, the command prints a friendly reminder of that fact!
 
-Maybe you prefer a graphic notifier instead of echoing in the terminal. ``ToDonePy`` has that covered, too! Just call:
+Maybe you prefer a graphic notifier instead of echoing in the terminal - I find this useful for spawning reminders while I am coding in VIM. ``ToDonePy`` has that covered, too! Just call:
 
 .. code:: sh
         
         to doing --graphic
 
-to trigger a notification window. By default, it stays up for 5 seconds. Currently, you can't set the time, though that's in the works!
+to trigger a notification window. By default, it stays up for 5 seconds. Currently, you can not set the time, though that's in the works!
 
 .. Note:: The graphic flag makes a system call to ``notify-send``. If you don't have that installed, the command will fail. It should be installed on most Linux systems, though.
 
@@ -184,15 +180,16 @@ Sometimes, you might want to correct an error, change a priority, or in some way
 
         to doing --edit
         
-This will open ``TODO.tsv`` in your system editor. Where you would see something like below, if you've been following along:
+This will open ``TODO.tsv`` in your system editor. Where you would see something like below, if you have been following along:
 
 .. code:: sh
 
-        1       YYYY-MM-DD HH:MM:SS     Write my abstract
-        1       YYYY-MM-DD HH:MM:SS     Email boss
-        1       YYYY-MM-DD HH:MM:SS     Important work
+        ID      Rank    Date    Task
+        1       1       YYYY-MM-DD HH:MM:SS     Write my abstract
+        2       1       YYYY-MM-DD HH:MM:SS     Email boss
+        3       1       YYYY-MM-DD HH:MM:SS     Important work
 
-Nothing fancy, just a plain tsv with ``rank`` in the first column, the date/time of addition in the second, and ```task`` in the third. Now, you can make all the changes you want, then save and close the file to return to the command line.
+Nothing fancy, just a plain tsv with ``ID`` in the first column, ``rank`` in the second column, the date/time of addition in the third, and ```task`` in the fourth. Now, you can make all the changes you want, then save and close the file to return to the command line.
 
 Calling ``--edit`` will trump any calls to ``sort`` or ``number`` made in the same command.      
 
@@ -204,7 +201,7 @@ This call opens the default editor on your system, usually defined by the enviro
 Completing your tasks with ``to done``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After the end of a productive work session, you've completed a task from your list. Boom! Time well spent. To remove it from your ``TODO.tsv``, call:
+After the end of a productive work session, you have completed a task from your list. Boom! Time well spent. To remove it from your ``TODO.tsv``, call:
 
 .. code:: sh
 

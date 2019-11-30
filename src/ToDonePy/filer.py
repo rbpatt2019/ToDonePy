@@ -6,32 +6,38 @@ from pathlib import Path
 from typing import List
 
 from ToDonePy.file_len import file_len as file_len
+from ToDonePy.itemsetter import itemsetter as itemsetter
 
 
 class Filer(object):
 
-    """A class for gracefully handling file interactions
+    """A class for gracefully handling file interactions with delimited data
 
     Designed particularly for passing context in a Click program. 
 
     :path: A Unix filepath to the desired file
     :create: If the file does not already exist, create it.
+    :delimiter: The delimiter to be used for the file
 
     """
 
-    def __init__(self, path: Path, create: bool = True) -> None:
+    def __init__(self, path: Path, create: bool = True, delimiter: str = "\t") -> None:
         """Initialise the Filer
 
         :path: A Unix filepath to the desired file
         :create: If the file does not already exist, create it.
+        :delimiter: The delimiter to be used for the file
 
         :returns: None
 
         """
-        self.path = path
+        self.path = Path(path)
+        self.delimiter = delimiter
         if not os.path.isfile(self.path):
             if create:
                 self.path.touch()
+                # Specifically for initiating todos
+                self.append([["ID", "Rank", "Date", "Task"]])
             else:
                 raise OSError("File does not exist")
 
@@ -45,7 +51,7 @@ class Filer(object):
 
         """
         with open(self.path, "r", newline="") as file:
-            reader = csv.reader(file, delimiter="\t")
+            reader = csv.reader(file, delimiter=self.delimiter)
             lines = []
             for line in reader:
                 lines.append(line)
@@ -65,8 +71,23 @@ class Filer(object):
 
         """
         with open(self.path, "w", newline="") as file:
-            writer = csv.writer(file, delimiter="\t")
+            writer = csv.writer(file, delimiter=self.delimiter)
             writer.writerows(rows)
+
+    def write_col(self, col: List[str], index: int = 0) -> None:
+        """Writes contents of col to column given by index
+
+        :col: A list of strings to write to self.path
+        :index: To which column to write. Defaults to first (index = 0)
+
+        :returns: None
+
+        """
+        lines = self.read()
+        write_col = itemsetter(index)
+        for line, val in zip(lines, col):
+            write_col(line, val)
+        self.write(lines)
 
     def append(self, rows: List[List[str]]) -> None:
         """Appends contents of rows to self.path.
@@ -82,7 +103,7 @@ class Filer(object):
 
         """
         with open(self.path, "a", newline="") as file:
-            writer = csv.writer(file, delimiter="\t")
+            writer = csv.writer(file, delimiter=self.delimiter)
             writer.writerows(rows)
 
     def delete(self, contains: str) -> bool:
@@ -94,9 +115,9 @@ class Filer(object):
 
         """
         with open(self.path, "r") as r_file:
-            reader = csv.reader(r_file, delimiter="\t")
+            reader = csv.reader(r_file, delimiter=self.delimiter)
             with open("tmp", "a") as w_file:
-                writer = csv.writer(w_file, delimiter="\t")
+                writer = csv.writer(w_file, delimiter=self.delimiter)
                 for line in reader:
                     if contains not in line:
                         writer.writerow(line)
@@ -107,14 +128,25 @@ class Filer(object):
             shutil.move("tmp", self.path)
             return True
 
-    def sort(self, cols: List[int]) -> None:
+    def sort(self, cols: List[int], header: bool = False) -> None:
         """Sort the contents of self by columns
 
         :cols: List of columns, 0-indexed, to sort by
+        :header: Whether or not row 0 is a header. If True, row 0 is skipped for sorting.
 
         :returns: None
 
         """
         lines = self.read()
-        lines.sort(key=itemgetter(*cols))
-        self.write(lines)
+        if header:
+            # Slice off header
+            head = lines[0]
+            entries = lines[1:]
+            # Sort and re-add
+            entries.sort(key=itemgetter(*cols))
+            entries.insert(0, head)
+            # Write
+            self.write(entries)
+        else:
+            lines.sort(key=itemgetter(*cols))
+            self.write(lines)

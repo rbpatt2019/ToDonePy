@@ -35,3 +35,11 @@ Function: notify_send
    :members:
    :undoc-members:
    :show-inheritance:
+
+Function: itemsetter
+--------------------
+.. automodule:: ToDonePy.itemsetter
+   :members:
+   :undoc-members:
+   :show-inheritance:
+

@@ -3,15 +3,17 @@ clean:
 	find . -type d -name "__pycache__" -delete
 	find . -name '*.egg-info' -exec rm -rf {} +
 	find . -name '*.egg' -exec rm -rf {} +
+	rm -rf .mypy_cache/
+	rm -rf .pytest_cache/
 	rm -rf build/
 	rm -rf dist/
 	rm -rf .eggs/
 
 develop:
-	pip install -r dev_requirements.txt
+	poetry install
 
 install: 
-	pip install -r requirements.txt
+	poetry install --no-dev
 
 format: clean
 	isort -rc src
@@ -19,29 +21,36 @@ format: clean
 
 lint: format
 	pyflakes src
+	poetry check
 
 test: lint
-	pytest
+	pytest --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=src/ --cov-report term
 
-patch: clean
-	bump2version patch
-	git push origin master --tags
+patch: test
+	poetry version patch
+	git add pyproject.toml
+	git commit -m "Version bump"
+	git tag $$(rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
+	git push --tags
 
-minor: clean
-	bump2version minor
-	git push origin master --tags
+minor: test
+	poetry version minor
+	git add pyproject.toml
+	git commit -m "Version bump"
+	git tag $$(rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
+	git push --tags
 
-major: clean
-	bump2version major
-	git push origin master --tags
+major: test
+	poetry version major
+	git add pyproject.toml
+	git commit -m "Version bump"
+	git tag $$(rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
+	git push --tags
 
 dist: clean 
-	python setup.py sdist bdist_wheel
-
-check: dist
-	twine check dist/*
+	poetry build
 
 release: dist
-	twine upload dist/*
+	poetry publish
 
-.PHONY: clean develop install format lint test patch minor major dist check release
+.PHONY: clean develop install format lint test patch minor major dist release
