@@ -28,17 +28,23 @@ test: lint
 
 patch: test
 	poetry version patch
-	git tag (rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
+	git add pyproject.toml
+	git commit -m "Version bump"
+	git tag $$(rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
 	git push --tags
 
 minor: test
 	poetry version minor
-	git tag (rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
+	git add pyproject.toml
+	git commit -m "Version bump"
+	git tag $$(rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
 	git push --tags
 
 major: test
 	poetry version major
-	git tag (rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
+	git add pyproject.toml
+	git commit -m "Version bump"
+	git tag $$(rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
 	git push --tags
 
 dist: clean 
