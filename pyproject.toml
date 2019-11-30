@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "todonepy"
-version = "3.0.3"
+version = "3.0.4"
 description = "A developed command-line task manager"
 authors = ["rbpatt2019 <ryan.patterson.2015@gmail.com>"]
 license = "GPL-3.0+"
