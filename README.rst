@@ -38,7 +38,7 @@ Introduction
 
 Move your ToDo's to ToDone's!
 
-.. Note:: This project has only been tested on a Unix OS. I welcome collaborations to test it for MacOS and Windows!
+.. Note:: This project is stable but no longer under active development.
 
 `ToDonePy <https://github.com/rbpatt2019/ToDonePy/>`_ is a command-line interface for managing your to do list. It provides a root command, `to`_, and three subcommands:
 
