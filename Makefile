@@ -30,22 +30,22 @@ patch: test
 	poetry version patch
 	git add pyproject.toml
 	git commit -m "Version bump"
-	git tag $$(rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
+	git tag $(grep version pyproject.toml | sed -n 1p | awk '/version/{print $NF}' | tr -d '"' | awk '{print "v"$0}')
 	git push origin master --tags
 
 minor: test
 	poetry version minor
 	git add pyproject.toml
 	git commit -m "Version bump"
-	git tag $$(rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
+	git tag $(grep version pyproject.toml | sed -n 1p | awk '/version/{print $NF}' | tr -d '"' | awk '{print "v"$0}')
 	git push origin master --tags
 
 major: test
 	poetry version major
 	git add pyproject.toml
 	git commit -m "Version bump"
-	git tag $$(rg version pyproject.toml | sed -n 1p | awk '/version/{print $$NF}' | tr -d '"' | awk '{print "v"$$0}')
-	git push git push origin master --tags
+	git tag $(grep version pyproject.toml | sed -n 1p | awk '/version/{print $NF}' | tr -d '"' | awk '{print "v"$0}')
+	git push origin master --tags
 
 dist: clean 
 	poetry build
