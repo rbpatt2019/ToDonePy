@@ -44,6 +44,7 @@ sphinx-click = "^2.3.0"
 twine = "^2.0.0"
 sphinxcontrib-fulltoc = "^1.2"
 pre-commit = "^1.20"
+poetry-version = "^0.1.5"
 
 [tool.poetry.scripts]
 to = "command_line.ToDoneCLI:to"
