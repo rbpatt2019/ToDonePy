@@ -9,7 +9,7 @@ homepage = "https://pypi.org/project/ToDonePy/"
 repository = "https://github.com/rbpatt2019/ToDonePy"
 documentation = "https://todonepy.readthedocs.io/en/latest/"
 classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 7 - Inactive",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Natural Language :: English",
