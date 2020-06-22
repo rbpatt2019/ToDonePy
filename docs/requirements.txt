@@ -12,7 +12,7 @@ pytest-cov==2.10.0
 pytest-instafail==0.4.2
 pytest-mypy==0.6.2
 pytest-runner==5.2
-Sphinx==2.1.2
+Sphinx==3.1.1
 sphinx-click==2.3.0
 twine==2.0.0
 poetry-version==0.1.5
