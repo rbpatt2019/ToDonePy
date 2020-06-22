@@ -11,7 +11,7 @@ pytest==5.4.3
 pytest-cov==2.10.0
 pytest-instafail==0.4.2
 pytest-mypy==0.6.2
-pytest-runner==5.1
+pytest-runner==5.2
 Sphinx==2.1.2
 sphinx-click==2.3.0
 twine==2.0.0
