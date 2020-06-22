@@ -2,7 +2,7 @@
 Click==7.1.2
 black==19.10b0
 codecov==2.1.7
-coverage==4.5.4
+coverage==5.1
 isort==4.3.21
 mypy==0.740
 mypy-extensions==0.4.3
