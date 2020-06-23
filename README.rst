@@ -29,6 +29,10 @@ ToDonePY - A basic command-line tast manager
    :target: https://codecov.io/gh/rbpatt2019/ToDonePy
    :alt: Code Coverage
 
+.. image:: https://pyup.io/repos/github/rbpatt2019/ToDonePy/shield.svg
+     :target: https://pyup.io/repos/github/rbpatt2019/ToDonePy/
+     :alt: Updates
+
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
    :target: https://github.com/ambv/black
    :alt: Codestyle: Black
