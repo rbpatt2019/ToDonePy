@@ -121,12 +121,15 @@ class Filer:
                 for line in reader:
                     if contains not in line:
                         writer.writerow(line)
-        if file_len(self.path) == file_len(Path("tmp")):
-            os.remove(Path("tmp"))
-            return False
-        else:
+
+        # If deleted, copy and return true
+        if file_len(self.path) != file_len(Path("tmp")):
             shutil.move("tmp", self.path)
             return True
+
+        # Otherwise, clean tmp and return false
+        os.remove(Path("tmp"))
+        return False
 
     def sort(self, cols: List[int], header: bool = False) -> None:
         """Sort the contents of self by columns
