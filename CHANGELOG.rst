@@ -3,6 +3,12 @@
 CHANGELOG for ToDonePy
 ======================
 
+v3.2.0
+------
+- Resume active development
+- Incorporate marks for testing
+- Update requirements
+
 v3.0.0
 ------
 - BREAKING: Migrate to poetry for development
