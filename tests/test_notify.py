@@ -1,9 +1,13 @@
-import pytest
 from pathlib import Path
-from ToDonePy.notify import notify_send as notify_send
+from shutil import which
+
+import pytest
+
 from tests.make_temp import make_file
+from ToDonePy.notify import notify_send as notify_send
 
 
+@pytest.mark.skipif(which("notify-send") is None, reason="Requires notify-send")
 def test_notify_send(
     summary: str = "Test",
     body: str = "Testing testing 1, 2, 3",
@@ -22,6 +26,7 @@ def test_notify_send(
     assert notify_send(summary, body, urgency, expire_time)
 
 
+@pytest.mark.skipif(which("notify-send") is None, reason="Requires notify-send")
 def test_notify_send_invalid_urgency(
     summary: str = "Test",
     body: str = "Testing testing 1, 2, 3",

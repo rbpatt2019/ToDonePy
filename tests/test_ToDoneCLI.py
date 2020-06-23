@@ -3,7 +3,9 @@
 
 from datetime import datetime as dt
 from pathlib import Path
+from shutil import which
 
+import pytest
 from click.testing import CliRunner
 
 from command_line.ToDoneCLI import to
@@ -47,17 +49,18 @@ def test_to_doing_custom_file(tmp_path):
         )
 
 
-# def test_to_doing_custom_file_edit_flag(tmp_path):
-#     """Run to doing with the edit flag"""
-#     runner = CliRunner()
-#     with runner.isolated_filesystem():
-#         tsv = make_file(
-#             tmp_path,
-#             "2,Old task,2019-09-20 20:56:00\n1,New task,2019-09-24 12:57:00\n1,New task,2019-09-23 12:57:00\n",
-#         )
-#         result = runner.invoke(to, ["--file", f"{tsv}", "doing", "--edit"])
-#         assert result.exit_code == 0
-#         assert result.output == ''
+@pytest.mark.xfail(reason="Vim hangs the test, resulting in non-0 exit code")
+def test_to_doing_custom_file_edit_flag(tmp_path):
+    """Run to doing with the edit flag"""
+    runner = CliRunner()
+    with runner.isolated_filesystem():
+        tsv = make_file(
+            tmp_path,
+            "2,Old task,2019-09-20 20:56:00\n1,New task,2019-09-24 12:57:00\n1,New task,2019-09-23 12:57:00\n",
+        )
+        result = runner.invoke(to, ["--file", f"{tsv}", "doing", "--edit"])
+        assert result.exit_code == 0
+        assert result.output == ""
 
 
 def test_to_doing_custom_file_sort_flag(tmp_path):
@@ -80,6 +83,7 @@ def test_to_doing_custom_file_sort_flag(tmp_path):
         )
 
 
+@pytest.mark.skipif(which("notify-send") is None, reason="Requires notify-send")
 def test_to_doing_custom_file_graphic_flag(tmp_path):
     """Run to doing with the --graphic flag"""
     runner = CliRunner()
