@@ -3,7 +3,6 @@ from shutil import which
 
 import pytest
 
-from tests.make_temp import make_file
 from ToDonePy.notify import notify_send as notify_send
 
 
@@ -12,7 +11,7 @@ def test_notify_send(
     summary: str = "Test",
     body: str = "Testing testing 1, 2, 3",
     urgency: str = "low",
-    expire_time: int = 1000,
+    expire_time: int = 500,
 ) -> None:
     """Test a basic notification with notify_send
 
@@ -31,7 +30,7 @@ def test_notify_send_invalid_urgency(
     summary: str = "Test",
     body: str = "Testing testing 1, 2, 3",
     urgency: str = "not in list",
-    expire_time: int = 1000,
+    expire_time: int = 500,
 ) -> None:
     """Test notify_send with an invalid parameter
 
