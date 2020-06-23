@@ -234,6 +234,8 @@ Next Steps
 ----------
 
 - Addition of TODOs from file parsing
+- Refactoring tests to use fixtures
+- Refactor to argparser to achieve no external dependencies
 - Support removal of tasks by task ID number
 - Full, OS-independent graphic interface
 - Continue to expand README and doumentation.
