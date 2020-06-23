@@ -16,8 +16,7 @@ def notify_send(summary: str, body: str, urgency: str, expire_time: int) -> bool
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
-    result, err = ns.communicate()
+    _, err = ns.communicate()
     if ns.returncode != 0:
         raise IOError(err)
-    else:
-        return True
+    return True
