@@ -127,6 +127,14 @@ version = "3.0.0"
 
 [[package]]
 category = "dev"
+description = "Validate configuration and produce human readable error messages."
+name = "cfgv"
+optional = false
+python-versions = ">=3.6.1"
+version = "3.1.0"
+
+[[package]]
+category = "dev"
 description = "Universal encoding detector for Python 2 and 3"
 name = "chardet"
 optional = false
@@ -542,9 +550,13 @@ python-versions = "~=3.4"
 version = "0.4.2"
 
 [package.dependencies]
-[package.dependencies.mypy]
+[[package.dependencies.mypy]]
 python = ">=3.5,<3.8"
 version = ">=0.500"
+
+[[package.dependencies.mypy]]
+python = ">=3.8"
+version = ">=0.700"
 
 [package.dependencies.pytest]
 python = ">=3.5"
@@ -898,7 +910,7 @@ version = "1.12.1"
 [[package]]
 category = "dev"
 description = "Backport of pathlib-compatible object wrapper for zip files"
-marker = "python_version >= \"3.5\" and python_version < \"3.8\" or python_version < \"3.8\" or python_version >= \"3.5\" and python_version < \"3.8\" and (python_version >= \"3.5\" and python_version < \"3.8\" or python_version < \"3.8\") or python_version >= \"3.5\" and python_version < \"3.7\""
+marker = "python_version >= \"3.5\" and python_version < \"3.8\" or python_version < \"3.8\""
 name = "zipp"
 optional = false
 python-versions = ">=3.6"
@@ -909,8 +921,8 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "4aaf40d387cdbe8aff70529143845851c9172ee84a392fd565ec24c9d9843a26"
-python-versions = ">=3.6, <3.8"
+content-hash = "ca54f84d3f0b646ce3ad60ec1ac4330dc9128d722c4a01e258fd849ca9e7ef5e"
+python-versions = "^3.6"
 
 [metadata.files]
 alabaster = [
@@ -956,6 +968,8 @@ certifi = [
 cfgv = [
     {file = "cfgv-3.0.0-py2.py3-none-any.whl", hash = "sha256:f22b426ed59cd2ab2b54ff96608d846c33dfb8766a67f0b4a6ce130ce244414f"},
     {file = "cfgv-3.0.0.tar.gz", hash = "sha256:04b093b14ddf9fd4d17c53ebfd55582d27b76ed30050193c14e560770c5360eb"},
+    {file = "cfgv-3.1.0-py2.py3-none-any.whl", hash = "sha256:1ccf53320421aeeb915275a196e23b3b8ae87dea8ac6698b1638001d4a486d53"},
+    {file = "cfgv-3.1.0.tar.gz", hash = "sha256:c8e8f552ffcc6194f4e18dd4f68d9aef0c0d58ae7e7be8c82bee3c5e9edfa513"},
 ]
 chardet = [
     {file = "chardet-3.0.4-py2.py3-none-any.whl", hash = "sha256:fc323ffcaeaed0e0a02bf4d117757b98aed530d9ed4531e3e15460124c106691"},
