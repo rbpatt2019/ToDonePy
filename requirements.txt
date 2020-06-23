@@ -9,6 +9,7 @@ black==19.10b0
 bleach==3.1.5
 certifi==2020.6.20
 cfgv==3.0.0
+cfgv==3.1.0
 chardet==3.0.4
 click==7.1.2
 codecov==2.1.7
@@ -75,4 +76,4 @@ virtualenv==20.0.24
 wcwidth==0.2.4
 webencodings==0.5.1
 wrapt==1.12.1
-zipp==3.1.0; python_version >= "3.5" and python_version < "3.8" or python_version < "3.8" or python_version >= "3.5" and python_version < "3.8" and (python_version >= "3.5" and python_version < "3.8" or python_version < "3.8") or python_version >= "3.5" and python_version < "3.7"
+zipp==3.1.0; python_version >= "3.5" and python_version < "3.8" or python_version < "3.8"
