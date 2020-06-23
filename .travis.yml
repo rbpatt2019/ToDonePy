@@ -30,10 +30,6 @@ deploy:
   on:
     tags: true
     repo: rbpatt2019/ToDonePy
-    python: 
-      - 3.6
-      - 3.7
-      - 3.8
 
 after_success:
 - codecov
