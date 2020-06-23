@@ -9,7 +9,7 @@ from ToDonePy.file_len import file_len as file_len
 from ToDonePy.itemsetter import itemsetter as itemsetter
 
 
-class Filer(object):
+class Filer:
 
     """A class for gracefully handling file interactions with delimited data
 
