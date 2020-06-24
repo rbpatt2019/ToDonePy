@@ -8,6 +8,13 @@ Module contents
    :undoc-members:
    :show-inheritance:
 
+tests.conftest
+--------------
+.. automodule:: tests.conftest
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 tests.test\_ToDoneCLI
 ---------------------
 .. automodule:: tests.test_ToDoneCLI
