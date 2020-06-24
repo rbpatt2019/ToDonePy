@@ -47,7 +47,7 @@ lint: format
 	poetry check
 
 test: lint
-	pytest --ignore=docs --verbose --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=src/ --cov-report term
+	pytest --ignore=docs -vv --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=src/ --cov-report term
 
 patch: test
 	poetry version patch

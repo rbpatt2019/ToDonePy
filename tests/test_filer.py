@@ -3,170 +3,125 @@
 
 from os.path import isfile
 from pathlib import Path
-from typing import List
+from typing import Callable, List, Optional, Union
 
 import pytest
 
 from ToDonePy.filer import Filer as Filer
-from tests.make_temp import make_file, make_path
+
+results_txt = [
+    ["ID", "Rank", "Date", "Task"],
+    ["1", "2", "2019-09-20 20:56:00", "Old task"],
+    ["2", "1", "2019-09-24 12:57:00", "New task"],
+]
 
 
-def test_Filer_no_create(tmp_path: Path) -> None:
+@pytest.mark.parametrize(
+    "create,expected",
+    [
+        pytest.param(False, [[]], marks=pytest.mark.xfail),
+        (True, [["ID", "Rank", "Date", "Task"]]),
+    ],
+)
+def test_Filer_no_create(
+    tmp_path: Path, create: bool, expected: List[List[Optional[str]]],
+) -> None:
     """Run Filer to read a file that does not exist
 
-    :tmp_path: Where to create temporary file
+    :tmp_path: pytest.fixture. Where to create the file
+    :create: Whether or not the file should be created, from pytest.mark.parametrize
+    :expected: Expected output, from pytest.mark.parametrize
 
     :returns: None
 
     """
-    with pytest.raises(OSError):
-        file = Filer(make_path(tmp_path), create=False)
+    file = Filer(tmp_path / "tmp.tsv", create=create)
+    assert file.read() == expected
 
 
-def test_Filer_read_new_file(tmp_path: Path) -> None:
-    """Run Filer to read and create a new file
-
-    :tmp_path: Where to create temporary file
-
-    :returns: None
-
-    """
-    file = Filer(make_path(tmp_path), create=True)
-    assert isfile(make_path(tmp_path))
-    assert file.read() == [["ID", "Rank", "Date", "Task"]]
-
-
-def test_Filer_read_existing_file(
-    tmp_path: Path, content: str = "1\tMake Tests\n2\tRun Tests"
-) -> None:
+def test_Filer_read_existing_file(tmp_file: Path,) -> None:
     """Run Filer to read an existing file
 
-    :tmp_path: Where to create temporary file
-    :content: Contents of temporary file
+    :tmp_file: Custom pytest.fixture for creating tmp files
 
     :returns: None
 
     """
-    file = Filer(make_file(tmp_path, content))
-    for line, entry in zip(file.read(), [["1", "Make Tests"], ["2", "Run Tests"]]):
+    file = Filer(tmp_file)
+    for line, entry in zip(file.read(), results_txt):
         assert line == entry
 
 
-def test_Filer_write_existing_file(
-    tmp_path: Path,
-    content: str = "1\tMake Tests\n2\tRun Tests",
-    new_contents: List[List[str]] = [["3", "More tests"], ["4", "Most tests"]],
-) -> None:
+def test_Filer_write_existing_file(tmp_file: Path,) -> None:
     """Run Filer to write to an existing file
 
-    :tmp_path: Where to create temporary file
-    :content: Contents of temporary file
-    :new_contents: Contents to be written to file
+    :tmp_file: Custom pytest.fixture for creating tmp files
 
     :returns: None
 
     """
-    file = Filer(make_file(tmp_path, content))
-    file.write(new_contents)
-    for line, entry in zip(file.read(), new_contents):
+    written = [["3", "3", "2020-06-24 08:53:00", "Newer task"]]
+    file = Filer(tmp_file)
+    file.write(written)
+    for line, entry in zip(file.read(), written):
         assert line == entry
 
 
-def test_Filer_append_existing_file(
-    tmp_path: Path,
-    content: str = "1\tMake Tests\n2\tRun Tests\n",
-    new_contents: List[List[str]] = [["3", "More tests"], ["4", "Most tests"]],
-) -> None:
+def test_Filer_append_existing_file(tmp_file: Path) -> None:
     """Run Filer to append to an existing file
 
-    :tmp_path: Where to create temporary file
-    :content: Contents of temporary file
-    :new_contents: Contents to be added to file
+    :tmp_file: Custom pytest.fixture for freating tmp files
 
     :returns: None
 
     """
-    file = Filer(make_file(tmp_path, content))
-    file.append(new_contents)
-    for line, entry in zip(
-        file.read(), [["1", "Make Tests"], ["2", "Run Tests"]] + new_contents
-    ):
+    added = [["3", "3", "2020-06-24 08:53:00", "Newer task"]]
+    file = Filer(tmp_file)
+    file.append(added)
+    for line, entry in zip(file.read(), results_txt + added):
         assert line == entry
 
 
-def test_Filer_sort_existing_file_without_header(
-    tmp_path: Path, content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
+@pytest.mark.parametrize(
+    "header,expected",
+    [(False, results_txt[:0:-1]), (True, [results_txt[i] for i in [0, 2, 1]])],
+)
+def test_Filer_sort_existing_file(
+    tmp_file: Path, header: bool, expected: List[List[str]],
 ) -> None:
-    """Run Filer to sort an existing file that does not have a header
+    """Run Filer to sort an existing file
 
-    :tmp_path: Where to create temporary file
-    :content: Contents of temporary file
-
-    :returns: None
-
-    """
-    file = Filer(make_file(tmp_path, content))
-    file.sort([0], header=False)
-    for line, entry in zip(
-        file.read(), [["1", "Run Tests"], ["2", "Make Tests"], ["3", "More Tests"]]
-    ):
-        assert line == entry
-
-
-def test_Filer_sort_existing_file_with_header(
-    tmp_path: Path,
-    content: str = "No.\tTask\n3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
-) -> None:
-    """Run Filer to sort an existing file that does have a header
-
-    :tmp_path: Where to create temporary file
-    :content: Contents of temporary file
+    :tmp_file: Custom pytest.fixture for creating tmp files
+    :header: Whether or not the file has a header, from pytest.mark.parametrize
+    :expected: The expected result, from pytest.mark.parametrize
 
     :returns: None
 
     """
-    file = Filer(make_file(tmp_path, content))
-    file.sort([0], header=True)
-    for line, entry in zip(
-        file.read(),
-        [["No.", "Task"], ["1", "Run Tests"], ["2", "Make Tests"], ["3", "More Tests"]],
-    ):
+    file = Filer(tmp_file)
+    if not header:  # As tmp file comes with header, delete if necessary
+        file.delete("Rank")
+    file.sort([1], header=header)
+    for line, entry in zip(file.read(), expected):
         assert line == entry
 
 
-def test_Filer_delete_existing_file_successful(
-    tmp_path: Path, content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
+@pytest.mark.parametrize(
+    "to_del,expected", [("Old task", results_txt[0::2]), ("nothing", results_txt)],
+)
+def test_Filer_delete_existing_file(
+    tmp_file: Path, to_del: str, expected: List[List[str]],
 ) -> None:
     """Run Filer to delete a line from  an existing file
 
-    :tmp_path: Where to create temporary file
-    :content: Contents of temporary file
+    :tmp_file: Custom pytest.fixture for creating tmp files
+    :to_del: Line to be deleted, from pyteset.mark.parametrize
+    :expected: Expected result, from pytest.mark.parametrize
 
     :returns: None
 
     """
-    file = Filer(make_file(tmp_path, content))
-    result = file.delete("Make Tests")
-    assert result
-    for line, entry in zip(file.read(), [["3", "More Tests"], ["1", "Run Tests"]]):
-        assert line == entry
-
-
-def test_Filer_delete_existing_file_unsuccessful(
-    tmp_path: Path, content: str = "3\tMore Tests\n2\tMake Tests\n1\tRun Tests\n",
-) -> None:
-    """Run Filer to delete a non-existent line
-
-    :tmp_path: Where to create temporary file
-    :content: Contents of temporary file
-
-    :returns: None
-
-    """
-    file = Filer(make_file(tmp_path, content))
-    result = file.delete("nothing")
-    assert not result
-    for line, entry in zip(
-        file.read(), [["3", "More Tests"], ["2", "Make Tests"], ["1", "Run Tests"]]
-    ):
+    file = Filer(tmp_file)
+    file.delete(to_del)
+    for line, entry in zip(file.read(), expected):
         assert line == entry
