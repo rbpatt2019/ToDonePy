@@ -10,25 +10,17 @@ def list_of_lists() -> List[List[str]]:
 
 
 @pytest.fixture(scope="function")
-def tmp_file(tmp_path: Path) -> Callable[[Union[str, None]], Path]:
+def tmp_file(tmp_path: Path) -> Path:
     """Fixture for automating setup of files
 
-    By returning a callable, it can be used in situations where 
-    the contents of the file need to differe
-    
     :tmp_path: pytest.fixture. Where to create the file
 
     :returns: An instantiated tsv file
     """
-    
-    def _make_file(content: Union[str, None]) -> Path:
-        """Hidden function for initialising files
 
-        :content: What is to be written to the file. Pass None to create empty
-        """
-        file = tmp_path / "tmp.tsv"
-        if content is not None:
-            file.write_text(content)
-        return file
-
-    return _make_file
+    tmp = tmp_path / "tmp.tsv"
+    tmp.write_text(
+        "ID\tRank\tDate\tTask\n1\t2\t2019-09-20 20:56:00\tOld task\n"
+        "2\t1\t2019-09-24 12:57:00\tNew task\n"
+    )
+    return tmp
