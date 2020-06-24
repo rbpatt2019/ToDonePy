@@ -3,6 +3,11 @@
 CHANGELOG for ToDonePy
 ======================
 
+v3.2.1
+------
+
+- Refactor tests. No impact to user.
+
 v3.2.0
 ------
 - Resume active development
