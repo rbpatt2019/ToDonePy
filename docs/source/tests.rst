@@ -49,10 +49,3 @@ tests.test\_itemsetter
    :members:
    :undoc-members:
    :show-inheritance:
-
-tests.make\_temp
-----------------
-.. automodule:: tests.make_temp
-   :members:
-   :undoc-members:
-   :show-inheritance:
