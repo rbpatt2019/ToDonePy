@@ -22,7 +22,7 @@ def test_to_do_custom_file(tmp_file: Path):
     """
     runner = CliRunner()
     with runner.isolated_filesystem():
-        result = runner.invoke(to, ["--file", f"{tmp_file}", "do", "1", "Newer task"])
+        result = runner.invoke(to, ["--file", f"{tmp_file}", "do", "--sort", "none", "1", "Newer task"])
         date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
         assert result.exit_code == 0
         assert result.output == "1 task(s) added!\n"
