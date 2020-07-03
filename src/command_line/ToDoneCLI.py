@@ -7,7 +7,6 @@ from typing import Tuple
 
 import click
 
-from ToDonePy.counted_list import counted_list as counted_list
 from ToDonePy.file_len import file_len as file_len
 from ToDonePy.filer import Filer as Filer
 from ToDonePy.notify import notify_send as notify_send
@@ -101,23 +100,18 @@ def doing(obj, number: int, graphic: bool, edit: bool, sort: str = "none") -> No
         ids = [str(x) for x in range(1, file_len(obj.path))]
         ids.insert(0, "ID")
         obj.write_col(ids, 0)
+
+    lines = obj.read()[:number]
+
     if edit:
         click.edit(extension=".tsv", filename=str(obj.path))
     elif graphic:  # number + 1 accounts for header
-        lines = obj.read()
         notify_send(
-            "My TODOs",
-            "\n".join(
-                counted_list(lines[0], 1, "\t") + counted_list(lines[1:], number, "\t")
-            ),
-            "low",
-            5000,
+            "My TODOs", "\n".join(["\t".join(l) for l in lines]), "low", 5000,
         )
     else:
-        lines = obj.read()
-        click.echo("\t".join(lines[0]))
-        for task in counted_list(lines[1:], number, "\t"):
-            click.echo(task)
+        for l in lines:
+            click.echo("\t".join(l))
 
 
 @to.command()

@@ -40,7 +40,7 @@ def test_to_doing_custom_file(tmp_file: Path):
     with runner.isolated_filesystem():
         result = runner.invoke(to, ["--file", f"{tmp_file}", "doing"])
         assert result.exit_code == 0
-        assert result.output == results_txt + "You do not have 5 tasks!\n"
+        assert result.output == results_txt
         assert tmp_file.read_text() == results_txt
 
 
@@ -71,7 +71,7 @@ def test_to_doing_custom_file_sort_flag(tmp_file: Path):
     with runner.isolated_filesystem():
         result = runner.invoke(to, ["--file", f"{tmp_file}", "doing", "--sort", "rank"])
         assert result.exit_code == 0
-        assert result.output == custom_result + "You do not have 5 tasks!\n"
+        assert result.output == custom_result
         assert tmp_file.read_text() == custom_result
 
 
