@@ -1,15 +1,14 @@
 ToDonePy command-line interface (CLI)
-===============================================
+=====================================
 
 Module contents
 ---------------
-.. automodule:: command_line
+.. automodule:: todonepy
    :members:
-   :undoc-members:
    :show-inheritance:
 
 Commands
 --------
-.. click:: command_line.ToDoneCLI:to
+.. click:: todonepy.to
   :prog: to
   :show-nested:

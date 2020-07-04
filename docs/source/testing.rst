@@ -1,5 +1,5 @@
-Test Submodules
-===============
+Testing
+=======
 
 Module contents
 ---------------
