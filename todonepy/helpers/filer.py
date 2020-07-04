@@ -5,8 +5,8 @@ from operator import itemgetter
 from pathlib import Path
 from typing import List
 
-from ToDonePy.file_len import file_len as file_len
-from ToDonePy.itemsetter import itemsetter as itemsetter
+from todonepy.helpers.file_len import file_len
+from todonepy.helpers.itemsetter import itemsetter
 
 
 class Filer:
