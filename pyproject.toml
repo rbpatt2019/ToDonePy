@@ -43,10 +43,10 @@ pytest-runner = "^5.1"
 Sphinx = "^3"
 sphinx-click = "^2.3.0"
 twine = "^3"
-sphinxcontrib-fulltoc = "^1.2"
 pre-commit = "^2.5.1"
 poetry-version = "^0.1.5"
 pylint = "^2.5.3"
+sphinx_rtd_theme = "^0.5.0"
 
 [tool.poetry.scripts]
 to = "to:to"
