@@ -43,13 +43,6 @@ tests.test\_notify
    :undoc-members:
    :show-inheritance:
 
-tests.test\_counted\_list
--------------------------
-.. automodule:: tests.test_counted_list
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
 tests.test\_itemsetter
 ----------------------
 .. automodule:: tests.test_itemsetter
