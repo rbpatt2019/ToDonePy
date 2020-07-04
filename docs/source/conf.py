@@ -41,7 +41,6 @@ extensions = [
         'sphinx.ext.autodoc',
         'sphinx.ext.autosummary',
         'sphinx.ext.doctest',
-        'sphinx_click.ext',
         'sphinx.ext.napoleon',
         'sphinx_rtd_theme',
 ]
