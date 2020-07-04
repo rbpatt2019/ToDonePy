@@ -8,7 +8,7 @@ from shutil import which
 import pytest
 from click.testing import CliRunner
 
-from command_line.ToDoneCLI import to
+from todonepy import to
 
 results_txt = "ID\tRank\tDate\tTask\n1\t2\t2019-09-20 20:56:00\tOld task\n2\t1\t2019-09-24 12:57:00\tNew task\n"
 

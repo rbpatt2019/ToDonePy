@@ -3,7 +3,7 @@ from shutil import which
 
 import pytest
 
-from ToDonePy.notify import notify_send as notify_send
+from helpers.notify import notify_send
 
 
 @pytest.mark.skipif(which("notify-send") is None, reason="Requires notify-send")

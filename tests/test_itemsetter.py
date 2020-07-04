@@ -1,4 +1,4 @@
-from ToDonePy.itemsetter import itemsetter as itemsetter
+from helpers.itemsetter import itemsetter
 
 def test_itemsetter() -> None:
     """Test itemsetter with basic inputs

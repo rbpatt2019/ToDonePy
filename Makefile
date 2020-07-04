@@ -39,15 +39,15 @@ install:
 	poetry install --no-dev
 
 format: clean
-	poetry run isort -rc src/
-	poetry run black src/
+	poetry run isort -rc todonepy/
+	poetry run black todonepy/
 
 lint: format
-	poetry run pylint src/
+	poetry run pylint todonepy/
 	poetry check
 
 test: lint
-	pytest --ignore=docs -vv --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=src/ --cov-report term
+	pytest --ignore=docs -vv --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=todonepy/ --cov-report term
 
 patch: test
 	poetry version patch

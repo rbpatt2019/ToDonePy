@@ -1,6 +1,8 @@
 import click
+
 from helpers.file_len import file_len
 from helpers.notify import notify_send
+
 
 @click.command()
 @click.option(
