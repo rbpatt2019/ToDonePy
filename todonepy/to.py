@@ -4,10 +4,10 @@ from pathlib import Path
 
 import click
 
-from todonepy.do.command import do
-from todonepy.doing.command import doing
-from todonepy.done.command import done
-from todonepy.helpers.filer import Filer
+from do.command import do
+from doing.command import doing
+from done.command import done
+from helpers.filer import Filer
 
 
 @click.group()

@@ -3,7 +3,7 @@ from typing import Tuple
 
 import click
 
-from todonepy.helpers.file_len import file_len
+from helpers.file_len import file_len
 
 
 @click.command()
