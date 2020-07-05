@@ -1,14 +1,7 @@
-from typing import Tuple
-
-import click
-
 from helpers.file_len import file_len
 
 
-@click.command()
-@click.argument("tasks", nargs=-1, required=True, type=str)
-@click.pass_obj
-def done(obj, tasks: Tuple[str]) -> None:
+def done(args) -> None:
     """Remove a task to your list
 
     :tasks: Task(s) to be added to your list. Supports any number of arguments
@@ -20,11 +13,11 @@ def done(obj, tasks: Tuple[str]) -> None:
     :Note: If a task is not found, then the CLI will say so
 
     """
-    for item in tasks:
-        if obj.delete(item):
-            ids = [str(x) for x in range(1, file_len(obj.path))]
+    for item in args.tasks:
+        if args.file.delete(item):
+            ids = [str(x) for x in range(1, file_len(args.file.path))]
             ids.insert(0, "ID")
-            obj.write_col(ids, 0)
-            click.echo(f'Task "{item}" successfully deleted!')
+            args.file.write_col(ids, 0)
+            print(f'Task "{item}" successfully deleted!')
         else:
-            click.echo(f'Task "{item}" not in TODO.tsv...')
+            print(f'Task "{item}" not in TODOs...')
