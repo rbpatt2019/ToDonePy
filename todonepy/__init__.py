@@ -1,36 +1,39 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import argparse
 from pathlib import Path
+import os
 
-import click
+import poetry_version
 
 from do.command import do
 from doing.command import doing
 from done.command import done
 from helpers.filer import Filer
 
+__version__ = poetry_version.extract(source_file=__file__)
+__todo__ = os.environ.get("TODO_FILE", Path.home() / ".todo.tsv")
 
-@click.group()
-@click.option(
+# The root command
+to = argparse.ArgumentParser(prog="to")
+to.add_argument(
+    "--version",
+    "-v",
+    action="version",
+    version=f"ToDonePy v{__version__}",
+    help="Display the version and exit",
+)
+to.add_argument(
     "--file",
     "-f",
-    envvar="TODO_FILE",
-    default=(Path.home() / "TODO.tsv"),
-    type=click.Path(exists=False),
-    help="Location of TODO.tsv",
+    default=__todo__,
+    type=argparse.FileType("w"),
+    help="Your TODO file",
 )
-@click.version_option()
-@click.pass_context
-def to(ctx, file: Path) -> None:
-    """Base command for managing tasks
+to_sub = to.add_subparsers(help='Sub-commands')
 
-    :Note: If you use a location other than the default for --file, 
-        I'd recommend setting TODO_FILE as an environemtal variable
-    """
-    ctx.obj = Filer(Path(file), create=True)
+# The do Sub-command
 
-
-# Add sub-commands
-to.add_command(do)
-to.add_command(doing)
-to.add_command(done)
+if __name__ == "__main__":
+    args = to.parse_args()
+    print(args)
