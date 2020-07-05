@@ -2,8 +2,10 @@ from datetime import datetime as dt
 from typing import Tuple
 
 import click
+from typing_extensions import Literal
 
 from helpers.file_len import file_len
+from helpers.filer import Filer
 
 
 @click.command()
@@ -11,21 +13,44 @@ from helpers.file_len import file_len
 @click.argument("rank", nargs=1, required=True, type=int)
 @click.argument("tasks", nargs=-1, required=True, type=str)
 @click.pass_obj
-def do(obj, sort: str, rank: int, tasks: Tuple[str]) -> None:
+def do(
+    obj: Filer,
+    sort: Literal["rank", "date", "both", "none"],
+    rank: int,
+    tasks: Tuple[str],
+) -> None:
     """Add some tasks to your list
 
-    :rank: priority to assign to this task
-    :tasks: Task(s) to be added to your list. Supports any number of arguments
+    `do` supports an unlimited number of tasks, but requires that tasks of more than 1
+    word in length be enclosed in quotes. Single or double are fine - use whichever!
+    To keep track of how long tasks have been on the list,  a timestamp of the form
+    %y-%m-%d %H:%M:%S is also added.
 
-    :Note: All tasks will be added at the same rank
+    Notes
+    -----
+        All tasks added at the same time will be added at the same rank. If you need to
+        add multiple tasks at different ranks, you must call `to do` multiple times.
 
-    :Note: --sort defaults to "both". If must be one of :
-    ["rank", "date", "both", "none"]. If none, tasks are not resorted 
-    after additions
+    Parameters
+    ----------
+    obj : Filer
+        The click context object that points to TODO.tsv
+    sort : Literal["rank", "date", "both", "none"]
+        How to sort new tasks added to the list
+        Click will default this to "both"
+    rank : int
+        The importance to assign the new tasks.
+    tasks : Tuple[str]
+        The task(s) to add to your list
 
-    :Note: If your task is more than 1 word long, enclose it in quotes
+    Returns
+    -------
+    None
+        However, a confirmation message will be echoed to the terminal
 
-    :Note: A timestamp of the form %y-%m-%d %H:%M:%S is also added
+    Examples
+    --------
+    >>> to do -s rank 2 "An example task"
 
     """
     date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
