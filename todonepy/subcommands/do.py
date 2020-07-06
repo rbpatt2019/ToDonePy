@@ -1,7 +1,6 @@
 import argparse
 from datetime import datetime as dt
 
-from helpers.file_len import file_len
 from helpers.filer import Filer
 
 
@@ -47,7 +46,7 @@ def do(args: argparse.Namespace) -> None:
     if args.sort != "none":
         keys = {"rank": [1], "date": [2], "both": [1, 2]}
         args.file.sort(keys[args.sort], header=True)
-    ids = [str(x) for x in range(1, file_len(args.file.path))]
+    ids = [str(x) for x in range(1, args.file.length)]
     ids.insert(0, "ID")
     args.file.write_col(ids, 0)
     print(f"{len(args.tasks)} task(s) added!")

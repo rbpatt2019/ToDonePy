@@ -5,7 +5,7 @@ from operator import itemgetter
 from pathlib import Path
 from typing import List
 
-from helpers.file_len import file_len
+from helpers.external_command import external_command
 from helpers.itemsetter import itemsetter
 
 
@@ -40,6 +40,9 @@ class Filer:
                 self.append([["ID", "Rank", "Date", "Task"]])
             else:
                 raise OSError("File does not exist")
+        self.length = int(
+            external_command(["wc", "-l", self.path]).stdout.strip().split()[0]
+        )
 
     def read(self) -> List[List[str]]:
         """Read the lines of self.path
@@ -123,7 +126,10 @@ class Filer:
                         writer.writerow(line)
 
         # If deleted, copy and return true
-        if file_len(self.path) != file_len(Path("tmp")):
+        tmp_length = int(
+            external_command(["wc", "-l", Path("tmp")]).stdout.strip().split()[0]
+        )
+        if self.length != tmp_length:
             shutil.move("tmp", self.path)
             return True
 

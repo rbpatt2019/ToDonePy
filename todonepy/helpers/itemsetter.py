@@ -2,23 +2,29 @@ from typing import Any, Callable, List
 
 
 def itemsetter(*items: int) -> Callable[[List, Any], None]:
-    """Return a callable object sets item from its operand
-    If multiple items are specified, it sets all items
-
-    After:
-
-        >>> x = ['a', 'b', 'c']
-        >>> f = itemsetter(2)
-
-    Then:
+    """Return a callable object that sets item from its operand
     
-        >>> f(x, 'z')
-        >>> print(x)
-        ['a', 'b', 'z']
+    This is essentially the opposite of `operator.itemsetter`_.
+    If only one position is specified, the resulting callable will set that item.
+    If multiple positions are specified, it sets all items
 
-    :items: Indices to be set
+    Parameters
+    ----------
+    *items : int
+        The indices to be set. Remember, Python is 0-indexed
 
-    :returns: g, Callable[[List, Any], None]
+    Returns
+    -------
+    Callable[[List, Any], None]
+        A function that will set the indices specified in `items` to a given value.
+
+    Examples
+    --------
+    >>> x = ['a', 'b', 'c']
+    >>> f = itemsetter(2)
+    >>> f(x, 'z')
+    >>> print(x)
+    ['a', 'b', 'z']
 
     """
 

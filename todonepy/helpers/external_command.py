@@ -3,7 +3,7 @@ import subprocess
 from typing import List
 
 
-def external_command(args: List[str]) -> None:
+def external_command(args: List[str]) -> subprocess.CompletedProcess:
     """Make a generic command line call
 
     Any command line call can be made. Pass the respective components as individual
@@ -47,4 +47,4 @@ def external_command(args: List[str]) -> None:
     """
     if shutil.which(args[0]) is None:
         raise OSError(f"Command {args[0]} not found!")
-    subprocess.run(list(args), check=True)
+    return subprocess.run(list(args), check=True, capture_output=True)

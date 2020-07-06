@@ -2,7 +2,6 @@ import argparse
 import os
 
 from helpers.external_command import external_command
-from helpers.file_len import file_len
 
 
 # file, sort, number, reminder, edit
@@ -46,7 +45,7 @@ def doing(args: argparse.Namespace) -> None:
     keys = {"rank": [1], "date": [2], "both": [1, 2]}
     if args.sort != "none":
         args.file.sort(keys[args.sort], header=True)
-        ids = [str(x) for x in range(1, file_len(args.file.path))]
+        ids = [str(x) for x in range(1, args.file.length)]
         ids.insert(0, "ID")
         args.file.write_col(ids, 0)
 

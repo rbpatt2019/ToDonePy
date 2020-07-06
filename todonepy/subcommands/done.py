@@ -1,8 +1,6 @@
 """The `done` subcommand for the `to` main command"""
 import argparse
 
-from helpers.file_len import file_len
-
 
 def done(args: argparse.Namespace) -> None:
     """Remove a task to your list
@@ -38,7 +36,7 @@ def done(args: argparse.Namespace) -> None:
     """
     for item in args.tasks:
         if args.file.delete(item):
-            ids = [str(x) for x in range(1, file_len(args.file.path))]
+            ids = [str(x) for x in range(1, args.file.length)]
             ids.insert(0, "ID")
             args.file.write_col(ids, 0)
             print(f'Task "{item}" successfully deleted!')
