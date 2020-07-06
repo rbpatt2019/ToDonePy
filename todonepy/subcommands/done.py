@@ -21,7 +21,7 @@ def done(args: argparse.Namespace) -> None:
     args : argparse.Namespace
         Arguments forwarded from the CLI. For this subcommand, this includes:
         args.file : Filer
-            The TODO file to be searched
+            The TODO file to be searched. From the root `to` command
         args.task : List[str]
             The list of tasks to be deleted
  

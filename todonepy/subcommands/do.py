@@ -24,11 +24,11 @@ def do(args: argparse.Namespace) -> None:
     args : argparse.Namespace
         Arguments forwarded from the CLI. For this subcommand, this includes:
         args.file : Filer
-            The TODO file to add to
+            The TODO file to add to. From the root `to` command
         args.rank : int
             The importance to assign the new tasks.
         args.sort : Literal["rank", "date", "both", "none"]
-            How to sort new tasks added to the list
+            How to sort new tasks added to the list. From the root `to` command
         args.tasks : List[str]
             The task(s) to add to your list
 
@@ -39,7 +39,7 @@ def do(args: argparse.Namespace) -> None:
 
     Examples
     --------
-    >>> to do -s rank 2 "An example task" "I'm very busy"
+    >>> to -s rank do 2 "An example task" "I'm very busy"
 
     """
     date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
