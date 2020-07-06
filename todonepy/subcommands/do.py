@@ -43,7 +43,7 @@ def do(args: argparse.Namespace) -> None:
 
     """
     date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
-    args.file.append([["", str(args.rank), date, item] for item in args.task])
+    args.file.append([["", str(args.rank), date, item] for item in args.tasks])
     if args.sort != "none":
         keys = {"rank": [1], "date": [2], "both": [1, 2]}
         args.file.sort(keys[args.sort], header=True)
