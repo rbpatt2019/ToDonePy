@@ -19,14 +19,11 @@ classifiers=[
 ]
 packages = [
         { include = "helpers", from = "todonepy" },
-        { include = "do", from = "todonepy" },
-        { include = "doing", from = "todonepy" },
-        { include = "done", from = "todonepy" },
+        { include = "subcommands", from = "todonepy" },
 ]
 
 [tool.poetry.dependencies]
 python = "^3.6.1"
-Click = "^7.0"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^19.3b0", allow-prereleases = true}

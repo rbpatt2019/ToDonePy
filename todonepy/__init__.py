@@ -1,8 +1,34 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+"""The root `to` command
+
+The root command provides several options. 
+
+`-s/--sort` allows you to specify how to sort added or returned tasks. Bear in mind
+that this sorts the underlying file! It defaults to 'none' - best not to do anything
+unless you need to!
+
+`-f/file` allows you to specify where to store your TODOs. If you don't specify, it
+defaults to `~/.todo.tsv` and will create the file if it doesn't exists. If you want
+to keep your file elsewhere, you can specify that with the env var TODO_FILE
+
+Like all good CLIs, `-v/--version` returns the version while `-h/--help` help for the
+root command. Help for the subcommands can be found by calling `-h` after a subcommand,
+like this: `to do -h`.
+
+Attributes
+----------
+__version__ : str
+    The version number, pulled from the pyproject.toml file
+__todo__ : Filer
+    The Filer object containing the TODOs. It first checks to see if the env var
+    TODO_FILE is set. If it is, it looks there. If not, it defaults to ~/.todo.tsv.
+    A hidden file is used to prevent clutter.
+"""
 import argparse
 import os
 from pathlib import Path
+from typing import Optional
 
 import poetry_version
 
@@ -24,12 +50,11 @@ to_parser.add_argument(
     help="Display the version and exit",
 )
 to_parser.add_argument(
-    "-f", "--file", nargs="?", default=__todo__, type=Filer, help="Your TODO file",
+    "-f", "--file", default=__todo__, type=Filer, help="Your TODO file",
 )
 to_parser.add_argument(
     "-s",
     "--sort",
-    nargs="?",
     type=str,
     choices=["both", "none", "rank", "date"],
     default="none",
@@ -80,6 +105,20 @@ done_parser.add_argument(
 )
 done_parser.set_defaults(func=done)
 
-if __name__ == "__main__":
-    args = to_parser.parse_args()
+
+def to(args: Optional[argparse.Namespace] = None) -> None:
+    """The entry point for the CLI
+
+    Parameters
+    ----------
+    args : Optional[argparse.Namespace]
+        If not specified, then the command line inputs are read. This should be the default behaviour.
+        The option to specify is only given to allow for testing.
+
+    Returns
+    -------
+    None
+    """
+    if args is None:
+        args = to_parser.parse_args()
     args.func(args)
