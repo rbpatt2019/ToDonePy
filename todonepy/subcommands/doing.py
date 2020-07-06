@@ -49,16 +49,20 @@ def doing(args: argparse.Namespace) -> None:
     lines = args.file.read()[: args.number + 1]
 
     if args.edit:
-        external_command(os.environ.get("EDITOR", "vim"), str(args.file.path))
+        # print(args.file.path)
+        __editor__ = os.environ.get("EDITOR", "vim")
+        external_command([__editor__, args.file.path])
     elif args.reminder:
         external_command(
-            "notify-send",
-            "My TODOs",
-            "\n".join(["\t".join(l) for l in lines]),
-            "-u",
-            "low",
-            "-t",
-            "5000",
+            [
+                "notify-send",
+                "My TODOs",
+                "\n".join(["\t".join(l) for l in lines]),
+                "-u",
+                "low",
+                "-t",
+                "5000",
+            ]
         )
     else:
         for l in lines:

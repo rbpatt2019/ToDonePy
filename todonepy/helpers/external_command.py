@@ -1,16 +1,16 @@
-import subprocess
 import shutil
-from typing_extensions import Literal
+import subprocess
+from typing import List
 
 
-def external_command(*args: str) -> Literal[True]:
+def external_command(args: List[str]) -> None:
     """Make a generic command line call
 
     Any command line call can be made. Pass the respective components as individual
     strings. Roughly speaking, anywhere there is a space, break it into a new
-    component. See the documentation on `subprocess.Popen`_ for advanced use cases.
+    component. See the documentation on `subprocess.run`_ for advanced use cases.
 
-    .. _subprocess.Popen:
+    .. _subprocess.run:
         https://docs.python.org/3.7/library/subprocess.html#subprocess.Popen
 
     Note
@@ -23,7 +23,7 @@ def external_command(*args: str) -> Literal[True]:
 
     Parameters
     ----------
-    *args : str
+    *args : List[str]
         The parts of the external command
 
     Returns
@@ -34,11 +34,11 @@ def external_command(*args: str) -> Literal[True]:
     Raises
     ------
     OSError
-        If unsuccessful. This will be thrown if either 1) the command found in args[0]
-        cannot be found on the OS or 2) the provided command errors in some way. In the
-        latter case, the system error message is returned
-        passed to the function
-
+        If unsuccessful. This will be thrown if the command found in args[0]
+        cannot be found on the OS 
+    subprocess.CalledProcessError
+        If the called command returns a non-zero exit status
+        
     Example
     -------
     >>> external_command('notify-send', 'Message Title', 'This is notification', '-u', 'low', '-t', '10') 
@@ -46,9 +46,5 @@ def external_command(*args: str) -> Literal[True]:
 
     """
     if shutil.which(args[0]) is None:
-        raise OSError(f'Command {args[0]} not found!')
-    ns = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    _, err = ns.communicate()
-    if ns.returncode != 0:
-        raise OSError(err)
-    return True
+        raise OSError(f"Command {args[0]} not found!")
+    subprocess.run(list(args), check=True)
