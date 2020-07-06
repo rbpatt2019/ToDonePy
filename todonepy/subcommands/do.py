@@ -1,24 +1,11 @@
+import argparse
 from datetime import datetime as dt
-from typing import Tuple
-
-import click
-from typing_extensions import Literal
 
 from helpers.file_len import file_len
 from helpers.filer import Filer
 
 
-@click.command()
-@click.option("--sort", "-s", default="both", help="How to sort added tasks", type=str)
-@click.argument("rank", nargs=1, required=True, type=int)
-@click.argument("tasks", nargs=-1, required=True, type=str)
-@click.pass_obj
-def do(
-    obj: Filer,
-    sort: Literal["rank", "date", "both", "none"],
-    rank: int,
-    tasks: Tuple[str],
-) -> None:
+def do(args: argparse.Namespace) -> None:
     """Add some tasks to your list
 
     `do` supports an unlimited number of tasks, but requires that tasks of more than 1
@@ -31,17 +18,19 @@ def do(
         All tasks added at the same time will be added at the same rank. If you need to
         add multiple tasks at different ranks, you must call `to do` multiple times.
 
+
     Parameters
     ----------
-    obj : Filer
-        The click context object that points to TODO.tsv
-    sort : Literal["rank", "date", "both", "none"]
-        How to sort new tasks added to the list
-        Click will default this to "both"
-    rank : int
-        The importance to assign the new tasks.
-    tasks : Tuple[str]
-        The task(s) to add to your list
+    args : argparse.Namespace
+        Arguments forwarded from the CLI. For this subcommand, this includes:
+        args.file : Filer
+            The TODO file to add to
+        args.rank : int
+            The importance to assign the new tasks.
+        args.sort : Literal["rank", "date", "both", "none"]
+            How to sort new tasks added to the list
+        args.tasks : List[str]
+            The task(s) to add to your list
 
     Returns
     -------
@@ -50,15 +39,15 @@ def do(
 
     Examples
     --------
-    >>> to do -s rank 2 "An example task"
+    >>> to do -s rank 2 "An example task" "I'm very busy"
 
     """
     date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
-    obj.append([["", str(rank), date, item] for item in tasks])
-    if sort != "none":
+    args.file.append([["", str(args.rank), date, item] for item in args.task])
+    if args.sort != "none":
         keys = {"rank": [1], "date": [2], "both": [1, 2]}
-        obj.sort(keys[sort], header=True)
-    ids = [str(x) for x in range(1, file_len(obj.path))]
+        args.file.sort(keys[args.sort], header=True)
+    ids = [str(x) for x in range(1, file_len(args.file.path))]
     ids.insert(0, "ID")
-    obj.write_col(ids, 0)
-    click.echo(f"{len(tasks)} task(s) added!")
+    args.file.write_col(ids, 0)
+    print(f"{len(args.tasks)} task(s) added!")

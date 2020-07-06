@@ -17,16 +17,30 @@ __todo__ = Filer(os.environ.get("TODO_FILE", Path.home() / ".todo.tsv"), create=
 # The root command
 to_parser = argparse.ArgumentParser(prog="to")
 to_parser.add_argument(
-    "--version",
     "-v",
+    "--version",
     action="version",
     version=f"ToDonePy v{__version__}",
     help="Display the version and exit",
 )
 to_parser.add_argument(
-    "--file", "-f", default=__todo__, type=Filer, help="Your TODO file",
+    "-f", "--file", nargs="?", default=__todo__, type=Filer, help="Your TODO file",
 )
 subparsers = to_parser.add_subparsers(title="Sub-Commands")
+
+# The do sub-command
+do_parser = subparsers.add_parser("do", help="Add a new task")
+do_parser.add_argument(
+    "-s",
+    "--sort",
+    type="str",
+    choices=["both", "none", "rank", "date"],
+    default="both",
+    help="How to sort TODOs after adding the new task",
+)
+do_parser.add_argument("rank", type=int, help="Importance of added tasks")
+do_parser.add_argument("tasks", type=str, nargs="*", help="Tasks to add")
+do_parser.set_defaults(func=do)
 
 # The done Sub-command
 done_parser = subparsers.add_parser("done", help="Remove a completed task")
