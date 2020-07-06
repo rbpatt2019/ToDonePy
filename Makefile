@@ -23,6 +23,8 @@ clean:
 	rm -rf build/
 	rm -rf dist/
 	rm -rf .eggs/
+	rm -rf html/
+	rm -rf doctrees/
 
 reqs:
 	$(requirements)
