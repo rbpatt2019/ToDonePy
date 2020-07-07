@@ -40,12 +40,16 @@ def external_command(args: List[str]) -> subprocess.CompletedProcess:
     subprocess.CalledProcessError
         If the called command returns a non-zero exit status
         
-    Example
-    -------
-    >>> external_command('notify-send', 'Message Title', 'This is notification', '-u', 'low', '-t', '10') 
-    True
+    Examples
+    --------
+    The results of a successful command ccan be queried like so:
+
+    >>> results = external_command(['echo', 'hello']) 
+    >>> results.returncode
+    0
 
     """
+
     if shutil.which(args[0]) is None:
         raise OSError(f"Command {args[0]} not found!")
     return subprocess.run(list(args), check=True, capture_output=True)

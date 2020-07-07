@@ -12,7 +12,7 @@ def test_ec_successful() -> None:
     """
     results = external_command(["echo", "hello"])
     assert results.returncode == 0
-    assert results.stdout == b"hello"
+    assert results.stdout == b"hello\n"
 
 
 def test_ec_OSError() -> None:
@@ -28,4 +28,4 @@ def test_ec_ProcessError() -> None:
 
     """
     with pytest.raises(subprocess.CalledProcessError):
-        external_command(["exit", "1"])
+        external_command(["false"])
