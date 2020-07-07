@@ -5,7 +5,7 @@ import argparse
 def done(args: argparse.Namespace) -> None:
     """Remove a task to your list
 
-    This command uses the supplied tasks to look for (partial) matches in your TODO
+    This command uses the supplied tasks to look for matches in your TODO
     list. A helpful message lets you know if the task(s) was(were) found and deleted.
     
     Notes

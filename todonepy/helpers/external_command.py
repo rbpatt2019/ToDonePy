@@ -18,7 +18,7 @@ def external_command(args: List[str]) -> subprocess.CompletedProcess:
         If run in a situation where the user was providing a dynamic input, there are
         obvious security risks. In the app, however, the user cannot provide their own
         input, which I believe sufficiently mitigates the risk in this use case. 
-        Obviously, if you addapt and use this function elsewhere, take care to check
+        Obviously, if you adopt and use this function elsewhere, take care to check
         your inputs!
 
     Parameters

@@ -10,7 +10,7 @@ def doing(args: argparse.Namespace) -> None:
 
     Note
     ----
-        `--edit` opens whateer editor is specified by your `EDITOR` env var.
+        `--edit` opens whatever editor is specified by your `EDITOR` env var.
         If one is not set, it will default to Vim. 
 
     Note    
