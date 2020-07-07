@@ -40,7 +40,7 @@ class Filer:
         Examples
         --------
         >>> from pathlib import Path
-        >>> example = Filer(Path.home() / 'tmp.tsv)
+        >>> example = Filer(Path.home() / 'tmp.tsv')
 
         """
         self.path = Path(path)
@@ -55,6 +55,74 @@ class Filer:
         self.length = int(
             external_command(["wc", "-l", self.path]).stdout.strip().split()[0]
         )
+
+    def append(self, rows: List[List[str]]) -> None:
+        """Appends contents of `rows` to self.path
+
+        Note
+        ----
+            This will not over-write the contents of the file, mirroring the modes of
+            `open()`_
+
+        .. _open(): 
+            https://docs.python.org/3.7/library/functions.html#open
+
+        Parameters
+        ----------
+        rows : List[List[str]]
+            A list of strings to write to self.path.
+
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        >>> example.append([['f','g', 'h'], ['i', 'j', 'k']])
+
+        """
+        with open(self.path, "a", newline="") as file:
+            writer = csv.writer(file, delimiter=self.delimiter)
+            writer.writerows(rows)
+
+    def delete(self, contains: str) -> bool:
+        """Deletes all lines from self where `contains in line`
+
+        Parameters
+        ----------
+        contains : str
+            String to match for line deletion
+
+        Returns
+        -------
+        bool
+            True if successulf, false otherwise
+
+        Example
+        -------
+        >>> example.delete('j')
+        True
+
+        """
+        with open(self.path, "r") as r_file:
+            reader = csv.reader(r_file, delimiter=self.delimiter)
+            with open("tmp", "a") as w_file:
+                writer = csv.writer(w_file, delimiter=self.delimiter)
+                for line in reader:
+                    if contains not in line:
+                        writer.writerow(line)
+
+        # If deleted, copy and return true
+        tmp_length = int(
+            external_command(["wc", "-l", Path("tmp")]).stdout.strip().split()[0]
+        )
+        if self.length != tmp_length:
+            shutil.move("tmp", self.path)
+            return True
+
+        # Otherwise, clean tmp and return false
+        os.remove(Path("tmp"))
+        return False
 
     def read(self) -> List[List[str]]:
         """Read the lines of self.path
@@ -75,7 +143,7 @@ class Filer:
         Examples
         --------
         >>> example.read()
-        [['ID\tRank\tDate\tTask']]
+        [['ID', 'Rank', 'Date', 'Task'], ['f', 'g', 'h']]
 
         """
         with open(self.path, "r", newline="") as file:
@@ -84,6 +152,40 @@ class Filer:
             for line in reader:
                 lines.append(line)
         return lines
+
+    def sort(self, cols: List[int], header: bool = False) -> None:
+        """Sort the contents of self.path by columns
+
+        Parameters
+        ----------
+        cols : List[int]
+            List of column indices indicating what to sort by.
+            Remember, Python is 0-indexed   
+        header : bool
+            Whether or not row 0 is a header. If True, row 0 is skipped for sorting
+
+        Returns
+        -------
+        None
+
+        Example
+        -------
+        >>> example.sort([1, 2], header=False)
+
+        """
+        lines = self.read()
+        if header:
+            # Slice off header
+            head = lines[0]
+            entries = lines[1:]
+            # Sort and re-add
+            entries.sort(key=itemgetter(*cols))
+            entries.insert(0, head)
+            # Write
+            self.write(entries)
+        else:
+            lines.sort(key=itemgetter(*cols))
+            self.write(lines)
 
     def write(self, rows: List[List[str]]) -> None:
         """Writes contents of rows to self.path.
@@ -157,105 +259,3 @@ class Filer:
         for line, val in zip(lines, col):
             write_col(line, val)
         self.write(lines)
-
-    def append(self, rows: List[List[str]]) -> None:
-        """Appends contents of `rows` to self.path
-
-        Note
-        ----
-            This will not over-write the contents of the file, mirroring the modes of
-            `open()`_
-
-        .. _open(): 
-            https://docs.python.org/3.7/library/functions.html#open
-
-        Parameters
-        ----------
-        rows : List[List[str]]
-            A list of strings to write to self.path.
-
-        Returns
-        -------
-        None
-
-        Examples
-        --------
-        >>> example.append([['f','g', 'h'], ['i', 'j', 'k']], index=2)
-
-        """
-        with open(self.path, "a", newline="") as file:
-            writer = csv.writer(file, delimiter=self.delimiter)
-            writer.writerows(rows)
-
-    def delete(self, contains: str) -> bool:
-        """Deletes all lines from self where `contains in line`
-
-        Parameters
-        ----------
-        contains : str
-            String to match for line deletion
-
-        Returns
-        -------
-        bool
-            True if successulf, false otherwise
-
-        Example
-        -------
-        >>> example.delete('j')
-        True
-
-        """
-        with open(self.path, "r") as r_file:
-            reader = csv.reader(r_file, delimiter=self.delimiter)
-            with open("tmp", "a") as w_file:
-                writer = csv.writer(w_file, delimiter=self.delimiter)
-                for line in reader:
-                    if contains not in line:
-                        writer.writerow(line)
-
-        # If deleted, copy and return true
-        tmp_length = int(
-            external_command(["wc", "-l", Path("tmp")]).stdout.strip().split()[0]
-        )
-        if self.length != tmp_length:
-            shutil.move("tmp", self.path)
-            return True
-
-        # Otherwise, clean tmp and return false
-        os.remove(Path("tmp"))
-        return False
-
-    def sort(self, cols: List[int], header: bool = False) -> None:
-        """Sort the contents of self.path by columns
-
-        Parameters
-        ----------
-        cols : List[int]
-            List of column indices indicating what to sort by.
-            Remember, Python is 0-indexed   
-        header : bool
-            Whether or not row 0 is a header. If True, row 0 is skipped for sorting
-
-        Returns
-        -------
-        None
-
-        Example
-        -------
-        >>> example.sort([1, 2], header=False)
-
-        """
-        lines = self.read()
-        if header:
-            # Slice off header
-            head = lines[0]
-            entries = lines[1:]
-            # Sort and re-add
-            entries.sort(key=itemgetter(*cols))
-            entries.insert(0, head)
-            # Write
-            self.write(entries)
-        else:
-            lines.sort(key=itemgetter(*cols))
-            self.write(lines)
