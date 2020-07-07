@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from os.path import isfile
 from pathlib import Path
-from typing import Callable, List, Optional, Union
+from typing import List, Optional
 
 import pytest
 
@@ -28,11 +27,8 @@ def test_Filer_no_create(
 ) -> None:
     """Run Filer to read a file that does not exist
 
-    :tmp_path: pytest.fixture. Where to create the file
-    :create: Whether or not the file should be created, from pytest.mark.parametrize
-    :expected: Expected output, from pytest.mark.parametrize
-
-    :returns: None
+    This is parametrize to test that if fails if `create = False` but passes
+    when `create = True`
 
     """
     file = Filer(tmp_path / "tmp.tsv", create=create)
@@ -40,26 +36,14 @@ def test_Filer_no_create(
 
 
 def test_Filer_read_existing_file(tmp_file: Path,) -> None:
-    """Run Filer to read an existing file
-
-    :tmp_file: Custom pytest.fixture for creating tmp files
-
-    :returns: None
-
-    """
+    """Run Filer to read an existing file"""
     file = Filer(tmp_file)
     for line, entry in zip(file.read(), results_txt):
         assert line == entry
 
 
 def test_Filer_write_existing_file(tmp_file: Path,) -> None:
-    """Run Filer to write to an existing file
-
-    :tmp_file: Custom pytest.fixture for creating tmp files
-
-    :returns: None
-
-    """
+    """Run Filer to write to an existing file"""
     written = [["3", "3", "2020-06-24 08:53:00", "Newer task"]]
     file = Filer(tmp_file)
     file.write(written)
@@ -68,24 +52,20 @@ def test_Filer_write_existing_file(tmp_file: Path,) -> None:
 
 
 def test_Filer_append_existing_file(tmp_file: Path) -> None:
-    """Run Filer to append to an existing file
-
-    :tmp_file: Custom pytest.fixture for freating tmp files
-
-    :returns: None
-
-    """
+    """Run Filer to append to an existing file"""
     added = [["3", "3", "2020-06-24 08:53:00", "Newer task"]]
     file = Filer(tmp_file)
     file.append(added)
     for line, entry in zip(file.read(), results_txt + added):
         assert line == entry
 
+
 def test_Filer_write_col_error(tmp_file: Path) -> None:
     """ Check that `Filer.write_col` raises an `IndexError` if col is the wrong length"""
     file = Filer(tmp_file)
     with pytest.raises(IndexError):
-        file.write_col(list('abcdefghijk'))
+        file.write_col(list("abcdefghijk"))
+
 
 @pytest.mark.parametrize(
     "header,expected",
@@ -96,12 +76,7 @@ def test_Filer_sort_existing_file(
 ) -> None:
     """Run Filer to sort an existing file
 
-    :tmp_file: Custom pytest.fixture for creating tmp files
-    :header: Whether or not the file has a header, from pytest.mark.parametrize
-    :expected: The expected result, from pytest.mark.parametrize
-
-    :returns: None
-
+    This is parametrised to check that headers are treated properly
     """
     file = Filer(tmp_file)
     if not header:  # As tmp file comes with header, delete if necessary
@@ -119,12 +94,7 @@ def test_Filer_delete_existing_file(
 ) -> None:
     """Run Filer to delete a line from  an existing file
 
-    :tmp_file: Custom pytest.fixture for creating tmp files
-    :to_del: Line to be deleted, from pyteset.mark.parametrize
-    :expected: Expected result, from pytest.mark.parametrize
-
-    :returns: None
-
+    This is parametrised to check conditions where a line is not deleted
     """
     file = Filer(tmp_file)
     file.delete(to_del)
