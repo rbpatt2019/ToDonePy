@@ -28,8 +28,9 @@ def external_command(args: List[str]) -> subprocess.CompletedProcess:
 
     Returns
     -------
-    True
-        If successful.
+    subprocess.CompletedProcess
+        If successful. This contains a number of useful attributes, including
+        returncode and stdout.
 
     Raises
     ------
