@@ -6,7 +6,6 @@ from pathlib import Path
 from shutil import which
 
 import pytest
-from click.testing import CliRunner
 
 from todonepy import to
 
