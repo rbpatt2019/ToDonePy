@@ -13,22 +13,34 @@ class Filer:
 
     """A class for gracefully handling file interactions with delimited data
 
-    Designed particularly for passing context in a Click program. 
-
-    :path: A Unix filepath to the desired file
-    :create: If the file does not already exist, create it.
-    :delimiter: The delimiter to be used for the file
+    Designed particularly for passing context in a CLI, it is a thin wrapper for many
+    common file I/O actions, including reading, writing (both lines and columns), and
+    deleting.
 
     """
 
     def __init__(self, path: Path, create: bool = True, delimiter: str = "\t") -> None:
-        """Initialise the Filer
+        """Initialise the Filer object
+        
+        Note
+        ----
+            The attribute self.length is created to hold the number of lines in the file.
+            This is particularly useful for checking to see if a file has been altered.
 
-        :path: A Unix filepath to the desired file
-        :create: If the file does not already exist, create it.
-        :delimiter: The delimiter to be used for the file
+        Parameters
+        ----------
+        path : Path
+            A Posix filepath to the desired file/location
+        create : bool
+            If the file does not exist, should it be created?
+        delimiter : str
+            What delimited should be used with the file?
 
-        :returns: None
+
+        Examples
+        --------
+        >>> from pathlib import Path
+        >>> example = Filer(Path.home() / 'tmp.tsv)
 
         """
         self.path = Path(path)
@@ -47,10 +59,23 @@ class Filer:
     def read(self) -> List[List[str]]:
         """Read the lines of self.path
 
-        :Note: Reads in all lines, so will suffer on large files
+        Note
+        ----
+            Reads in all lines, so will suffer on large files
 
-        :returns: A list of lines where each line is a list 
-        of column values
+        Parameters
+        ----------
+        None
+    
+        Returns
+        -------
+        List[List[str]]
+            A list of lines where each line is a list of column values
+
+        Examples
+        --------
+        >>> example.read()
+        [['ID\tRank\tDate\tTask']]
 
         """
         with open(self.path, "r", newline="") as file:
@@ -63,14 +88,27 @@ class Filer:
     def write(self, rows: List[List[str]]) -> None:
         """Writes contents of rows to self.path.
 
-        If the file exists, it overwrites.
+        Warning
+        -------
+            If the file already has content, that will be overwritten!
+            This mirrors the modes used by `open()`_
 
-        rows is a list of lists. rows[0] is line 1, rows[0][0] is 
-        is line 1, column 1
+        .. _open(): 
+            https://docs.python.org/3.7/library/functions.html#open
 
-        :rows: An list of strings to write to self.path
+        Parameters
+        ----------
+        rows : List[List[str]]
+            A list of strings to write to self.path. `rows[0]` represents line 1,
+            and `rows[0][0]` is line 1, column 1.
 
-        :returns: None
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        >>> example.write([['a', 'b', 'c']])
 
         """
         with open(self.path, "w", newline="") as file:
@@ -78,14 +116,42 @@ class Filer:
             writer.writerows(rows)
 
     def write_col(self, col: List[str], index: int = 0) -> None:
-        """Writes contents of col to column given by index
+        """Writes contents of col to self.path at specified index
 
-        :col: A list of strings to write to self.path
-        :index: To which column to write. Defaults to first (index = 0)
+        Warning
+        -------
+            If the column already has content, that will be overwritten!
+            This mirrors the modes used by `open()`_
 
-        :returns: None
+        .. _open(): 
+            https://docs.python.org/3.7/library/functions.html#open
+
+        Parameters
+        ----------
+        col : List[str]
+            A list of strings to write to self.path. This should be the same length as
+            `self.length`
+        index : int
+            Which column to write at. Remember, Python is 0-indexed.
+
+        Returns
+        -------
+        None
+
+        Raises
+        ------
+        IndexError
+            When `col` has more or less items than `self.length`
+        
+        Examples
+        --------
+        >>> example.write_col(['d'], index=2)
 
         """
+        if len(col) != self.length:
+            raise IndexError(
+                f"col does not have the right number of items! n_lines = {self.length}, n_items = {len(col)}."
+            )
         lines = self.read()
         write_col = itemsetter(index)
         for line, val in zip(lines, col):
@@ -93,16 +159,28 @@ class Filer:
         self.write(lines)
 
     def append(self, rows: List[List[str]]) -> None:
-        """Appends contents of rows to self.path.
+        """Appends contents of `rows` to self.path
 
-        Contents of self.path will not be overwritten, if it exists.
+        Note
+        ----
+            This will not over-write the contents of the file, mirroring the modes of
+            `open()`_
 
-        rows is a list of lists. rows[0] is line 1, rows[0][0] is 
-        is line 1, column 1
+        .. _open(): 
+            https://docs.python.org/3.7/library/functions.html#open
 
-        :rows: An list of strings to write to self.path
+        Parameters
+        ----------
+        rows : List[List[str]]
+            A list of strings to write to self.path.
 
-        :returns: None
+        Returns
+        -------
+        None
+
+        Examples
+        --------
+        >>> example.append([['f','g', 'h'], ['i', 'j', 'k']], index=2)
 
         """
         with open(self.path, "a", newline="") as file:
@@ -110,11 +188,22 @@ class Filer:
             writer.writerows(rows)
 
     def delete(self, contains: str) -> bool:
-        """Deletes all lines from self where ``contains in line``
+        """Deletes all lines from self where `contains in line`
 
-        :contains: string to use for line deletion
+        Parameters
+        ----------
+        contains : str
+            String to match for line deletion
 
-        :returns: True, if successful, false otherwise
+        Returns
+        -------
+        bool
+            True if successulf, false otherwise
+
+        Example
+        -------
+        >>> example.delete('j')
+        True
 
         """
         with open(self.path, "r") as r_file:
@@ -138,12 +227,23 @@ class Filer:
         return False
 
     def sort(self, cols: List[int], header: bool = False) -> None:
-        """Sort the contents of self by columns
+        """Sort the contents of self.path by columns
 
-        :cols: List of columns, 0-indexed, to sort by
-        :header: Whether or not row 0 is a header. If True, row 0 is skipped for sorting.
+        Parameters
+        ----------
+        cols : List[int]
+            List of column indices indicating what to sort by.
+            Remember, Python is 0-indexed   
+        header : bool
+            Whether or not row 0 is a header. If True, row 0 is skipped for sorting
 
-        :returns: None
+        Returns
+        -------
+        None
+
+        Example
+        -------
+        >>> example.sort([1, 2], header=False)
 
         """
         lines = self.read()
