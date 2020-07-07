@@ -31,7 +31,7 @@ def done(args: argparse.Namespace) -> None:
 
     Example
     -------
-    >>> to done 'An example' 'Is always helpful'
+    $ to done 'An example' 'Is always helpful'
 
     """
     for item in args.tasks:

@@ -37,7 +37,7 @@ def doing(args: argparse.Namespace) -> None:
 
     Example
     -------
-    >>> to doing -n 3
+    $ to doing -n 3
 
     """
     keys = {"rank": [1], "date": [2], "both": [1, 2]}

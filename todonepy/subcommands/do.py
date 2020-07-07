@@ -37,7 +37,7 @@ def do(args: argparse.Namespace) -> None:
 
     Examples
     --------
-    >>> to -s rank do 2 "An example task" "I'm very busy"
+    $ to -s rank do 2 "An example task" "I'm very busy"
 
     """
     date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
