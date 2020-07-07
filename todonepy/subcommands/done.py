@@ -8,8 +8,8 @@ def done(args: argparse.Namespace) -> None:
     This command uses the supplied tasks to look for matches in your TODO
     list. A helpful message lets you know if the task(s) was(were) found and deleted.
     
-    Notes
-    -----
+    Note
+    ----
         If your task contains more than one word, then each task must be enclosed in
         quotes. Otherwise, the CLI treats each word as a task. Also note that if
         multiple lines match a task, they will ALL be deleted.
@@ -18,10 +18,10 @@ def done(args: argparse.Namespace) -> None:
     ----------
     args : argparse.Namespace
         Arguments forwarded from the CLI. For this subcommand, this includes:
-        args.file : Filer
-            The TODO file to be searched. From the root `to` command
-        args.task : List[str]
-            The list of tasks to be deleted
+    args.file : Filer
+        The TODO file to be searched. From the root `to` command
+    args.task : List[str]
+        The list of tasks to be deleted
  
     Returns
     -------

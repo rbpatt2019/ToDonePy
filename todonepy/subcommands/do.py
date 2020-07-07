@@ -17,19 +17,18 @@ def do(args: argparse.Namespace) -> None:
         All tasks added at the same time will be added at the same rank. If you need to
         add multiple tasks at different ranks, you must call `to do` multiple times.
 
-
     Parameters
     ----------
     args : argparse.Namespace
         Arguments forwarded from the CLI. For this subcommand, this includes:
-        args.file : Filer
-            The TODO file to add to. From the root `to` command
-        args.rank : int
-            The importance to assign the new tasks.
-        args.sort : Literal["rank", "date", "both", "none"]
-            How to sort new tasks added to the list. From the root `to` command
-        args.tasks : List[str]
-            The task(s) to add to your list
+    args.file : Filer
+        The TODO file to add to. From the root `to` command
+    args.rank : int
+        The importance to assign the new tasks.
+    args.sort : Literal["rank", "date", "both", "none"]
+        How to sort new tasks added to the list. From the root `to` command
+    args.tasks : List[str]
+        The task(s) to add to your list
 
     Returns
     -------

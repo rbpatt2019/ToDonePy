@@ -8,13 +8,11 @@ from helpers.external_command import external_command
 def doing(args: argparse.Namespace) -> None:
     """See tasks in your list
 
-    Note
-    ----
+    Notes
+    -----
         `--edit` opens whatever editor is specified by your `EDITOR` env var.
         If one is not set, it will default to Vim. 
-
-    Note    
-    ----
+    
         Currently, `--reminder` has a dependency on `notify-send`. If this
         command is absent from your system, it will failt
 
@@ -22,16 +20,16 @@ def doing(args: argparse.Namespace) -> None:
     ----------
     args : argparse.Namespace
         Args passed from argparse. For this subcommand, these include:
-        args.file : Filer
-            The TODO file to echo. Derived from the root `to` command
-        args.sort : Literal['both', 'none', rank', 'date']
-            How to sort echoed tasks. Derived from the root `to` command
-        args.number : int
-            How many tasks to return
-        args.reminder : bool
-            Whether to use notify-send to create a pop-up
-        args.edit : bool
-            Whether to laucn an editor with your TODO file
+    args.file : Filer
+        The TODO file to echo. Derived from the root `to` command
+    args.sort : Literal['both', 'none', rank', 'date']
+        How to sort echoed tasks. Derived from the root `to` command
+    args.number : int
+        How many tasks to return
+    args.reminder : bool
+        Whether to use notify-send to create a pop-up
+    args.edit : bool
+        Whether to laucn an editor with your TODO file
 
     Returns
     -------

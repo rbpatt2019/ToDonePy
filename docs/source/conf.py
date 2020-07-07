@@ -85,3 +85,4 @@ html_static_path = ['_static']
 
 napoleon_google_docstring=False
 napoleon_use_param=False
+napoleon_use_rtype=False
