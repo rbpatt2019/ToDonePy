@@ -1,18 +1,5 @@
-ToDonePy Submodules
-===================
-
-Module contents
----------------
-.. automodule:: todonepy.helpers
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-Class: Filer
-------------
-.. automodule:: todonepy.helpers.filer
-   :members:
-   :show-inheritance:
+ToDonePy Helper Functions
+=========================
 
 Function: itemsetter
 --------------------
@@ -20,14 +7,8 @@ Function: itemsetter
    :members:
    :show-inheritance:
 
-Function: notify_send
----------------------
-.. automodule:: todonepy.helpers.notify
-   :members:
-   :show-inheritance:
-
-Function: file_len
-------------------
-.. automodule:: todonepy.helpers.file_len
+Function: external_command
+--------------------------
+.. automodule:: todonepy.helpers.external_command
    :members:
    :show-inheritance:

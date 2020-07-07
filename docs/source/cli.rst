@@ -3,24 +3,24 @@ ToDonePy command-line interface (CLI)
 
 Root Command: to
 ----------------
-.. automodule:: todonepy
+.. automodule:: todonepy.commands.to
    :members:
    :show-inheritance:
 
 Sub-Command: do
 ---------------
-.. automodule:: todonepy.do.command
+.. automodule:: todonepy.subcommands.do
    :members:
    :show-inheritance:
 
 Sub-Command: doing
 ------------------
-.. automodule:: todonepy.doing.command
+.. automodule:: todonepy.subcommands.doing
    :members:
    :show-inheritance:
 
 Sub-Command: done
 -----------------
-.. automodule:: todonepy.done.command
+.. automodule:: todonepy.subcommands.done
    :members:
    :show-inheritance:

@@ -6,7 +6,9 @@ Welcome to ToDonePy's documentation!
    :caption: Contents:
    
    Overview <readme.rst>
-   Modules <modules.rst>
+   Command Line Interface <cli.rst>
+   Helper Components <modules.rst>
+   Testing <testing.rst>
    Contributing to development <contributing.rst>
 
 
