@@ -19,6 +19,7 @@ classifiers=[
 ]
 packages = [
         { include = "helpers", from = "todonepy" },
+        { include = "commands", from = "todonepy" }
         { include = "subcommands", from = "todonepy" },
 ]
 
