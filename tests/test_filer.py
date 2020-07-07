@@ -81,6 +81,11 @@ def test_Filer_append_existing_file(tmp_file: Path) -> None:
     for line, entry in zip(file.read(), results_txt + added):
         assert line == entry
 
+def test_Filer_write_col_error(tmp_file: Path) -> None:
+    """ Check that `Filer.write_col` raises an `IndexError` if col is the wrong length"""
+    file = Filer(tmp_file)
+    with pytest.raises(IndexError):
+        file.write_col(list('abcdefghijk'))
 
 @pytest.mark.parametrize(
     "header,expected",
