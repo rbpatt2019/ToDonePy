@@ -9,11 +9,15 @@ homepage = "https://pypi.org/project/ToDonePy/"
 repository = "https://github.com/rbpatt2019/ToDonePy"
 documentation = "https://todonepy.readthedocs.io/en/latest/"
 classifiers=[
-        "Development Status :: 5 - Development/Stable",
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Console",
+        "Intended Audience :: End Users/Desktop",
+        "Intended Audience :: Science/Research",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Natural Language :: English",
         "Operating System :: Unix",
+        "Operating System :: MacOS :: MacOS X",
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
 ]
