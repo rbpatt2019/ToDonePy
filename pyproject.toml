@@ -2,52 +2,52 @@
 name = "todonepy"
 version = "3.2.1"
 description = "A developed command-line task manager"
-authors = ["rbpatt2019 <ryan.patterson.2015@gmail.com>"]
+authors = ["rbpatt2019 <rb.patterson.cross@gmail.com>"]
 license = "GPL-3.0+"
 readme = "README.rst"
 homepage = "https://pypi.org/project/ToDonePy/"
 repository = "https://github.com/rbpatt2019/ToDonePy"
 documentation = "https://todonepy.readthedocs.io/en/latest/"
 classifiers=[
-        "Development Status :: 7 - Inactive",
+        "Development Status :: 5 - Development/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Natural Language :: English",
         "Operating System :: Unix",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
 ]
 packages = [
-        { include = "command_line", from = "src" },
-        { include = "ToDonePy", from = "src" },
+        { include = "helpers", from = "todonepy" },
+        { include = "commands", from = "todonepy" },
+        { include = "subcommands", from = "todonepy" },
 ]
 
 [tool.poetry.dependencies]
-python = "^3.6.1"
-Click = "^7.0"
+python = "^3.7"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^19.3b0", allow-prereleases = true}
 codecov = "^2.0.15"
 coverage = "^5.1"
-isort = "^4.3.21"
-mypy = "^0.740"
+freezegun = "^0"
+isort = "^4"
+mypy = "^0"
 mypy-extensions = "^0.4.3"
+poetry-version = "^0"
+pre-commit = "^2.5.1"
+pylint = "^2.5.3"
 pytest = "^5.2.1"
 pytest-cov = "^2.8.1"
 pytest-instafail = "^0.4.1"
 pytest-mypy = "^0.6.2"
 pytest-runner = "^5.1"
 Sphinx = "^3"
-sphinx-click = "^2.3.0"
 twine = "^3"
-sphinxcontrib-fulltoc = "^1.2"
-pre-commit = "^2.5.1"
-poetry-version = "^0.1.5"
-pylint = "^2.5.3"
+sphinx_rtd_theme = "^0"
 
 [tool.poetry.scripts]
-to = "command_line.ToDoneCLI:to"
+to = "__init__:to"
 
 [tool.isort]
 multi_line_output = 3
@@ -64,7 +64,7 @@ W0611,
 
 [tool.coverage.report]
 exclude_lines = [
-        "if __name__ == .__main__.:",
+        "if args is None:",
 ]
 show_missing = true
 

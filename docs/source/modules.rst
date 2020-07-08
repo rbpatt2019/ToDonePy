@@ -1,9 +1,8 @@
-ToDonePy Submodules
-===================
+ToDonePy Helpers
+================
 
 .. toctree::
    :maxdepth: 4
    
-   Command-line interace <cli.rst>
-   ToDonePy submodules <submodules.rst>
-   Test submodules <tests.rst>
+   Helper Functions <helpers.rst>
+   The `Filer` Class <filer.rst>
