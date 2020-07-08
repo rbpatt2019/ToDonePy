@@ -1,5 +1,5 @@
 from pathlib import Path
-from typing import Callable, Dict, List
+from typing import Dict
 
 import pytest
 
@@ -26,23 +26,7 @@ def doctest_filer_example(doctest_namespace: Dict[str, Filer], tmp_path: Path) -
 
 
 @pytest.fixture(scope="function")
-def list_of_lists() -> List[List[str]]:
-    """Fixture for creating a simple list of lists
-
-    Parameters
-    ----------
-    None
-    
-    Returns
-    -------
-    List[List[str]]
-    
-    """
-    return [list("abc"), list("def"), list("ghi")]
-
-
-@pytest.fixture(scope="function")
-def tmp_file(tmp_path: Path) -> Path:
+def tmp_file(tmp_path: Path) -> Filer:
     """Fixture for automating setup of files
     
     Parameters
@@ -62,4 +46,4 @@ def tmp_file(tmp_path: Path) -> Path:
         "ID\tRank\tDate\tTask\n1\t2\t2019-09-20 20:56\tOld task\n"
         "2\t1\t2019-09-24 12:57\tNew task\n"
     )
-    return tmp
+    return Filer(tmp)
