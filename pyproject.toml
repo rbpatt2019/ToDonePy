@@ -64,7 +64,7 @@ W0611,
 
 [tool.coverage.report]
 exclude_lines = [
-        "if __name__ == .__main__.:",
+        "if args is None:",
 ]
 show_missing = true
 
