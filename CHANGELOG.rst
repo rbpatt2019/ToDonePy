@@ -3,6 +3,13 @@
 CHANGELOG for ToDonePy
 ======================
 
+v4.0.0
+------
+- BREAKING: Refactor from Click to Argparse
+- BREAKING: Python must be >=3.7 to all for caught output from `subprocess.run()`
+- BREAKING: Timestamp now only to mintes. Previously, was to seconds
+- Vastly improved documentation, using numpy docstrings and Napoleon
+
 v3.2.1
 ------
 
