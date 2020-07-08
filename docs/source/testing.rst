@@ -1,51 +1,20 @@
 Testing
 =======
 
-Module contents
+Configurations
 ---------------
-.. automodule:: tests
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-tests.conftest
---------------
 .. automodule:: tests.conftest
    :members:
-   :undoc-members:
    :show-inheritance:
 
-tests.test\_ToDoneCLI
----------------------
-.. automodule:: tests.test_ToDoneCLI
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-tests.test\_filer
------------------
-.. automodule:: tests.test_filer
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-tests.test\_file\_len
----------------------
-.. automodule:: tests.test_file_len
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-tests.test\_notify
----------------------
-.. automodule:: tests.test_notify
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-tests.test\_itemsetter
-----------------------
-.. automodule:: tests.test_itemsetter
-   :members:
-   :undoc-members:
-   :show-inheritance:
+Test Modules
+------------
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents:
+   
+   do <test_do.rst>
+   doing <test_doing.rst>
+   done <test_done.rst>
+   Filer class <test_filer.rst>
+   Helper functions <test_helpers.rst>
