@@ -49,6 +49,7 @@ pytest-runner = "^5.1"
 Sphinx = "^3"
 twine = "^3"
 sphinx_rtd_theme = "^0"
+ipython = "^7.16.1"
 
 [tool.poetry.scripts]
 to = "__init__:to"
