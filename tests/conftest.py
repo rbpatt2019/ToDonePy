@@ -22,7 +22,7 @@ def doctest_filer_example(doctest_namespace: Dict[str, Filer], tmp_path: Path) -
     None
 
     """
-    doctest_namespace["example"] = Filer(tmp_path / ".TODO.tsv")
+    doctest_namespace["example"] = Filer(tmp_path / ".TODO.tsv", create=True)
 
 
 @pytest.fixture(scope="function")
