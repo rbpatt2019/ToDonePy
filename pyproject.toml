@@ -31,10 +31,10 @@ black = {version = "^19.3b0", allow-prereleases = true}
 codecov = "^2.0.15"
 coverage = "^5.1"
 freezegun = "^0"
-isort = "^5.0"
+isort = "^4"
 mypy = "^0"
 mypy-extensions = "^0.4.3"
-poetry-version = "^0
+poetry-version = "^0"
 pre-commit = "^2.5.1"
 pylint = "^2.5.3"
 pytest = "^5.2.1"
