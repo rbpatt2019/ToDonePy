@@ -48,6 +48,7 @@ class Filer:
         if not os.path.isfile(self.path):
             if create:
                 self.path.touch()
+                self.length = 0
                 # Specifically for initiating todos
                 self.append([["ID", "Rank", "Date", "Task"]])
             else:
@@ -84,6 +85,7 @@ class Filer:
         with open(self.path, "a", newline="") as file:
             writer = csv.writer(file, delimiter=self.delimiter)
             writer.writerows(rows)
+        self.length += len(rows)
 
     def delete(self, contains: str) -> bool:
         """Deletes all lines from self where `contains in line`
@@ -118,6 +120,7 @@ class Filer:
         )
         if self.length != tmp_length:
             shutil.move("tmp", self.path)
+            self.length = tmp_length
             return True
 
         # Otherwise, clean tmp and return false
@@ -216,6 +219,7 @@ class Filer:
         with open(self.path, "w", newline="") as file:
             writer = csv.writer(file, delimiter=self.delimiter)
             writer.writerows(rows)
+        self.length = len(rows)
 
     def write_col(self, col: List[str], index: int = 0) -> None:
         """Writes contents of col to self.path at specified index
