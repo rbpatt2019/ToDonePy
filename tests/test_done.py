@@ -1,7 +1,5 @@
 import argparse
-from datetime import datetime as dt
 from pathlib import Path
-from shutil import which
 
 import pytest
 
@@ -11,7 +9,7 @@ from helpers.filer import Filer
 
 
 
-def test_to_done_custom_file(tmp_file: Path, capsys):
+def test_to_done(tmp_file: Path, capsys):
     """Check that task are appropriately deleted from the TODO file"""
     
     to(argparse.Namespace(func=done, file=Filer(tmp_file, create=True), tasks=['nothing', 'Old task']))
@@ -19,7 +17,7 @@ def test_to_done_custom_file(tmp_file: Path, capsys):
     
     assert (
         tmp_file.read_text()
-        == "ID\tRank\tDate\tTask\n1\t1\t2019-09-24 12:57:00\tNew task\n"
+        == "ID\tRank\tDate\tTask\n1\t1\t2019-09-24 12:57\tNew task\n"
     )
     
     assert err == ''

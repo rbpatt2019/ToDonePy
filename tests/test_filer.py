@@ -10,8 +10,8 @@ from helpers.filer import Filer
 
 results_txt = [
     ["ID", "Rank", "Date", "Task"],
-    ["1", "2", "2019-09-20 20:56:00", "Old task"],
-    ["2", "1", "2019-09-24 12:57:00", "New task"],
+    ["1", "2", "2019-09-20 20:56", "Old task"],
+    ["2", "1", "2019-09-24 12:57", "New task"],
 ]
 
 
@@ -44,7 +44,7 @@ def test_Filer_read_existing_file(tmp_file: Path,) -> None:
 
 def test_Filer_write_existing_file(tmp_file: Path,) -> None:
     """Run Filer to write to an existing file"""
-    written = [["3", "3", "2020-06-24 08:53:00", "Newer task"]]
+    written = [["3", "3", "2020-06-24 08:53", "Newer task"]]
     file = Filer(tmp_file)
     file.write(written)
     for line, entry in zip(file.read(), written):
@@ -53,7 +53,7 @@ def test_Filer_write_existing_file(tmp_file: Path,) -> None:
 
 def test_Filer_append_existing_file(tmp_file: Path) -> None:
     """Run Filer to append to an existing file"""
-    added = [["3", "3", "2020-06-24 08:53:00", "Newer task"]]
+    added = [["3", "3", "2020-06-24 08:53", "Newer task"]]
     file = Filer(tmp_file)
     file.append(added)
     for line, entry in zip(file.read(), results_txt + added):

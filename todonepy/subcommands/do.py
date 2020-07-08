@@ -10,7 +10,7 @@ def do(args: argparse.Namespace) -> None:
     `do` supports an unlimited number of tasks, but requires that tasks of more than 1
     word in length be enclosed in quotes. Single or double are fine - use whichever!
     To keep track of how long tasks have been on the list,  a timestamp of the form
-    %y-%m-%d %H:%M:%S is also added.
+    %y-%m-%d %H:%M is also added.
 
     Notes
     -----
@@ -40,7 +40,7 @@ def do(args: argparse.Namespace) -> None:
     $ to -s rank do 2 "An example task" "I'm very busy"
 
     """
-    date = dt.now().strftime("%Y-%m-%d %H:%M:%S")
+    date = dt.now().strftime("%Y-%m-%d %H:%M")
     args.file.append([["", str(args.rank), date, item] for item in args.tasks])
     if args.sort != "none":
         keys = {"rank": [1], "date": [2], "both": [1, 2]}

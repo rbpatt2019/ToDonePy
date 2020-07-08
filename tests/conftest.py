@@ -59,7 +59,7 @@ def tmp_file(tmp_path: Path) -> Path:
 
     tmp = tmp_path / "tmp.tsv"
     tmp.write_text(
-        "ID\tRank\tDate\tTask\n1\t2\t2019-09-20 20:56:00\tOld task\n"
-        "2\t1\t2019-09-24 12:57:00\tNew task\n"
+        "ID\tRank\tDate\tTask\n1\t2\t2019-09-20 20:56\tOld task\n"
+        "2\t1\t2019-09-24 12:57\tNew task\n"
     )
     return tmp
