@@ -189,9 +189,9 @@ This will open `TODO.tsv` in your system editor. Where you would see something l
 .. code:: sh
 
         ID      Rank    Date    Task
-        1       1       YYYY-MM-DD HH:MM:SS     Write my abstract
-        2       1       YYYY-MM-DD HH:MM:SS     Email boss
-        3       1       YYYY-MM-DD HH:MM:SS     Important work
+        1       1       YYYY-MM-DD HH:MM     Write my abstract
+        2       1       YYYY-MM-DD HH:MM     Email boss
+        3       1       YYYY-MM-DD HH:MM     Important work
 
 Nothing fancy, just a plain tsv with `ID` in the first column, `rank` in the second column, the date/time of addition in the third, and `task` in the fourth. Now, you can make all the changes you want, then save and close the file to return to the command line.
 
