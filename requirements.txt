@@ -1,4 +1,4 @@
--e .
+.
 alabaster==0.7.12
 appdirs==1.4.4
 appnope==0.1.0; sys_platform == "darwin"
