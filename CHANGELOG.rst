@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v4.0.1
+------
+- Fix build error
+
 v4.0.0
 ------
 - BREAKING: Refactor from Click to Argparse
