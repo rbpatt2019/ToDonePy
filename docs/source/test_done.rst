@@ -1,6 +1,6 @@
 Testing the done sub-command
 ============================
 
-.. automodule:: tests.test_done
+.. automodule:: test_done
    :members:
    :show-inheritance:

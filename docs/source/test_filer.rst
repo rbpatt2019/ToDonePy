@@ -1,6 +1,6 @@
 Testing the Filer class
 =======================
 
-.. automodule:: tests.test_filer
+.. automodule:: test_filer
    :members:
    :show-inheritance:

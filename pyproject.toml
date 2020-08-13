@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "todonepy"
-version = "4.0.1"
+version = "4.0.3"
 description = "A developed command-line task manager"
 authors = ["rbpatt2019 <rb.patterson.cross@gmail.com>"]
 license = "GPL-3.0+"
@@ -49,6 +49,7 @@ pytest-runner = "^5.1"
 Sphinx = "^3"
 twine = "^3"
 sphinx_rtd_theme = "^0"
+ipython = "^7.16.1"
 
 [tool.poetry.scripts]
 to = "__init__:to"

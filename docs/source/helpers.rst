@@ -3,12 +3,12 @@ ToDonePy Helper Functions
 
 Function: itemsetter
 --------------------
-.. automodule:: todonepy.helpers.itemsetter
+.. automodule:: helpers.itemsetter
    :members:
    :show-inheritance:
 
 Function: external_command
 --------------------------
-.. automodule:: todonepy.helpers.external_command
+.. automodule:: helpers.external_command
    :members:
    :show-inheritance:

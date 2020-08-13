@@ -3,7 +3,7 @@ Testing
 
 Configurations
 ---------------
-.. automodule:: tests.conftest
+.. automodule:: conftest
    :members:
    :show-inheritance:
 

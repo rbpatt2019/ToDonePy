@@ -15,10 +15,13 @@ import sys
 import poetry_version
 
 wd = os.path.dirname(__file__)
+todonepy = os.path.abspath(os.path.join(wd, '../../todonepy/'))
+test = os.path.abspath(os.path.join(wd, '../../tests/'))
 td = os.path.abspath(os.path.join(wd, '../..'))
 
 sys.path.insert(0, td)
-
+sys.path.insert(0, test)
+sys.path.insert(0, todonepy)
 
 # -- Project information -----------------------------------------------------
 
