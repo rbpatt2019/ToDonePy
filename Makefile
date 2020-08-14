@@ -49,7 +49,7 @@ lint: format
 	poetry check
 
 test: lint
-	pytest --ignore=docs -vv --instafail --mypy --mypy-ignore-missing-imports --doctest-modules --cov=todonepy/ --cov-report term
+	pytest
 
 patch: test
 	poetry version patch
