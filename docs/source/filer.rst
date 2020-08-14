@@ -1,6 +1,6 @@
 The `Filer` Class
 =================
 
-.. automodule:: todonepy.helpers.filer
+.. automodule:: helpers.filer
    :members:
    :show-inheritance:

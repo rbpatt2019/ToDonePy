@@ -1,6 +1,6 @@
 Testing the do sub-command
 ==========================
 
-.. automodule:: tests.test_do
+.. automodule:: test_do
    :members:
    :show-inheritance:
