@@ -5,7 +5,6 @@ from pathlib import Path
 from typing import List, Optional
 
 import pytest
-
 from helpers.filer import Filer
 
 results_txt = [

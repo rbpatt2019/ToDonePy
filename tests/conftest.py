@@ -1,8 +1,8 @@
+# -*- coding: utf-8 -*-
 from pathlib import Path
 from typing import Dict
 
 import pytest
-
 from helpers.filer import Filer
 
 
@@ -16,7 +16,7 @@ def doctest_filer_example(doctest_namespace: Dict[str, Filer], tmp_path: Path) -
         `pytest.fixture` holding variables to be used in doctests
     tmp_path : Path
         `pytest.fixture` containing a temporary file path
-    
+
     Returns
     -------
     None
@@ -28,7 +28,7 @@ def doctest_filer_example(doctest_namespace: Dict[str, Filer], tmp_path: Path) -
 @pytest.fixture(scope="function")
 def tmp_file(tmp_path: Path) -> Filer:
     """Fixture for automating setup of files
-    
+
     Parameters
     ----------
     tmp_path : Path

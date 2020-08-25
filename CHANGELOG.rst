@@ -3,6 +3,14 @@
 CHANGELOG for ToDonePy
 ======================
 
+v4.0.5
+------
+- No changes to user.
+- Migrate to iSort 5
+- Improve linting
+- Expand pre-commit hooks
+- Update dependencies
+
 v4.0.4
 ------
 - Migrate to pytest 6.0. No changes to user.

@@ -1,10 +1,9 @@
+# -*- coding: utf-8 -*-
 import argparse
-from pathlib import Path
-
-import pytest
 
 from helpers.filer import Filer
 from subcommands.done import done
+
 from todonepy import to
 
 expected = [
@@ -28,4 +27,3 @@ def test_to_done(tmp_file: Filer, capsys):
     assert (
         out == 'Task "nothing" not in TODOs...\nTask "Old task" successfully deleted!\n'
     )
-

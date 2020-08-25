@@ -37,15 +37,15 @@ update:
 develop:
 	poetry install
 
-install: 
+install:
 	poetry install --no-dev
 
 format: clean
-	poetry run isort -rc todonepy/
-	poetry run black todonepy/
+	poetry run isort todonepy/ tests/
+	poetry run black todonepy/ tests/
 
 lint: format
-	poetry run pylint todonepy/
+	poetry run pylint todonepy/ tests/
 	poetry check
 
 test: lint
@@ -63,7 +63,7 @@ major: test
 	poetry version major
 	$(tags)
 
-dist: clean 
+dist: clean
 	poetry build
 
 release: dist
