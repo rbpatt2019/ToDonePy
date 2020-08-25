@@ -62,6 +62,12 @@ float_to_top = true
 [tool.pylint.messages_control]
 disable = "C"
 
+[tool.pylint.similarities]
+min-similarity-lines = 5
+ignore-comments = true
+ignore-docstrings = true
+ignore-imports = true
+
 [tool.coverage.report]
 exclude_lines = [
         "if args is None:",
