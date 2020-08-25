@@ -1,7 +1,6 @@
+# -*- coding: utf-8 -*-
 import argparse
 from datetime import datetime as dt
-
-from helpers.filer import Filer
 
 
 def do(args: argparse.Namespace) -> None:

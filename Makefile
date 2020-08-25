@@ -41,11 +41,11 @@ install:
 	poetry install --no-dev
 
 format: clean
-	poetry run isort todonepy/
-	poetry run black todonepy/
+	poetry run isort todonepy/ tests/
+	poetry run black todonepy/ tests/
 
 lint: format
-	poetry run pylint todonepy/
+	poetry run pylint todonepy/ tests/
 	poetry check
 
 test: lint

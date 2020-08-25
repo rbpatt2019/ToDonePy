@@ -60,10 +60,7 @@ skip_gitignore = true
 float_to_top = true
 
 [tool.pylint.messages_control]
-disable = """,
-C,
-W0611,
-"""
+disable = "C"
 
 [tool.coverage.report]
 exclude_lines = [
