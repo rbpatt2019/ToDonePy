@@ -1,1 +1,2 @@
-'''Tests for ToDonePy'''
+# -*- coding: utf-8 -*-
+"""Tests for ToDonePy"""

@@ -1,11 +1,12 @@
+# -*- coding: utf-8 -*-
 import argparse
 from shutil import which
 
 import pytest
+from helpers.filer import Filer
+from subcommands.doing import doing
 
 from todonepy import to
-from subcommands.doing import doing
-from helpers.filer import Filer
 
 expected_none = [
     ["ID", "Rank", "Date", "Task"],
@@ -29,12 +30,7 @@ def test_to_doing(sort: str, expected: str, tmp_file: Filer, capsys):
 
     to(
         argparse.Namespace(
-            func=doing,
-            file=tmp_file,
-            sort=sort,
-            number=5,
-            edit=False,
-            reminder=False,
+            func=doing, file=tmp_file, sort=sort, number=5, edit=False, reminder=False,
         )
     )
     out, err = capsys.readouterr()
@@ -50,12 +46,7 @@ def test_to_doing_custom_file_edit_flag(tmp_file: Filer, capsys):
     """Run to doing with the edit flag"""
     to(
         argparse.Namespace(
-            func=doing,
-            file=tmp_file,
-            sort="none",
-            number=5,
-            edit=True,
-            reminder=False,
+            func=doing, file=tmp_file, sort="none", number=5, edit=True, reminder=False,
         )
     )
     out, err = capsys.readouterr()
@@ -69,15 +60,9 @@ def test_to_doing_custom_file_graphic_flag(tmp_file, capsys):
 
     to(
         argparse.Namespace(
-            func=doing,
-            file=tmp_file,
-            sort="none",
-            number=5,
-            edit=False,
-            reminder=True,
+            func=doing, file=tmp_file, sort="none", number=5, edit=False, reminder=True,
         )
     )
     out, err = capsys.readouterr()
     assert out == ""
     assert err == ""
-

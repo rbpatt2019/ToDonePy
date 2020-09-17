@@ -1,6 +1,7 @@
+# -*- coding: utf-8 -*-
 """The root `to` command
 
-The root command provides several options. 
+The root command provides several options.
 
 `-s/--sort` allows you to specify how to sort added or returned tasks. Bear in mind
 that this sorts the underlying file! It defaults to 'none' - best not to do anything
@@ -26,10 +27,8 @@ __todo__ : Filer
 import argparse
 import os
 from pathlib import Path
-from typing import Optional
 
 import poetry_version
-
 from helpers.filer import Filer
 from subcommands.do import do
 from subcommands.doing import doing
