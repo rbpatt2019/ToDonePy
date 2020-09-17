@@ -19,9 +19,6 @@ install:
 
 script: make test
 
-before_deploy:
-- poetry config http-basic.pypi $PYPI_USER $PYPI_PASS
-
 deploy:
   provider: script
   script: poetry publish --build
