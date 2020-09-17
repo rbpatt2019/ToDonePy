@@ -57,7 +57,7 @@ to = "__init__:to"
 [tool.isort]
 profile = "black"
 skip_gitignore = true
-float_to_top = true
+float_to_top = false
 
 [tool.pylint.messages_control]
 disable = "C"
