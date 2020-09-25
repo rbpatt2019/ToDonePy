@@ -74,7 +74,7 @@ C,
 W0611,
 """
 
-[too.pylint.similarities]
+[tool.pylint.similarities]
 min-similarity-lines = 5
 ignore-comments = true
 ignore-docstrings = true
