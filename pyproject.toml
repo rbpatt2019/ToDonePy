@@ -54,6 +54,15 @@ twine = "^3"
 [tool.poetry.scripts]
 to = "__init__:to"
 
+[tool.pytest.ini_options]
+addopts = """
+-vv
+--ignore=docs
+--doctest-modules
+--diff-type=split
+--cov=todonepy
+--cov-report term"""
+
 [tool.isort]
 multi_line_output = 3
 include_trailing_comma = "True"
