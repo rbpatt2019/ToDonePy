@@ -19,6 +19,11 @@ repos:
     entry: pylint
     language: system
     types: [python]
+  - id: mypy
+    name: mypy
+    entry: mypy
+    language: system
+    types: [python]
 - repo: https://github.com/timothycrosley/isort
   rev: 5.4.2
   hooks:
