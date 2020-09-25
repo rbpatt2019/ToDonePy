@@ -49,7 +49,7 @@ lint: format
 	poetry run mypy --ignore-missing-imports todonepy/ tests/
 	poetry check
 
-test: lint
+test: clean
 	pytest
 
 patch: update test
