@@ -3,6 +3,10 @@
 CHANGELOG for ToDonePy
 ======================
 
+v4.0.4
+------
+- Migrate to pytest 6.0. No changes to user.
+
 v4.0.3
 ------
 - Dependency update. No changes to user.
