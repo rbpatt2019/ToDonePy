@@ -1,7 +1,6 @@
 import subprocess
 
 import pytest
-
 from helpers.external_command import external_command
 
 

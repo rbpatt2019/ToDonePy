@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import argparse
-from commands.to import to_parser
 from typing import Optional
+
+from commands.to import to_parser
 
 
 def to(args: Optional[argparse.Namespace] = None) -> None:

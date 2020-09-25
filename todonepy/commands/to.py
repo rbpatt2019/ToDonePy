@@ -29,7 +29,6 @@ from pathlib import Path
 from typing import Optional
 
 import poetry_version
-
 from helpers.filer import Filer
 from subcommands.do import do
 from subcommands.doing import doing

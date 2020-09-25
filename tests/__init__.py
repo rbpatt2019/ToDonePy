@@ -1,1 +1,1 @@
-'''Tests for ToDonePy'''
+"""Tests for ToDonePy"""

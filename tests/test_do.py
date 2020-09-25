@@ -3,9 +3,9 @@ from pathlib import Path
 
 import pytest
 from freezegun import freeze_time
-
 from helpers.filer import Filer
 from subcommands.do import do
+
 from todonepy import to
 
 expected_none = [
