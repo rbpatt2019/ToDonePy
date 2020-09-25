@@ -41,25 +41,26 @@ install:
 	poetry install --no-dev
 
 format: clean
-	poetry run isort -rc todonepy/
-	poetry run black todonepy/
+	poetry run isort todonepy/ tests/
+	poetry run black todonepy/ tests/
 
 lint: format
-	poetry run pylint todonepy/
+	poetry run pylint todonepy/ tests/
+	poetry run mypy --ignore-missing-imports todonepy/ tests/
 	poetry check
 
 test: lint
 	pytest
 
-patch: test
+patch: update test
 	poetry version patch
 	$(tags)
 
-minor: test
+minor: update test
 	poetry version minor
 	$(tags)
 
-major: test
+major: update test
 	poetry version major
 	$(tags)
 

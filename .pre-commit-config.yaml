@@ -24,6 +24,7 @@ repos:
     entry: mypy
     language: system
     types: [python]
+    args: [--ignore-missing-imports]
 - repo: https://github.com/timothycrosley/isort
   rev: 5.4.2
   hooks:
