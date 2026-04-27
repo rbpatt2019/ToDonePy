@@ -20,7 +20,7 @@ cryptography==3.1; sys_platform == "linux"
 decorator==4.4.2
 distlib==0.3.1
 docutils==0.16
-filelock==3.0.12
+filelock==3.29.0
 freezegun==0.3.15
 identify==1.5.2
 idna==2.10
