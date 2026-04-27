@@ -66,7 +66,7 @@ python-dateutil==2.8.1
 pytz==2020.1
 pywin32-ctypes==0.2.0; sys_platform == "win32"
 pyyaml==5.3.1
-readme-renderer==26.0
+readme-renderer==44.0
 regex==2020.7.14
 requests==2.24.0
 requests-toolbelt==0.9.1
