@@ -54,7 +54,7 @@ prompt-toolkit==3.0.7
 ptyprocess==0.6.0; sys_platform != "win32"
 py==1.9.0
 pycparser==2.20; sys_platform == "linux"
-pygments==2.7.1
+pygments==2.20.0
 pylint==2.6.0
 pyparsing==2.4.7
 pytest==6.0.2
