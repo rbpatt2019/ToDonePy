@@ -94,4 +94,4 @@ virtualenv==20.0.31
 wcwidth==0.2.5
 webencodings==0.5.1
 wrapt==1.12.1
-zipp==3.1.0; python_version < "3.8"
+zipp==3.23.1; python_version < "3.8"
