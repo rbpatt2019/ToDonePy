@@ -51,7 +51,7 @@ pluggy==0.13.1
 poetry-version==0.1.5
 pre-commit==2.7.1
 prompt-toolkit==3.0.7
-ptyprocess==0.6.0; sys_platform != "win32"
+ptyprocess==0.7.0; sys_platform != "win32"
 py==1.9.0
 pycparser==2.20; sys_platform == "linux"
 pygments==2.7.1
