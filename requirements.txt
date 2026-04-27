@@ -58,7 +58,7 @@ pygments==2.7.1
 pylint==2.6.0
 pyparsing==2.4.7
 pytest==6.0.2
-pytest-cov==2.10.1
+pytest-cov==7.1.0
 pytest-instafail==0.4.2
 pytest-mypy==0.7.0
 pytest-runner==5.2
