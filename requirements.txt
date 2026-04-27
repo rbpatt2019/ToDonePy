@@ -70,7 +70,7 @@ readme-renderer==26.0
 regex==2020.7.14
 requests==2.24.0
 requests-toolbelt==0.9.1
-rfc3986==1.4.0
+rfc3986==2.0.0
 secretstorage==3.1.2; sys_platform == "linux"
 six==1.15.0
 snowballstemmer==2.0.0
