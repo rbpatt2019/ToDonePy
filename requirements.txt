@@ -61,7 +61,7 @@ pytest==6.0.2
 pytest-cov==2.10.1
 pytest-instafail==0.4.2
 pytest-mypy==0.7.0
-pytest-runner==5.2
+pytest-runner==6.0.1
 python-dateutil==2.8.1
 pytz==2020.1
 pywin32-ctypes==0.2.0; sys_platform == "win32"
