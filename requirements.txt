@@ -33,7 +33,7 @@ isort==5.5.2
 jedi==0.17.2
 jeepney==0.4.3; sys_platform == "linux"
 jinja2==2.11.2
-keyring==21.4.0
+keyring==25.7.0
 lazy-object-proxy==1.4.3
 markupsafe==1.1.1
 mccabe==0.6.1
